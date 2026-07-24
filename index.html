@@ -140,6 +140,24 @@
     return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
   }
 
+  // Backend stores/publishes times in UTC; leads are Maricopa County (Arizona)
+  // filings, so display in Arizona local time for the people reading this.
+  function formatArizonaTime(utcString) {
+    if (!utcString || utcString === "unknown") return "unknown";
+    const isoish = utcString.replace(" UTC", "Z").replace(" ", "T");
+    const date = new Date(isoish);
+    if (isNaN(date.getTime())) return utcString;
+    const formatted = date.toLocaleString("en-US", {
+      timeZone: "America/Phoenix",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    });
+    return formatted + " AZ";
+  }
+
   async function tryUnlock() {
     const pw = document.getElementById("pw").value;
     const hash = await sha256Hex(pw);
@@ -167,7 +185,7 @@
       const res = await fetch("leads.json", { cache: "no-store" });
       const data = await res.json();
       document.getElementById("generated").textContent =
-        "Last updated: " + (data.generated_at_utc || "unknown");
+        "Last updated: " + formatArizonaTime(data.generated_at_utc);
       const rows = data.leads || [];
       const tbody = document.getElementById("rows");
       tbody.innerHTML = "";
