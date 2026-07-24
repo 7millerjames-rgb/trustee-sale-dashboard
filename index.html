@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Trustee Sale Leads</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --border: #2a2e37;
+    --text: #e8eaed;
+    --muted: #9aa0aa;
+    --accent: #4f8cff;
+    --danger: #ff6b6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  #gate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  #gate .box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+  }
+  #gate h1 { font-size: 18px; margin: 0 0 16px; }
+  #gate input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #0c0e12;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  #gate button {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  #gate button:hover { opacity: 0.9; }
+  #gate .error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 16px; }
+
+  #app { display: none; padding: 24px; max-width: 1100px; margin: 0 auto; }
+  #app.visible { display: block; }
+  header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  header h1 { font-size: 20px; margin: 0; }
+  header .meta { color: var(--muted); font-size: 13px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
+  tr:hover td { background: #1c2028; }
+  .score { font-weight: 600; color: var(--accent); }
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #3a2a12;
+    color: #ffb454;
+    margin-left: 6px;
+  }
+  .empty { color: var(--muted); text-align: center; padding: 40px 0; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
+</style>
+</head>
+<body>
+
+  <div id="gate">
+    <div class="box">
+      <h1>Trustee Sale Leads — Private Access</h1>
+      <input type="password" id="pw" placeholder="Enter password" autofocus>
+      <button id="unlock">Unlock</button>
+      <div class="error" id="err"></div>
+    </div>
+  </div>
+
+  <div id="app">
+    <header>
+      <h1>Trustee Sale Leads</h1>
+      <div class="meta" id="generated"></div>
+    </header>
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Filed</th>
+          <th>Likely Owner(s)</th>
+          <th>Other Names on Filing</th>
+          <th>Recording #</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none;">No leads found.</div>
+    <footer>Private link — do not share outside your team.</footer>
+  </div>
+
+<script>
+  // Replaced at publish time with the real SHA-256 hash of the shared password.
+  const PASSWORD_HASH = "__PASSWORD_HASH__";
+
+  async function sha256Hex(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function tryUnlock() {
+    const pw = document.getElementById("pw").value;
+    const hash = await sha256Hex(pw);
+    if (hash === PASSWORD_HASH) {
+      sessionStorage.setItem("tsm_unlocked", "1");
+      showApp();
+    } else {
+      document.getElementById("err").textContent = "Incorrect password.";
+    }
+  }
+
+  document.getElementById("unlock").addEventListener("click", tryUnlock);
+  document.getElementById("pw").addEventListener("keydown", e => {
+    if (e.key === "Enter") tryUnlock();
+  });
+
+  function showApp() {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("app").classList.add("visible");
+    loadData();
+  }
+
+  async function loadData() {
+    try {
+      const res = await fetch("leads.json", { cache: "no-store" });
+      const data = await res.json();
+      document.getElementById("generated").textContent =
+        "Last updated: " + (data.generated_at_utc || "unknown");
+      const rows = data.leads || [];
+      const tbody = document.getElementById("rows");
+      tbody.innerHTML = "";
+      if (rows.length === 0) {
+        document.getElementById("empty").style.display = "block";
+      }
+      rows
+        .slice()
+        .sort((a, b) => Number(b.score || 0) - Number(a.score || 0))
+        .forEach(row => {
+          const tr = document.createElement("tr");
+          const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
+            ? '<span class="badge">review</span>' : "";
+          tr.innerHTML = `
+            <td>${row.recording_date || ""}</td>
+            <td>${row["likely_owner(s)"] || ""}${reviewBadge}</td>
+            <td>${row.other_names_on_filing || ""}</td>
+            <td>${row.recording_number || ""}</td>
+            <td class="score">${row.score || ""}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+    } catch (e) {
+      document.getElementById("empty").textContent = "Couldn't load leads data.";
+      document.getElementById("empty").style.display = "block";
+    }
+  }
+
+  // Skip the password prompt if already unlocked earlier this tab session.
+  if (sessionStorage.getItem("tsm_unlocked") === "1") {
+    showApp();
+  }
+</script>
+
+</body>
+</html>
