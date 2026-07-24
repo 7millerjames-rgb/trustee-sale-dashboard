@@ -124,6 +124,18 @@
     white-space: nowrap;
   }
   .btn:hover { background: #232833; }
+  .copy-btn {
+    display: inline-block;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0 0 0 6px;
+    vertical-align: middle;
+  }
+  .copy-btn:hover { color: var(--accent); }
+  .copy-btn.copied { color: #4ade80; }
 </style>
 </head>
 <body>
@@ -258,11 +270,15 @@
       const filingLink = row.filing_url
         ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
         : "";
+      const recordingNumber = row.recording_number || "";
+      const copyBtn = recordingNumber
+        ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
+        : "";
       tr.innerHTML = `
         <td>${row.recording_date || ""}</td>
         <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}</td>
         <td>${row.other_names_on_filing || ""}</td>
-        <td>${row.recording_number || ""}</td>
+        <td>${recordingNumber}${copyBtn}</td>
         <td class="score">${row.score || ""}</td>
         <td>${filingLink}</td>
       `;
@@ -295,6 +311,25 @@
   }
 
   document.getElementById("search").addEventListener("input", applyFilter);
+
+  // Event delegation on the tbody: rows are re-rendered on every filter/load,
+  // so a listener attached to individual buttons would be lost (or, if
+  // re-added each render, duplicated). Binding once on the stable parent
+  // avoids both problems.
+  document.getElementById("rows").addEventListener("click", e => {
+    const btn = e.target.closest(".copy-btn");
+    if (!btn) return;
+    const recording = btn.dataset.recording;
+    navigator.clipboard.writeText(recording).then(() => {
+      const original = btn.textContent;
+      btn.textContent = "✓";
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove("copied");
+      }, 1200);
+    });
+  });
 
   // Wraps a CSV field in quotes and escapes embedded quotes whenever the
   // value contains a comma, quote, or newline that would otherwise break
