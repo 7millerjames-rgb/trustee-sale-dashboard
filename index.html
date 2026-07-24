@@ -82,6 +82,10 @@
     color: #ffb454;
     margin-left: 6px;
   }
+  .badge-new {
+    background: #123a1f;
+    color: #4ade80;
+  }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
   footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
   .filing-link {
@@ -249,12 +253,14 @@
       const tr = document.createElement("tr");
       const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
         ? '<span class="badge">review</span>' : "";
+      const newBadge = row.is_new === true || row.is_new === "true" || row.is_new === "True"
+        ? '<span class="badge badge-new">NEW</span>' : "";
       const filingLink = row.filing_url
         ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
         : "";
       tr.innerHTML = `
         <td>${row.recording_date || ""}</td>
-        <td>${row["likely_owner(s)"] || ""}${reviewBadge}</td>
+        <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}</td>
         <td>${row.other_names_on_filing || ""}</td>
         <td>${row.recording_number || ""}</td>
         <td class="score">${row.score || ""}</td>
