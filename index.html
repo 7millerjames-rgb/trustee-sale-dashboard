@@ -96,6 +96,7 @@
     white-space: nowrap;
   }
   .filing-link:hover { background: #232833; }
+  .stats { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
   .controls { margin-bottom: 12px; }
   .controls input {
     width: 100%;
@@ -126,6 +127,7 @@
       <h1>Trustee Sale Leads</h1>
       <div class="meta" id="generated"></div>
     </header>
+    <div class="stats" id="stats"></div>
     <div class="controls">
       <input type="text" id="search" placeholder="Filter by owner name…">
     </div>
@@ -199,6 +201,22 @@
   // search box filters this in memory rather than re-fetching.
   let allLeads = [];
 
+  // Counts how many rows have the manual-review flag set.
+  function countNeedsReview(rows) {
+    return rows.filter(row => row.needs_manual_review && row.needs_manual_review.trim()).length;
+  }
+
+  function updateStats(rows) {
+    const statsEl = document.getElementById("stats");
+    const total = allLeads.length;
+    const totalReview = countNeedsReview(allLeads);
+    if (rows.length === total) {
+      statsEl.textContent = `${total} lead${total === 1 ? "" : "s"} · ${totalReview} need review`;
+    } else {
+      statsEl.textContent = `Showing ${rows.length} of ${total} leads · ${countNeedsReview(rows)} need review`;
+    }
+  }
+
   function renderRows(rows) {
     const tbody = document.getElementById("rows");
     tbody.innerHTML = "";
@@ -209,6 +227,7 @@
     } else {
       emptyEl.style.display = "none";
     }
+    updateStats(rows);
     rows.forEach(row => {
       const tr = document.createElement("tr");
       const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
