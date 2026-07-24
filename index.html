@@ -96,6 +96,18 @@
     white-space: nowrap;
   }
   .filing-link:hover { background: #232833; }
+  .controls { margin-bottom: 12px; }
+  .controls input {
+    width: 100%;
+    max-width: 320px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #0c0e12;
+    color: var(--text);
+    font-size: 13px;
+  }
+  .controls input:focus { outline: 1px solid var(--accent); }
 </style>
 </head>
 <body>
@@ -114,6 +126,9 @@
       <h1>Trustee Sale Leads</h1>
       <div class="meta" id="generated"></div>
     </header>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Filter by owner name…">
+    </div>
     <table id="table">
       <thead>
         <tr>
@@ -180,43 +195,64 @@
     loadData();
   }
 
+  // Full lead list from the last successful fetch, sorted by score. The
+  // search box filters this in memory rather than re-fetching.
+  let allLeads = [];
+
+  function renderRows(rows) {
+    const tbody = document.getElementById("rows");
+    tbody.innerHTML = "";
+    const emptyEl = document.getElementById("empty");
+    if (rows.length === 0) {
+      emptyEl.textContent = "No leads found.";
+      emptyEl.style.display = "block";
+    } else {
+      emptyEl.style.display = "none";
+    }
+    rows.forEach(row => {
+      const tr = document.createElement("tr");
+      const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
+        ? '<span class="badge">review</span>' : "";
+      const filingLink = row.filing_url
+        ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
+        : "";
+      tr.innerHTML = `
+        <td>${row.recording_date || ""}</td>
+        <td>${row["likely_owner(s)"] || ""}${reviewBadge}</td>
+        <td>${row.other_names_on_filing || ""}</td>
+        <td>${row.recording_number || ""}</td>
+        <td class="score">${row.score || ""}</td>
+        <td>${filingLink}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function applyFilter() {
+    const q = document.getElementById("search").value.trim().toLowerCase();
+    const filtered = q
+      ? allLeads.filter(row => (row["likely_owner(s)"] || "").toLowerCase().includes(q))
+      : allLeads;
+    renderRows(filtered);
+  }
+
   async function loadData() {
     try {
       const res = await fetch("leads.json", { cache: "no-store" });
       const data = await res.json();
       document.getElementById("generated").textContent =
         "Last updated: " + formatArizonaTime(data.generated_at_utc);
-      const rows = data.leads || [];
-      const tbody = document.getElementById("rows");
-      tbody.innerHTML = "";
-      if (rows.length === 0) {
-        document.getElementById("empty").style.display = "block";
-      }
-      rows
+      allLeads = (data.leads || [])
         .slice()
-        .sort((a, b) => Number(b.score || 0) - Number(a.score || 0))
-        .forEach(row => {
-          const tr = document.createElement("tr");
-          const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
-            ? '<span class="badge">review</span>' : "";
-          const filingLink = row.filing_url
-            ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
-            : "";
-          tr.innerHTML = `
-            <td>${row.recording_date || ""}</td>
-            <td>${row["likely_owner(s)"] || ""}${reviewBadge}</td>
-            <td>${row.other_names_on_filing || ""}</td>
-            <td>${row.recording_number || ""}</td>
-            <td class="score">${row.score || ""}</td>
-            <td>${filingLink}</td>
-          `;
-          tbody.appendChild(tr);
-        });
+        .sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+      applyFilter();
     } catch (e) {
       document.getElementById("empty").textContent = "Couldn't load leads data.";
       document.getElementById("empty").style.display = "block";
     }
   }
+
+  document.getElementById("search").addEventListener("input", applyFilter);
 
   // Skip the password prompt if already unlocked earlier this tab session.
   if (sessionStorage.getItem("tsm_unlocked") === "1") {
