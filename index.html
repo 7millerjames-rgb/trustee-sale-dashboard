@@ -4,15 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Trustee Sale Leads</title>
+<title>Singer Signal — Live Trustee Sale Monitor</title>
 <style>
   :root {
-    --bg: #0f1115;
-    --panel: #171a21;
-    --border: #2a2e37;
-    --text: #e8eaed;
-    --muted: #9aa0aa;
-    --accent: #4f8cff;
+    --bg: #121a30;
+    --panel: #1a2440;
+    --panel-2: #212c4d;
+    --border: #313f68;
+    --text: #eef0f6;
+    --muted: #98a0bd;
+    --gold: #d9b872;
+    --gold-strong: #c69a45;
+    --gold-bg: rgba(217,184,114,0.12);
+    --green: #4ade80;
+    --amber: #f5b942;
     --danger: #ff6b6b;
   }
   * { box-sizing: border-box; }
@@ -32,19 +37,21 @@
   #gate .box {
     background: var(--panel);
     border: 1px solid var(--border);
+    border-top: 2px solid var(--gold);
     border-radius: 10px;
     padding: 32px;
     max-width: 360px;
     width: 100%;
     text-align: center;
   }
+  #gate .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   #gate h1 { font-size: 18px; margin: 0 0 16px; }
   #gate input {
     width: 100%;
     padding: 10px 12px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: #0c0e12;
+    background: #0c1122;
     color: var(--text);
     font-size: 14px;
     margin-bottom: 12px;
@@ -54,37 +61,77 @@
     padding: 10px 12px;
     border-radius: 6px;
     border: none;
-    background: var(--accent);
-    color: white;
+    background: var(--gold-strong);
+    color: #1a1300;
+    font-weight: 600;
     font-size: 14px;
     cursor: pointer;
   }
   #gate button:hover { opacity: 0.9; }
   #gate .error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 16px; }
 
-  #app { display: none; padding: 24px; max-width: 1100px; margin: 0 auto; }
+  #app { display: none; padding: 24px; max-width: 1140px; margin: 0 auto; }
   #app.visible { display: block; }
-  header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  header h1 { font-size: 20px; margin: 0; }
-  header .meta { color: var(--muted); font-size: 13px; }
+  .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+  header h1 { font-size: 21px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header .tagline { color: var(--muted); font-size: 13px; margin: 0; }
+  .live-status { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); }
+    70%  { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+  }
+
+  .summary-strip {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px;
+  }
+  .summary-strip .headline { font-weight: 700; color: var(--text); }
+  .summary-strip .headline.has-new { color: var(--gold); }
+  .summary-strip .sep { color: var(--border); }
+  .summary-strip .sub { color: var(--muted); }
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
   th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
-  tr:hover td { background: #1c2028; }
-  .score { font-weight: 600; color: var(--accent); }
+  th.help { cursor: help; border-bottom: 1px dotted var(--muted); }
+  tr:hover td { background: var(--panel-2); }
+  tr.row-new td:first-child { box-shadow: inset 3px 0 0 var(--gold); }
+  tr.row-review td { opacity: 0.7; }
+  tr.row-review td:first-child { box-shadow: inset 3px 0 0 var(--amber); }
+
+  .filed-date { color: var(--text); }
+  .filed-rel { color: var(--muted); font-size: 11.5px; margin-left: 5px; }
+
+  .conf-pill {
+    display: inline-block; font-weight: 700; font-size: 12px;
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .conf-high { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-strong); }
+  .conf-mid { background: rgba(152,160,189,0.14); color: var(--text); border: 1px solid var(--border); }
+  .conf-low { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+
   .badge {
     display: inline-block;
     font-size: 11px;
     padding: 2px 8px;
     border-radius: 999px;
-    background: #3a2a12;
-    color: #ffb454;
+    background: rgba(245,185,66,0.16);
+    color: var(--amber);
     margin-left: 6px;
   }
   .badge-new {
-    background: #123a1f;
-    color: #4ade80;
+    background: var(--gold-bg);
+    color: var(--gold);
+    font-weight: 700;
   }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
   footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
@@ -93,14 +140,13 @@
     padding: 4px 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: #1c2028;
-    color: var(--accent);
+    background: var(--panel-2);
+    color: var(--gold);
     text-decoration: none;
     font-size: 12px;
     white-space: nowrap;
   }
-  .filing-link:hover { background: #232833; }
-  .stats { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .filing-link:hover { background: #283257; }
   .controls { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .controls input {
     width: 100%;
@@ -108,22 +154,22 @@
     padding: 8px 12px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: #0c0e12;
+    background: #0c1122;
     color: var(--text);
     font-size: 13px;
   }
-  .controls input:focus { outline: 1px solid var(--accent); }
+  .controls input:focus { outline: 1px solid var(--gold); }
   .btn {
     padding: 8px 14px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: #1c2028;
+    background: var(--panel-2);
     color: var(--text);
     font-size: 13px;
     cursor: pointer;
     white-space: nowrap;
   }
-  .btn:hover { background: #232833; }
+  .btn:hover { background: #283257; }
   .copy-btn {
     display: inline-block;
     border: none;
@@ -134,15 +180,16 @@
     padding: 0 0 0 6px;
     vertical-align: middle;
   }
-  .copy-btn:hover { color: var(--accent); }
-  .copy-btn.copied { color: #4ade80; }
+  .copy-btn:hover { color: var(--gold); }
+  .copy-btn.copied { color: var(--green); }
 </style>
 </head>
 <body>
 
   <div id="gate">
     <div class="box">
-      <h1>Trustee Sale Leads — Private Access</h1>
+      <div class="kicker">The Singer System</div>
+      <h1>Singer Signal — Private Access</h1>
       <input type="password" id="pw" placeholder="Enter password" autofocus>
       <button id="unlock">Unlock</button>
       <div class="error" id="err"></div>
@@ -151,10 +198,17 @@
 
   <div id="app">
     <header>
-      <h1>Trustee Sale Leads</h1>
-      <div class="meta" id="generated"></div>
+      <div>
+        <div class="kicker">The Singer System</div>
+        <h1>Singer Signal</h1>
+        <p class="tagline">Live trustee-sale monitor — Maricopa County</p>
+      </div>
+      <div class="live-status">
+        <span class="live-dot"></span>
+        <span id="generated"></span>
+      </div>
     </header>
-    <div class="stats" id="stats"></div>
+    <div class="summary-strip" id="summary"></div>
     <div class="controls">
       <input type="text" id="search" placeholder="Filter by owner name…">
       <button class="btn" id="export-csv">Export CSV</button>
@@ -166,19 +220,27 @@
           <th>Likely Owner(s)</th>
           <th>Other Names on Filing</th>
           <th>Recording #</th>
-          <th>Score</th>
+          <th class="help" title="How confident the system is that it correctly identified the actual homeowner on this filing — not a deal-value or lead-quality score.">Match Confidence</th>
           <th>Filing</th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
     </table>
     <div class="empty" id="empty" style="display:none;">No leads found.</div>
-    <footer>Private link — do not share outside your team.</footer>
+    <footer>Singer Signal · private link — do not share outside your team.</footer>
   </div>
 
 <script>
   // Replaced at publish time with the real SHA-256 hash of the shared password.
   const PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
+
+  // Recording numbers this browser has already seen, across visits — powers
+  // the "new since your last visit" framing, which is deliberately personal
+  // (per-browser) rather than the server-side is_new flag (which just means
+  // "new since the last workflow run" and would re-fire every ~30 minutes
+  // regardless of whether anyone actually looked at it in between).
+  const SEEN_KEY = "singerSignalSeenRecordings";
+  const MAX_SEEN = 2000; // guard against unbounded localStorage growth
 
   async function sha256Hex(text) {
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -203,6 +265,45 @@
     return formatted + " AZ";
   }
 
+  // recording_date arrives as "M-D-YYYY" (day granularity only, no time-of-day),
+  // so the relative label below is expressed in whole days, not hours/minutes.
+  function parseRecordingDate(dateStr) {
+    if (!dateStr) return null;
+    const parts = dateStr.split("-");
+    if (parts.length !== 3) return null;
+    const [m, d, y] = parts.map(Number);
+    if (!m || !d || !y) return null;
+    const date = new Date(y, m - 1, d);
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  function relativeDayLabel(dateStr) {
+    const date = parseRecordingDate(dateStr);
+    if (!date) return "";
+    const today = new Date();
+    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const diffDays = Math.round((startOfToday - date) / 86400000);
+    if (diffDays <= 0) return "today";
+    if (diffDays === 1) return "yesterday";
+    if (diffDays > 0 && diffDays < 60) return diffDays + "d ago";
+    return "";
+  }
+
+  function getSeenSet() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(SEEN_KEY) || "[]");
+      return new Set(raw);
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  function saveSeenSet(set) {
+    let arr = Array.from(set);
+    if (arr.length > MAX_SEEN) arr = arr.slice(arr.length - MAX_SEEN);
+    localStorage.setItem(SEEN_KEY, JSON.stringify(arr));
+  }
+
   async function tryUnlock() {
     const pw = document.getElementById("pw").value;
     const hash = await sha256Hex(pw);
@@ -225,7 +326,7 @@
     loadData();
   }
 
-  // Full lead list from the last successful fetch, sorted by score. The
+  // Full lead list from the last successful fetch, sorted for display. The
   // search box filters this in memory rather than re-fetching.
   let allLeads = [];
 
@@ -233,20 +334,38 @@
   // not the full unfiltered list.
   let currentRows = [];
 
+  // Recording numbers seen on THIS load, marked "new to you" if absent from
+  // the seen-set that was in localStorage before this page load started.
+  let newToUserCount = 0;
+
   // Counts how many rows have the manual-review flag set.
   function countNeedsReview(rows) {
     return rows.filter(row => row.needs_manual_review && row.needs_manual_review.trim()).length;
   }
 
-  function updateStats(rows) {
-    const statsEl = document.getElementById("stats");
+  function updateSummary(rows) {
+    const el = document.getElementById("summary");
     const total = allLeads.length;
     const totalReview = countNeedsReview(allLeads);
-    if (rows.length === total) {
-      statsEl.textContent = `${total} lead${total === 1 ? "" : "s"} · ${totalReview} need review`;
-    } else {
-      statsEl.textContent = `Showing ${rows.length} of ${total} leads · ${countNeedsReview(rows)} need review`;
-    }
+    const showingAll = rows.length === total;
+
+    const newPart = newToUserCount > 0
+      ? `<span class="headline has-new">${newToUserCount} new since your last visit</span>`
+      : `<span class="headline">No new leads since your last visit</span>`;
+    const countPart = showingAll
+      ? `<span class="sub">${total} lead${total === 1 ? "" : ""} tracked</span>`
+      : `<span class="sub">Showing ${rows.length} of ${total} leads</span>`;
+    const reviewPart = `<span class="sub">${totalReview} flagged for review</span>`;
+
+    el.innerHTML = `${newPart}<span class="sep">·</span>${countPart}<span class="sep">·</span>${reviewPart}`;
+  }
+
+  function confidencePill(score) {
+    const n = Number(score) || 0;
+    let cls = "conf-low";
+    if (n >= 15) cls = "conf-high";
+    else if (n >= 10) cls = "conf-mid";
+    return `<span class="conf-pill ${cls}">${score || ""}</span>`;
   }
 
   function renderRows(rows) {
@@ -259,14 +378,15 @@
     } else {
       emptyEl.style.display = "none";
     }
-    updateStats(rows);
+    updateSummary(rows);
     currentRows = rows;
     rows.forEach(row => {
       const tr = document.createElement("tr");
-      const reviewBadge = row.needs_manual_review && row.needs_manual_review.trim()
-        ? '<span class="badge">review</span>' : "";
-      const newBadge = row.is_new === true || row.is_new === "true" || row.is_new === "True"
-        ? '<span class="badge badge-new">NEW</span>' : "";
+      const isReview = !!(row.needs_manual_review && row.needs_manual_review.trim());
+      const isNewToUser = !!row._newToUser;
+      tr.className = (isNewToUser ? "row-new " : "") + (isReview ? "row-review" : "");
+      const reviewBadge = isReview ? '<span class="badge">review</span>' : "";
+      const newBadge = isNewToUser ? '<span class="badge badge-new">NEW</span>' : "";
       const filingLink = row.filing_url
         ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
         : "";
@@ -274,12 +394,13 @@
       const copyBtn = recordingNumber
         ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
         : "";
+      const relLabel = relativeDayLabel(row.recording_date);
       tr.innerHTML = `
-        <td>${row.recording_date || ""}</td>
+        <td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
         <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}</td>
         <td>${row.other_names_on_filing || ""}</td>
         <td>${recordingNumber}${copyBtn}</td>
-        <td class="score">${row.score || ""}</td>
+        <td>${confidencePill(row.score)}</td>
         <td>${filingLink}</td>
       `;
       tbody.appendChild(tr);
@@ -299,11 +420,33 @@
       const res = await fetch("leads.json", { cache: "no-store" });
       const data = await res.json();
       document.getElementById("generated").textContent =
-        "Last updated: " + formatArizonaTime(data.generated_at_utc);
-      allLeads = (data.leads || [])
-        .slice()
-        .sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+        "Last checked " + formatArizonaTime(data.generated_at_utc);
+
+      const seen = getSeenSet();
+      const leads = (data.leads || []).slice();
+      leads.forEach(lead => {
+        lead._newToUser = !!(lead.recording_number && !seen.has(lead.recording_number));
+      });
+      newToUserCount = leads.filter(l => l._newToUser).length;
+
+      // Sort: new-to-you first, then most recently filed, then match confidence.
+      allLeads = leads.sort((a, b) => {
+        if (a._newToUser !== b._newToUser) return a._newToUser ? -1 : 1;
+        const da = parseRecordingDate(a.recording_date);
+        const db = parseRecordingDate(b.recording_date);
+        const ta = da ? da.getTime() : 0;
+        const tb = db ? db.getTime() : 0;
+        if (ta !== tb) return tb - ta;
+        return Number(b.score || 0) - Number(a.score || 0);
+      });
+
       applyFilter();
+
+      // Mark everything currently loaded as seen for next visit — do this
+      // after render so this visit still shows the NEW badges.
+      const nextSeen = getSeenSet();
+      allLeads.forEach(l => { if (l.recording_number) nextSeen.add(l.recording_number); });
+      saveSeenSet(nextSeen);
     } catch (e) {
       document.getElementById("empty").textContent = "Couldn't load leads data.";
       document.getElementById("empty").style.display = "block";
@@ -345,7 +488,7 @@
   // Exports whatever rows are currently visible (i.e. respects the active
   // owner-name filter) using the same columns shown in the table.
   function exportCsv() {
-    const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Score", "Filing URL"];
+    const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL"];
     const lines = [header.map(csvField).join(",")];
     currentRows.forEach(row => {
       lines.push([
