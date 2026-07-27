@@ -147,6 +147,14 @@
     white-space: nowrap;
   }
   .filing-link:hover { background: #283257; }
+  .filing-pending {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .filing-pending a { color: var(--muted); text-decoration: underline; }
+  .filing-pending a:hover { color: var(--gold); }
   .controls { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .controls input {
     width: 100%;
@@ -387,9 +395,16 @@
       tr.className = (isNewToUser ? "row-new " : "") + (isReview ? "row-review" : "");
       const reviewBadge = isReview ? '<span class="badge">review</span>' : "";
       const newBadge = isNewToUser ? '<span class="badge badge-new">NEW</span>' : "";
-      const filingLink = row.filing_url
+      // The county sometimes hasn't finished imaging a document a few hours
+      // after it's recorded, so pdf_available (checked server-side at build
+      // time) gates whether the direct link is shown at all — a dead 404 is
+      // a worse experience than an honest "not scanned yet" state with a
+      // manual fallback to the Recorder's own search tool.
+      const filingLink = row.filing_url && row.pdf_available
         ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
-        : "";
+        : row.recorder_search_url
+          ? `<span class="filing-pending" title="The county hasn't finished scanning this filing yet — usually ready within a day. Search by recording number ${row.recording_number || ""} on the Recorder site instead.">Not scanned yet · <a href="${row.recorder_search_url}" target="_blank" rel="noopener noreferrer">search Recorder site</a></span>`
+          : "";
       const recordingNumber = row.recording_number || "";
       const copyBtn = recordingNumber
         ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
@@ -497,7 +512,7 @@
         csvField(row.other_names_on_filing || ""),
         csvField(row.recording_number || ""),
         csvField(row.score || ""),
-        csvField(row.filing_url || "")
+        csvField(row.pdf_available ? (row.filing_url || "") : "not scanned yet")
       ].join(","));
     });
     const blob = new Blob([lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
