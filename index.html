@@ -168,6 +168,7 @@
   }
   .controls input:focus { outline: 1px solid var(--gold); }
   .btn {
+    display: inline-block;
     padding: 8px 14px;
     border-radius: 6px;
     border: 1px solid var(--border);
@@ -176,6 +177,7 @@
     font-size: 13px;
     cursor: pointer;
     white-space: nowrap;
+    text-decoration: none;
   }
   .btn:hover { background: #283257; }
   .copy-btn {
@@ -220,6 +222,7 @@
     <div class="controls">
       <input type="text" id="search" placeholder="Filter by owner name…">
       <button class="btn" id="export-csv">Export CSV</button>
+      <a class="btn" href="https://singersignal.canny.io" target="_blank" rel="noopener noreferrer">Feedback &amp; Roadmap</a>
     </div>
     <table id="table">
       <thead>
