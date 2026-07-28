@@ -192,6 +192,54 @@
   }
   .copy-btn:hover { color: var(--gold); }
   .copy-btn.copied { color: var(--green); }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .tab-btn {
+    padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--panel); color: var(--muted); font-size: 13px; cursor: pointer;
+  }
+  .tab-btn.active { background: var(--gold-bg); color: var(--gold); border-color: var(--gold-strong); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .status-select {
+    padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
+    background: #0c1122; color: var(--text); font-size: 12px; cursor: pointer;
+  }
+  .status-select.status-closed { border-color: var(--green); color: var(--green); }
+  .status-select.status-under_contract { border-color: var(--amber); color: var(--amber); }
+  .status-select.status-contacted { border-color: var(--gold-strong); color: var(--gold); }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(6,9,20,0.72);
+    align-items: center; justify-content: center; z-index: 50; padding: 20px;
+  }
+  .modal-overlay.visible { display: flex; }
+  .modal-box {
+    background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--gold);
+    border-radius: 10px; padding: 24px; max-width: 360px; width: 100%;
+  }
+  .modal-box h2 { font-size: 15px; margin: 0 0 8px; }
+  .modal-box p { color: var(--muted); font-size: 12.5px; margin: 0 0 14px; line-height: 1.5; }
+  .modal-box label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .modal-box input {
+    width: 100%; padding: 9px 11px; border-radius: 6px; border: 1px solid var(--border);
+    background: #0c1122; color: var(--text); font-size: 13px; margin-bottom: 16px;
+  }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+  .funnel { display: flex; flex-direction: column; gap: 10px; max-width: 480px; margin-bottom: 24px; }
+  .funnel-row { display: flex; align-items: center; gap: 12px; }
+  .funnel-label { width: 110px; font-size: 12.5px; color: var(--muted); flex-shrink: 0; }
+  .funnel-bar-track { flex: 1; background: var(--panel-2); border-radius: 5px; height: 20px; overflow: hidden; }
+  .funnel-bar-fill { background: var(--gold-strong); height: 100%; border-radius: 5px; min-width: 2px; }
+  .funnel-count { width: 30px; text-align: right; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+
+  .roi-teaser {
+    background: var(--panel); border: 1px dashed var(--border); border-radius: 10px;
+    padding: 28px; text-align: center; color: var(--muted); font-size: 13.5px; max-width: 480px;
+  }
+  .roi-teaser strong { color: var(--gold); display: block; margin-bottom: 6px; font-size: 14px; }
 </style>
 </head>
 <body>
@@ -219,31 +267,84 @@
       </div>
     </header>
     <div class="summary-strip" id="summary"></div>
-    <div class="controls">
-      <input type="text" id="search" placeholder="Filter by owner name…">
-      <button class="btn" id="export-csv">Export CSV</button>
-      <a class="btn" href="https://singersignal.canny.io" target="_blank" rel="noopener noreferrer">Feedback &amp; Roadmap</a>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-leads-btn">Leads</button>
+      <button class="tab-btn" id="tab-roi-btn">ROI</button>
     </div>
-    <table id="table">
-      <thead>
-        <tr>
-          <th>Filed</th>
-          <th>Likely Owner(s)</th>
-          <th>Other Names on Filing</th>
-          <th>Recording #</th>
-          <th class="help" title="How confident the system is that it correctly identified the actual homeowner on this filing — not a deal-value or lead-quality score.">Match Confidence</th>
-          <th>Filing</th>
-        </tr>
-      </thead>
-      <tbody id="rows"></tbody>
-    </table>
-    <div class="empty" id="empty" style="display:none;">No leads found.</div>
+
+    <div class="tab-panel active" id="tab-leads">
+      <div class="controls">
+        <input type="text" id="search" placeholder="Filter by owner name…">
+        <button class="btn" id="export-csv">Export CSV</button>
+        <a class="btn" href="https://singersignal.canny.io" target="_blank" rel="noopener noreferrer">Feedback &amp; Roadmap</a>
+      </div>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Filed</th>
+            <th>Likely Owner(s)</th>
+            <th>Other Names on Filing</th>
+            <th>Recording #</th>
+            <th class="help" title="How confident the system is that it correctly identified the actual homeowner on this filing — not a deal-value or lead-quality score.">Match Confidence</th>
+            <th>Filing</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" style="display:none;">No leads found.</div>
+    </div>
+
+    <div class="tab-panel" id="tab-roi">
+      <div class="funnel" id="funnel"></div>
+      <div class="roi-teaser" id="roi-teaser" style="display:none;">
+        <strong>Unlocks after your first closed deal</strong>
+        Mark a lead "Closed" from the Leads tab and this fills in with real
+        numbers — total fees paid vs. profit reported, as a dollar gap and a
+        multiple.
+      </div>
+      <div id="roi-summary"></div>
+    </div>
+
     <footer>Singer Signal · private link — do not share outside your team.</footer>
+  </div>
+
+  <div class="modal-overlay" id="close-modal">
+    <div class="modal-box">
+      <h2>Confirm this deal closed</h2>
+      <p>This also flags it for your $1,000 success fee. Profit is optional — enter it if you want the ROI tab to show your real numbers.</p>
+      <label for="close-profit">Est. profit on this deal (optional)</label>
+      <input type="number" id="close-profit" placeholder="e.g. 12000">
+      <div class="modal-actions">
+        <button class="btn" id="close-cancel">Cancel</button>
+        <button class="btn" id="close-confirm" style="background:var(--gold-strong); color:#1a1300; border-color:var(--gold-strong);">Confirm Close</button>
+      </div>
+    </div>
   </div>
 
 <script>
   // Replaced at publish time with the real SHA-256 hash of the shared password.
   const PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
+
+  // Deal-status backend (Google Apps Script Web App — see
+  // scripts/apps_script_status_backend.gs for the code + deploy steps).
+  // Until the placeholder below is replaced with a real deployed URL, the
+  // status column still renders but silently no-ops on read/write rather
+  // than breaking the rest of the dashboard.
+  const STATUS_API_URL = "https://script.google.com/macros/s/AKfycbwuB13f2v1VLcZtZg6NYtkL5XObj_f41aAUuvvQk_9uLsbtakJIgl_kg7OORgKUsk7DGA/exec";
+  const STATUS_API_CONFIGURED = STATUS_API_URL.indexOf("REPLACE_WITH") !== 0;
+
+  const STATUS_OPTIONS = [
+    ["new", "New"],
+    ["contacted", "Contacted"],
+    ["under_contract", "Under Contract"],
+    ["closed", "Closed"]
+  ];
+
+  // recording_number -> { status, profit_reported, updated_at, updated_by },
+  // fetched once per page load from the Apps Script backend.
+  let statusMap = {};
 
   // Recording numbers this browser has already seen, across visits — powers
   // the "new since your last visit" framing, which is deliberately personal
@@ -413,6 +514,13 @@
         ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
         : "";
       const relLabel = relativeDayLabel(row.recording_date);
+      const currentStatus = (statusMap[recordingNumber] || {}).status || "new";
+      const statusOptionsHtml = STATUS_OPTIONS.map(([value, label]) =>
+        `<option value="${value}"${value === currentStatus ? " selected" : ""}>${label}</option>`
+      ).join("");
+      const statusCell = recordingNumber
+        ? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>`
+        : "";
       tr.innerHTML = `
         <td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
         <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}</td>
@@ -420,6 +528,7 @@
         <td>${recordingNumber}${copyBtn}</td>
         <td>${confidencePill(row.score)}</td>
         <td>${filingLink}</td>
+        <td>${statusCell}</td>
       `;
       tbody.appendChild(tr);
     });
@@ -433,9 +542,118 @@
     renderRows(filtered);
   }
 
+  async function loadStatuses() {
+    if (!STATUS_API_CONFIGURED) return;
+    try {
+      const res = await fetch(STATUS_API_URL, { cache: "no-store" });
+      const data = await res.json();
+      statusMap = data.statuses || {};
+    } catch (e) {
+      // Backend hiccup shouldn't take down the leads table — status column
+      // just falls back to "New" for everything this load.
+      statusMap = {};
+    }
+  }
+
+  // Sent as text/plain rather than application/json deliberately: a JSON
+  // content-type on a cross-origin POST triggers a CORS preflight (OPTIONS)
+  // request, which Apps Script Web Apps don't handle. text/plain keeps this
+  // a "simple request" that skips preflight; the Apps Script side still
+  // JSON.parses the body normally.
+  async function postStatus(recordingNumber, status, profitReported) {
+    if (!STATUS_API_CONFIGURED) return false;
+    try {
+      await fetch(STATUS_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          recording_number: recordingNumber,
+          status: status,
+          profit_reported: profitReported || "",
+          updated_by: "dashboard"
+        })
+      });
+      statusMap[recordingNumber] = {
+        status: status,
+        profit_reported: profitReported || "",
+        updated_at: new Date().toISOString()
+      };
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function statusFunnelCounts() {
+    const counts = { new: 0, contacted: 0, under_contract: 0, closed: 0 };
+    allLeads.forEach(lead => {
+      const s = (statusMap[lead.recording_number] || {}).status || "new";
+      if (counts[s] === undefined) counts[s] = 0;
+      counts[s]++;
+    });
+    const total = allLeads.length;
+    return {
+      total,
+      contactedPlus: counts.contacted + counts.under_contract + counts.closed,
+      underContractPlus: counts.under_contract + counts.closed,
+      closed: counts.closed
+    };
+  }
+
+  function renderRoiTab() {
+    const c = statusFunnelCounts();
+    const stages = [
+      ["Surfaced", c.total],
+      ["Contacted", c.contactedPlus],
+      ["Under Contract", c.underContractPlus],
+      ["Closed", c.closed]
+    ];
+    const max = c.total || 1;
+    document.getElementById("funnel").innerHTML = stages.map(([label, count]) => `
+      <div class="funnel-row">
+        <div class="funnel-label">${label}</div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (count / max) * 100)}%"></div></div>
+        <div class="funnel-count">${count}</div>
+      </div>
+    `).join("");
+
+    document.getElementById("roi-teaser").style.display = c.closed === 0 ? "block" : "none";
+
+    if (c.closed === 0) {
+      document.getElementById("roi-summary").innerHTML = "";
+      return;
+    }
+
+    let totalProfit = 0;
+    let hasProfitData = false;
+    allLeads.forEach(lead => {
+      const entry = statusMap[lead.recording_number];
+      if (entry && entry.status === "closed" && entry.profit_reported) {
+        const n = Number(entry.profit_reported);
+        if (!isNaN(n) && n > 0) { totalProfit += n; hasProfitData = true; }
+      }
+    });
+
+    if (!hasProfitData) {
+      document.getElementById("roi-summary").innerHTML =
+        `<p style="color:var(--muted); font-size:13px;">${c.closed} deal${c.closed === 1 ? "" : "s"} closed so far. Add estimated profit on your next close to see the $ return here.</p>`;
+      return;
+    }
+
+    document.getElementById("roi-summary").innerHTML = `
+      <div class="summary-strip" style="max-width:480px;">
+        <span class="headline has-new">$${totalProfit.toLocaleString()}</span>
+        <span class="sub">reported profit across ${c.closed} closed deal${c.closed === 1 ? "" : "s"}</span>
+      </div>
+    `;
+  }
+
   async function loadData() {
     try {
-      const res = await fetch("leads.json", { cache: "no-store" });
+      const [res] = await Promise.all([
+        fetch("leads.json", { cache: "no-store" }),
+        loadStatuses()
+      ]);
       const data = await res.json();
       document.getElementById("generated").textContent =
         "Last checked " + formatArizonaTime(data.generated_at_utc);
@@ -459,6 +677,7 @@
       });
 
       applyFilter();
+      renderRoiTab();
 
       // Mark everything currently loaded as seen for next visit — do this
       // after render so this visit still shows the NEW badges.
@@ -506,7 +725,7 @@
   // Exports whatever rows are currently visible (i.e. respects the active
   // owner-name filter) using the same columns shown in the table.
   function exportCsv() {
-    const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL"];
+    const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL", "Status"];
     const lines = [header.map(csvField).join(",")];
     currentRows.forEach(row => {
       lines.push([
@@ -515,7 +734,8 @@
         csvField(row.other_names_on_filing || ""),
         csvField(row.recording_number || ""),
         csvField(row.score || ""),
-        csvField(row.pdf_available ? (row.filing_url || "") : "not scanned yet")
+        csvField(row.pdf_available ? (row.filing_url || "") : "not scanned yet"),
+        csvField((statusMap[row.recording_number] || {}).status || "new")
       ].join(","));
     });
     const blob = new Blob([lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
@@ -531,6 +751,69 @@
   }
 
   document.getElementById("export-csv").addEventListener("click", exportCsv);
+
+  // Tab switching between the Leads table and the ROI view — plain
+  // show/hide, no routing needed for a two-tab dashboard.
+  function switchTab(which) {
+    document.getElementById("tab-leads").classList.toggle("active", which === "leads");
+    document.getElementById("tab-roi").classList.toggle("active", which === "roi");
+    document.getElementById("tab-leads-btn").classList.toggle("active", which === "leads");
+    document.getElementById("tab-roi-btn").classList.toggle("active", which === "roi");
+    if (which === "roi") renderRoiTab();
+  }
+  document.getElementById("tab-leads-btn").addEventListener("click", () => switchTab("leads"));
+  document.getElementById("tab-roi-btn").addEventListener("click", () => switchTab("roi"));
+
+  // Tracks which recording_number/select element is mid-confirmation while
+  // the close modal is open, so Confirm/Cancel know what to act on.
+  let pendingClose = null;
+
+  function openCloseModal(recordingNumber, selectEl) {
+    pendingClose = { recordingNumber, selectEl };
+    document.getElementById("close-profit").value = "";
+    document.getElementById("close-modal").classList.add("visible");
+  }
+
+  function closeCloseModal() {
+    document.getElementById("close-modal").classList.remove("visible");
+    pendingClose = null;
+  }
+
+  document.getElementById("close-cancel").addEventListener("click", () => {
+    if (pendingClose && pendingClose.selectEl) {
+      // Revert the dropdown to whatever it was actually saved as.
+      const saved = (statusMap[pendingClose.recordingNumber] || {}).status || "new";
+      pendingClose.selectEl.value = saved;
+    }
+    closeCloseModal();
+  });
+
+  document.getElementById("close-confirm").addEventListener("click", async () => {
+    if (!pendingClose) return;
+    const profit = document.getElementById("close-profit").value;
+    const { recordingNumber, selectEl } = pendingClose;
+    await postStatus(recordingNumber, "closed", profit);
+    selectEl.className = "status-select status-closed";
+    closeCloseModal();
+    renderRoiTab();
+  });
+
+  // Event delegation on the tbody for status-dropdown changes — same
+  // reasoning as the copy-btn listener above (rows are re-rendered on
+  // every filter/load).
+  document.getElementById("rows").addEventListener("change", async e => {
+    const select = e.target.closest(".status-select");
+    if (!select) return;
+    const recordingNumber = select.dataset.recording;
+    const newStatus = select.value;
+    if (newStatus === "closed") {
+      openCloseModal(recordingNumber, select);
+      return;
+    }
+    select.className = "status-select status-" + newStatus;
+    await postStatus(recordingNumber, newStatus, "");
+    renderRoiTab();
+  });
 
   // Skip the password prompt if already unlocked earlier this tab session.
   if (sessionStorage.getItem("tsm_unlocked") === "1") {
