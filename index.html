@@ -258,11 +258,55 @@
   .funnel-bar-fill { background: var(--gold-strong); height: 100%; border-radius: 5px; min-width: 2px; }
   .funnel-count { width: 30px; text-align: right; font-size: 13px; font-weight: 600; flex-shrink: 0; }
 
-  .roi-teaser {
-    background: var(--panel); border: 1px dashed var(--border); border-radius: 10px;
-    padding: 28px; text-align: center; color: var(--muted); font-size: 13.5px; max-width: 480px;
+  .roi-hero {
+    background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px; max-width: 560px; margin-bottom: 24px;
   }
-  .roi-teaser strong { color: var(--gold); display: block; margin-bottom: 6px; font-size: 14px; }
+  .roi-hero .roi-figure { font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+  .roi-hero .roi-sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  .roi-hero .roi-chip {
+    display: inline-block; margin-top: 14px; padding: 6px 12px; border-radius: 999px;
+    background: var(--gold-bg); color: var(--gold); font-size: 12.5px; font-weight: 600;
+  }
+
+  .roi-stepper { max-width: 560px; margin-bottom: 24px; }
+  .roi-stepper .steps { display: flex; align-items: flex-start; gap: 0; }
+  .roi-stepper .step { flex: 1; text-align: center; position: relative; }
+  .roi-stepper .step-dot {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--panel-2);
+    border: 2px solid var(--border); margin: 0 auto 8px; display: flex; align-items: center;
+    justify-content: center; font-size: 12px; color: var(--muted); font-weight: 700;
+  }
+  .roi-stepper .step.done .step-dot { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .roi-stepper .step-line {
+    position: absolute; top: 10px; left: -50%; width: 100%; height: 2px; background: var(--border); z-index: -1;
+  }
+  .roi-stepper .step:first-child .step-line { display: none; }
+  .roi-stepper .step.done .step-line { background: var(--gold); }
+  .roi-stepper .step-label { font-size: 11.5px; color: var(--muted); }
+  .roi-stepper .step.done .step-label { color: var(--text); }
+  .roi-stepper .step-note {
+    margin-top: 18px; text-align: center; color: var(--muted); font-size: 13px;
+  }
+  .roi-stepper .step-note strong { color: var(--gold); }
+
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px;
+  }
+  .kpi-card.is-closed { border-color: var(--gold-strong); background: var(--gold-bg); }
+  .kpi-card .kpi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .kpi-card .kpi-pct { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .kpi-card.is-closed .kpi-pct { color: var(--gold); }
+  .kpi-card .kpi-num { font-size: 24px; font-weight: 700; color: var(--text); line-height: 1; }
+  .kpi-card.is-closed .kpi-num { color: var(--gold); }
+  .kpi-card .kpi-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .funnel-row.is-closed .funnel-label { color: var(--gold); font-weight: 700; }
+  .funnel-row.is-closed .funnel-bar-fill { background: var(--gold); }
 </style>
 </head>
 <body>
@@ -320,13 +364,9 @@
     </div>
 
     <div class="tab-panel" id="tab-roi">
+      <div id="roi-hero"></div>
+      <div class="kpi-grid" id="kpi-grid"></div>
       <div class="funnel" id="funnel"></div>
-      <div class="roi-teaser" id="roi-teaser" style="display:none;">
-        <strong>Unlocks after your first closed deal</strong>
-        Mark a lead "Closed" from the Leads tab and this fills in with real
-        numbers — total fees paid vs. profit reported, as a dollar gap and a
-        multiple.
-      </div>
       <div id="roi-summary"></div>
     </div>
 
@@ -662,33 +702,82 @@
     };
   }
 
+  // Dormant fee-comparison scaffold. Real numbers aren't finalized with the
+  // client yet, so this stays null on purpose — computeTotalFees() returns
+  // null until both values below are filled in, and every place that reads
+  // it treats null as "don't render this stat". Activating the fee-multiple
+  // chip later should mean filling in these two fields, nothing else.
+  const FEE_CONFIG = {
+    contractStartDate: null, // e.g. "2026-08-01"
+    perDealFee: 1000,        // established $1,000 success fee per closed deal
+    monthlyFee: null         // monthly retainer, once agreed with the client
+  };
+
+  function computeTotalFees(closedCount) {
+    if (FEE_CONFIG.monthlyFee == null || FEE_CONFIG.contractStartDate == null) return null;
+    const start = new Date(FEE_CONFIG.contractStartDate);
+    if (isNaN(start.getTime())) return null;
+    const now = new Date();
+    const monthsElapsed = Math.max(
+      0,
+      (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth())
+    );
+    return (FEE_CONFIG.perDealFee * closedCount) + (FEE_CONFIG.monthlyFee * monthsElapsed);
+  }
+
   function renderRoiTab() {
     const c = statusFunnelCounts();
+    const total = c.total || 1;
+
+    const kpis = [
+      { label: "Surfaced", count: c.total, pct: 100 },
+      { label: "Contacted", count: c.contactedPlus, pct: Math.round((c.contactedPlus / total) * 100) },
+      { label: "Under Contract", count: c.underContractPlus, pct: Math.round((c.underContractPlus / total) * 100) },
+      { label: "Closed", count: c.closed, pct: Math.round((c.closed / total) * 100), isClosed: true }
+    ];
+    document.getElementById("kpi-grid").innerHTML = kpis.map(k => `
+      <div class="kpi-card${k.isClosed ? " is-closed" : ""}">
+        <div class="kpi-top"><span class="kpi-pct">${k.pct}%</span></div>
+        <div class="kpi-num">${k.count}</div>
+        <div class="kpi-label">${k.label}</div>
+      </div>
+    `).join("");
+
     const stages = [
-      ["Surfaced", c.total],
-      ["Contacted", c.contactedPlus],
-      ["Under Contract", c.underContractPlus],
-      ["Closed", c.closed]
+      ["Surfaced", c.total, false],
+      ["Contacted", c.contactedPlus, false],
+      ["Under Contract", c.underContractPlus, false],
+      ["Closed", c.closed, true]
     ];
     const max = c.total || 1;
-    document.getElementById("funnel").innerHTML = stages.map(([label, count]) => `
-      <div class="funnel-row">
+    document.getElementById("funnel").innerHTML = stages.map(([label, count, isClosed]) => `
+      <div class="funnel-row${isClosed ? " is-closed" : ""}">
         <div class="funnel-label">${label}</div>
         <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (count / max) * 100)}%"></div></div>
         <div class="funnel-count">${count}</div>
       </div>
     `).join("") + (c.lost > 0 ? `
-      <div class="funnel-row" style="opacity:0.7;">
+      <div class="funnel-row is-lost" style="opacity:0.7;">
         <div class="funnel-label">Lost</div>
         <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
         <div class="funnel-count">${c.lost}</div>
       </div>
     ` : "");
 
-    document.getElementById("roi-teaser").style.display = c.closed === 0 ? "block" : "none";
+    document.getElementById("roi-summary").innerHTML = "";
 
     if (c.closed === 0) {
-      document.getElementById("roi-summary").innerHTML = "";
+      document.getElementById("roi-hero").innerHTML = `
+        <div class="roi-stepper">
+          <div class="steps">
+            <div class="step done"><div class="step-dot">✓</div><div class="step-label">Surfaced</div></div>
+            <div class="step${c.contactedPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.contactedPlus > 0 ? "✓" : "2"}</div><div class="step-label">Contacted</div></div>
+            <div class="step${c.underContractPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.underContractPlus > 0 ? "✓" : "3"}</div><div class="step-label">Under Contract</div></div>
+            <div class="step"><div class="step-line"></div><div class="step-dot">4</div><div class="step-label">Closed</div></div>
+          </div>
+          <div class="step-note"><strong>Your ROI story starts here.</strong> Mark a lead "Closed" from the Leads tab and this fills in with your real profit numbers.</div>
+        </div>
+      `;
       return;
     }
 
@@ -703,15 +792,25 @@
     });
 
     if (!hasProfitData) {
-      document.getElementById("roi-summary").innerHTML =
-        `<p style="color:var(--muted); font-size:13px;">${c.closed} deal${c.closed === 1 ? "" : "s"} closed so far. Add estimated profit on your next close to see the $ return here.</p>`;
+      document.getElementById("roi-hero").innerHTML = `
+        <div class="roi-hero">
+          <div class="roi-figure">${c.closed}</div>
+          <div class="roi-sub">deal${c.closed === 1 ? "" : "s"} closed so far. Add estimated profit on your next close to see your $ return here.</div>
+        </div>
+      `;
       return;
     }
 
-    document.getElementById("roi-summary").innerHTML = `
-      <div class="summary-strip" style="max-width:480px;">
-        <span class="headline has-new">$${totalProfit.toLocaleString()}</span>
-        <span class="sub">reported profit across ${c.closed} closed deal${c.closed === 1 ? "" : "s"}</span>
+    const totalFees = computeTotalFees(c.closed);
+    const feeChip = (totalFees != null && totalFees > 0)
+      ? `<div class="roi-chip">${(totalProfit / totalFees).toFixed(1)}× return on $${totalFees.toLocaleString()} in fees</div>`
+      : "";
+
+    document.getElementById("roi-hero").innerHTML = `
+      <div class="roi-hero">
+        <div class="roi-figure">$${totalProfit.toLocaleString()}</div>
+        <div class="roi-sub">reported profit across ${c.closed} closed deal${c.closed === 1 ? "" : "s"}</div>
+        ${feeChip}
       </div>
     `;
   }
@@ -939,5 +1038,4 @@
 </script>
 
 </body>
-</html>
 </html>
