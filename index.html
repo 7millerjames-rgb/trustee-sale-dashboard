@@ -110,6 +110,7 @@
 
   .filed-date { color: var(--text); }
   .filed-rel { color: var(--muted); font-size: 11.5px; margin-left: 5px; }
+  .status-updated { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
 
   .conf-pill {
     display: inline-block; font-weight: 700; font-size: 12px;
@@ -131,6 +132,11 @@
   .badge-new {
     background: var(--gold-bg);
     color: var(--gold);
+    font-weight: 700;
+  }
+  .badge-followup {
+    background: rgba(255,107,107,0.14);
+    color: var(--danger);
     font-weight: 700;
   }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
@@ -209,6 +215,7 @@
   .status-select.status-closed { border-color: var(--green); color: var(--green); }
   .status-select.status-under_contract { border-color: var(--amber); color: var(--amber); }
   .status-select.status-contacted { border-color: var(--gold-strong); color: var(--gold); }
+  .status-select.status-lost { border-color: var(--danger); color: var(--danger); }
 
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(6,9,20,0.72);
@@ -227,6 +234,22 @@
     background: #0c1122; color: var(--text); font-size: 13px; margin-bottom: 16px;
   }
   .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+  /* Confetti/emoji burst — fired once per confirmed close, purely celebratory,
+     never blocks interaction (pointer-events: none on the container). */
+  .confetti-container {
+    position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none;
+  }
+  .confetti-piece {
+    position: absolute; top: -20px; opacity: 0; will-change: transform, opacity;
+    animation: confetti-fall linear forwards;
+  }
+  .confetti-piece.is-rect { width: 8px; height: 14px; border-radius: 2px; }
+  .confetti-piece.is-emoji { font-size: 22px; line-height: 1; }
+  @keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
+  }
 
   .funnel { display: flex; flex-direction: column; gap: 10px; max-width: 480px; margin-bottom: 24px; }
   .funnel-row { display: flex; align-items: center; gap: 12px; }
@@ -339,7 +362,8 @@
     ["new", "New"],
     ["contacted", "Contacted"],
     ["under_contract", "Under Contract"],
-    ["closed", "Closed"]
+    ["closed", "Closed"],
+    ["lost", "Lost / Not Interested"]
   ];
 
   // recording_number -> { status, profit_reported, updated_at, updated_by },
@@ -399,6 +423,38 @@
     if (diffDays === 1) return "yesterday";
     if (diffDays > 0 && diffDays < 60) return diffDays + "d ago";
     return "";
+  }
+
+  // statusMap entries carry updated_at as an ISO timestamp (see postStatus
+  // below), which is precise to the minute — unlike recording_date, so this
+  // gets its own relative-time helper rather than reusing relativeDayLabel.
+  function relativeTimeLabel(isoString) {
+    if (!isoString) return "";
+    const date = new Date(isoString);
+    if (isNaN(date.getTime())) return "";
+    const diffMs = Date.now() - date.getTime();
+    const diffMins = Math.round(diffMs / 60000);
+    if (diffMins < 1) return "just now";
+    if (diffMins < 60) return diffMins + "m ago";
+    const diffHours = Math.round(diffMins / 60);
+    if (diffHours < 24) return diffHours + "h ago";
+    const diffDays = Math.round(diffHours / 24);
+    if (diffDays < 30) return diffDays + "d ago";
+    const diffMonths = Math.round(diffDays / 30);
+    return diffMonths + "mo ago";
+  }
+
+  // Leads sitting in an active (non-terminal) status without a status update
+  // in a while are easy to lose track of — flag them so they surface back to
+  // the top of the reviewer's attention instead of quietly going cold.
+  const FOLLOWUP_STALE_DAYS = 5;
+  const FOLLOWUP_STATUSES = ["contacted", "under_contract"];
+  function needsFollowUp(status, updatedAt) {
+    if (!FOLLOWUP_STATUSES.includes(status) || !updatedAt) return false;
+    const date = new Date(updatedAt);
+    if (isNaN(date.getTime())) return false;
+    const diffDays = (Date.now() - date.getTime()) / 86400000;
+    return diffDays >= FOLLOWUP_STALE_DAYS;
   }
 
   function getSeenSet() {
@@ -514,16 +570,21 @@
         ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
         : "";
       const relLabel = relativeDayLabel(row.recording_date);
-      const currentStatus = (statusMap[recordingNumber] || {}).status || "new";
+      const statusEntry = statusMap[recordingNumber] || {};
+      const currentStatus = statusEntry.status || "new";
       const statusOptionsHtml = STATUS_OPTIONS.map(([value, label]) =>
         `<option value="${value}"${value === currentStatus ? " selected" : ""}>${label}</option>`
       ).join("");
+      const updatedLabel = currentStatus !== "new" ? relativeTimeLabel(statusEntry.updated_at) : "";
       const statusCell = recordingNumber
-        ? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>`
+        ? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>${updatedLabel ? `<span class="status-updated">${updatedLabel}</span>` : ""}`
+        : "";
+      const followUpBadge = needsFollowUp(currentStatus, statusEntry.updated_at)
+        ? `<span class="badge badge-followup" title="No status update in ${FOLLOWUP_STALE_DAYS}+ days">needs follow-up</span>`
         : "";
       tr.innerHTML = `
         <td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
-        <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}</td>
+        <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}${followUpBadge}</td>
         <td>${row.other_names_on_filing || ""}</td>
         <td>${recordingNumber}${copyBtn}</td>
         <td>${confidencePill(row.score)}</td>
@@ -585,7 +646,7 @@
   }
 
   function statusFunnelCounts() {
-    const counts = { new: 0, contacted: 0, under_contract: 0, closed: 0 };
+    const counts = { new: 0, contacted: 0, under_contract: 0, closed: 0, lost: 0 };
     allLeads.forEach(lead => {
       const s = (statusMap[lead.recording_number] || {}).status || "new";
       if (counts[s] === undefined) counts[s] = 0;
@@ -596,7 +657,8 @@
       total,
       contactedPlus: counts.contacted + counts.under_contract + counts.closed,
       underContractPlus: counts.under_contract + counts.closed,
-      closed: counts.closed
+      closed: counts.closed,
+      lost: counts.lost
     };
   }
 
@@ -615,7 +677,13 @@
         <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (count / max) * 100)}%"></div></div>
         <div class="funnel-count">${count}</div>
       </div>
-    `).join("");
+    `).join("") + (c.lost > 0 ? `
+      <div class="funnel-row" style="opacity:0.7;">
+        <div class="funnel-label">Lost</div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
+        <div class="funnel-count">${c.lost}</div>
+      </div>
+    ` : "");
 
     document.getElementById("roi-teaser").style.display = c.closed === 0 ? "block" : "none";
 
@@ -788,14 +856,63 @@
     closeCloseModal();
   });
 
+  // Small celebratory payoff for confirming a closed deal — a mix of
+  // colored confetti rectangles and emoji, falling from the top of the
+  // viewport. Self-cleans via setTimeout so repeated closes don't leak
+  // detached containers into the DOM.
+  function fireConfetti() {
+    const colors = ["var(--gold)", "var(--gold-strong)", "var(--green)", "var(--amber)"];
+    const emoji = ["🎉", "💰", "🥳", "✨"];
+    const container = document.createElement("div");
+    container.className = "confetti-container";
+    document.body.appendChild(container);
+    const pieceCount = 36;
+    for (let i = 0; i < pieceCount; i++) {
+      const piece = document.createElement("div");
+      const useEmoji = Math.random() < 0.3;
+      piece.className = "confetti-piece " + (useEmoji ? "is-emoji" : "is-rect");
+      if (useEmoji) {
+        piece.textContent = emoji[Math.floor(Math.random() * emoji.length)];
+      } else {
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      }
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.animationDuration = (1.8 + Math.random() * 1.4) + "s";
+      piece.style.animationDelay = (Math.random() * 0.35) + "s";
+      container.appendChild(piece);
+    }
+    setTimeout(() => container.remove(), 3600);
+  }
+
+  // Reflects a just-saved status change onto the row: dropdown color and the
+  // "Xm ago" label next to it, without a full table re-render.
+  function refreshStatusRowUI(select, status) {
+    select.className = "status-select status-" + status;
+    let label = select.nextElementSibling;
+    if (!label || !label.classList.contains("status-updated")) {
+      label = document.createElement("span");
+      label.className = "status-updated";
+      select.insertAdjacentElement("afterend", label);
+    }
+    const entry = statusMap[select.dataset.recording] || {};
+    label.textContent = status === "new" ? "" : relativeTimeLabel(entry.updated_at);
+    // Any status change just reset the clock, so a stale "needs follow-up"
+    // badge from before this change is no longer accurate — drop it rather
+    // than waiting for the next full table re-render to clear it.
+    const row = select.closest("tr");
+    const staleBadge = row && row.querySelector(".badge-followup");
+    if (staleBadge) staleBadge.remove();
+  }
+
   document.getElementById("close-confirm").addEventListener("click", async () => {
     if (!pendingClose) return;
     const profit = document.getElementById("close-profit").value;
     const { recordingNumber, selectEl } = pendingClose;
     await postStatus(recordingNumber, "closed", profit);
-    selectEl.className = "status-select status-closed";
+    refreshStatusRowUI(selectEl, "closed");
     closeCloseModal();
     renderRoiTab();
+    fireConfetti();
   });
 
   // Event delegation on the tbody for status-dropdown changes — same
@@ -810,8 +927,8 @@
       openCloseModal(recordingNumber, select);
       return;
     }
-    select.className = "status-select status-" + newStatus;
     await postStatus(recordingNumber, newStatus, "");
+    refreshStatusRowUI(select, newStatus);
     renderRoiTab();
   });
 
@@ -822,4 +939,5 @@
 </script>
 
 </body>
+</html>
 </html>
