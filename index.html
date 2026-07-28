@@ -135,9 +135,16 @@
     font-weight: 700;
   }
   .badge-followup {
-    background: rgba(255,107,107,0.14);
+    background: rgba(245,185,66,0.16);
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .badge-stalling {
+    background: rgba(255,107,107,0.22);
     color: var(--danger);
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
   footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
@@ -199,7 +206,7 @@
   .copy-btn:hover { color: var(--gold); }
   .copy-btn.copied { color: var(--green); }
 
-  .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .tabs { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
   .tab-btn {
     padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border);
     background: var(--panel); color: var(--muted); font-size: 13px; cursor: pointer;
@@ -207,6 +214,8 @@
   .tab-btn.active { background: var(--gold-bg); color: var(--gold); border-color: var(--gold-strong); }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
+  .pipeline-count { margin-left: 4px; color: var(--muted); font-size: 12.5px; }
+  .load-more-wrap { display: none; text-align: center; margin-top: 12px; }
 
   .status-select {
     padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
@@ -346,6 +355,11 @@
     </div>
 
     <div class="tab-panel active" id="tab-leads">
+      <div class="tabs" id="leads-subtabs">
+        <button class="tab-btn active" id="subtab-active-btn">Active Pipeline</button>
+        <button class="tab-btn" id="subtab-closed-btn">Closed Deals</button>
+        <span class="pipeline-count" id="pipeline-count"></span>
+      </div>
       <div class="controls">
         <input type="text" id="search" placeholder="Filter by owner name…">
         <button class="btn" id="export-csv">Export CSV</button>
@@ -365,6 +379,7 @@
         </thead>
         <tbody id="rows"></tbody>
       </table>
+      <div class="load-more-wrap" id="load-more-wrap"></div>
       <div class="empty" id="empty" style="display:none;">No leads found.</div>
     </div>
 
@@ -411,6 +426,13 @@
     ["closed", "Closed"],
     ["lost", "Lost / Not Interested"]
   ];
+
+  // Which statuses count as "still being worked" vs. "done" — powers the
+  // Active Pipeline / Closed Deals split below. Keeping these as named
+  // constants (rather than inlining the checks) means the funnel/ROI logic
+  // and the tab-partitioning logic can never quietly drift out of sync.
+  const ACTIVE_STATUSES = ["new", "contacted", "under_contract"];
+  const CLOSED_STATUSES = ["closed", "lost"];
 
   // recording_number -> { status, profit_reported, updated_at, updated_by },
   // fetched once per page load from the Apps Script backend.
@@ -491,16 +513,22 @@
   }
 
   // Leads sitting in an active (non-terminal) status without a status update
-  // in a while are easy to lose track of — flag them so they surface back to
-  // the top of the reviewer's attention instead of quietly going cold.
+  // in a while are easy to lose track of. Two tiers, deliberately escalating
+  // in language and color (mild amber "needs follow-up" vs. bold red
+  // "stalling") rather than one flat badge — a pipeline that's genuinely at
+  // risk of going cold should read as more urgent than one that's just a
+  // few days quiet, per standard loss-aversion framing for pipeline risk.
   const FOLLOWUP_STALE_DAYS = 5;
+  const STALLING_DAYS = 14;
   const FOLLOWUP_STATUSES = ["contacted", "under_contract"];
-  function needsFollowUp(status, updatedAt) {
-    if (!FOLLOWUP_STATUSES.includes(status) || !updatedAt) return false;
+  function followUpTier(status, updatedAt) {
+    if (!FOLLOWUP_STATUSES.includes(status) || !updatedAt) return null;
     const date = new Date(updatedAt);
-    if (isNaN(date.getTime())) return false;
+    if (isNaN(date.getTime())) return null;
     const diffDays = (Date.now() - date.getTime()) / 86400000;
-    return diffDays >= FOLLOWUP_STALE_DAYS;
+    if (diffDays >= STALLING_DAYS) return "stalling";
+    if (diffDays >= FOLLOWUP_STALE_DAYS) return "followup";
+    return null;
   }
 
   function getSeenSet() {
@@ -544,17 +572,69 @@
   // search box filters this in memory rather than re-fetching.
   let allLeads = [];
 
-  // Rows currently displayed (after filtering) — CSV export mirrors this,
-  // not the full unfiltered list.
+  // Rows currently displayed (after sub-tab + filtering) — CSV export
+  // mirrors this, not the full unfiltered list.
   let currentRows = [];
 
   // Recording numbers seen on THIS load, marked "new to you" if absent from
   // the seen-set that was in localStorage before this page load started.
   let newToUserCount = 0;
 
+  // Which Leads sub-tab is showing: "active" (working pipeline) or "closed"
+  // (done — closed or lost). Defaults to active so the operator always
+  // lands on the list they actually need to work, not a mix of live and
+  // historical records.
+  let leadsSubTab = "active";
+
+  // Closed Deals is a reference/history view, not a working view — render
+  // it newest-first and reveal older records a page at a time instead of
+  // dumping the full history, so it stays glanceable as it grows.
+  const CLOSED_PAGE_SIZE = 15;
+  let closedVisibleCount = CLOSED_PAGE_SIZE;
+
   // Counts how many rows have the manual-review flag set.
   function countNeedsReview(rows) {
     return rows.filter(row => row.needs_manual_review && row.needs_manual_review.trim()).length;
+  }
+
+  function getStatus(lead) {
+    return (statusMap[lead.recording_number] || {}).status || "new";
+  }
+
+  // Splits the full lead list into the Active Pipeline vs. Closed Deals
+  // sets. Terminal statuses (closed, lost) are deliberately kept out of the
+  // active view — mixing them in is a common complaint with off-the-shelf
+  // CRM pipeline boards, since it dilutes the list the operator actually
+  // needs to act on.
+  function leadsInSubTab(subtab) {
+    const statuses = subtab === "closed" ? CLOSED_STATUSES : ACTIVE_STATUSES;
+    return allLeads.filter(lead => statuses.includes(getStatus(lead)));
+  }
+
+  // Closed Deals sorts by when the deal actually closed/was marked lost
+  // (status updated_at), not by original filing date — a deal filed months
+  // ago but closed yesterday belongs at the top of "recently closed".
+  function sortClosedNewestFirst(leads) {
+    return leads.slice().sort((a, b) => {
+      const ea = statusMap[a.recording_number] || {};
+      const eb = statusMap[b.recording_number] || {};
+      const ta = ea.updated_at ? new Date(ea.updated_at).getTime() : 0;
+      const tb = eb.updated_at ? new Date(eb.updated_at).getTime() : 0;
+      return tb - ta;
+    });
+  }
+
+  // Small persistent "X active · Y closed" readout next to the sub-tabs.
+  // Always reflects the full lead list (not the current search filter) —
+  // it's meant as a stable at-a-glance pipeline count, the kind of always-
+  // visible progress readout that nudges an operator back to clear the
+  // active list, not a filtered stat that moves around as they type.
+  function updatePipelineCount() {
+    const el = document.getElementById("pipeline-count");
+    if (!el) return;
+    const activeCount = allLeads.filter(l => ACTIVE_STATUSES.includes(getStatus(l))).length;
+    const closedCount = allLeads.filter(l => CLOSED_STATUSES.includes(getStatus(l))).length;
+    el.textContent = `${activeCount} active · ${closedCount} closed`;
   }
 
   function updateSummary(rows) {
@@ -582,12 +662,25 @@
     return `<span class="conf-pill ${cls}">${score || ""}</span>`;
   }
 
-  function renderRows(rows) {
+  // rows: the already sub-tab-filtered + search-filtered + (for Closed)
+  // paginated list to display. opts.hasMore / opts.remaining describe
+  // whether a "Show more" control is needed below the table.
+  function renderRows(rows, opts) {
+    opts = opts || {};
     const tbody = document.getElementById("rows");
     tbody.innerHTML = "";
     const emptyEl = document.getElementById("empty");
+    const hasQuery = document.getElementById("search").value.trim().length > 0;
     if (rows.length === 0) {
-      emptyEl.textContent = "No leads found.";
+      if (leadsSubTab === "closed") {
+        emptyEl.textContent = hasQuery
+          ? "No closed deals match that search."
+          : "No closed deals yet. Once you close your first one, it'll show up here.";
+      } else {
+        emptyEl.textContent = hasQuery
+          ? "No active leads match that search."
+          : "No active leads right now — nice and clear.";
+      }
       emptyEl.style.display = "block";
     } else {
       emptyEl.style.display = "none";
@@ -625,9 +718,12 @@
       const statusCell = recordingNumber
         ? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>${updatedLabel ? `<span class="status-updated">${updatedLabel}</span>` : ""}`
         : "";
-      const followUpBadge = needsFollowUp(currentStatus, statusEntry.updated_at)
-        ? `<span class="badge badge-followup" title="No status update in ${FOLLOWUP_STALE_DAYS}+ days">needs follow-up</span>`
-        : "";
+      const tier = followUpTier(currentStatus, statusEntry.updated_at);
+      const followUpBadge = tier === "stalling"
+        ? `<span class="badge badge-stalling" title="No status update in ${STALLING_DAYS}+ days — at risk of going cold">stalling</span>`
+        : tier === "followup"
+          ? `<span class="badge badge-followup" title="No status update in ${FOLLOWUP_STALE_DAYS}+ days">needs follow-up</span>`
+          : "";
       tr.innerHTML = `
         <td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
         <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}${followUpBadge}</td>
@@ -639,15 +735,64 @@
       `;
       tbody.appendChild(tr);
     });
+
+    const loadMoreWrap = document.getElementById("load-more-wrap");
+    if (loadMoreWrap) {
+      if (leadsSubTab === "closed" && opts.hasMore) {
+        const remaining = opts.remaining || 0;
+        loadMoreWrap.innerHTML = `<button class="btn" id="load-more-btn">Show ${Math.min(CLOSED_PAGE_SIZE, remaining)} more</button>`;
+        loadMoreWrap.style.display = "block";
+      } else {
+        loadMoreWrap.innerHTML = "";
+        loadMoreWrap.style.display = "none";
+      }
+    }
   }
 
+  // Applies the active sub-tab (Active Pipeline / Closed Deals), then the
+  // owner-name search, then — for Closed Deals only — newest-first sorting
+  // and pagination, before handing off to renderRows.
   function applyFilter() {
     const q = document.getElementById("search").value.trim().toLowerCase();
-    const filtered = q
-      ? allLeads.filter(row => (row["likely_owner(s)"] || "").toLowerCase().includes(q))
-      : allLeads;
-    renderRows(filtered);
+    let subset = leadsInSubTab(leadsSubTab);
+    if (q) subset = subset.filter(row => (row["likely_owner(s)"] || "").toLowerCase().includes(q));
+
+    let toRender = subset;
+    let hasMore = false;
+    let remaining = 0;
+    if (leadsSubTab === "closed") {
+      toRender = sortClosedNewestFirst(subset);
+      hasMore = toRender.length > closedVisibleCount;
+      remaining = toRender.length - closedVisibleCount;
+      toRender = toRender.slice(0, closedVisibleCount);
+    }
+
+    renderRows(toRender, { hasMore, remaining });
+    updatePipelineCount();
   }
+
+  // Switches between Active Pipeline and Closed Deals. Resets the Closed
+  // pagination window each time it's opened, so it always starts on the
+  // most-recent page rather than wherever a previous visit left off.
+  function switchLeadsSubTab(which) {
+    leadsSubTab = which;
+    if (which === "closed") closedVisibleCount = CLOSED_PAGE_SIZE;
+    document.getElementById("subtab-active-btn").classList.toggle("active", which === "active");
+    document.getElementById("subtab-closed-btn").classList.toggle("active", which === "closed");
+    applyFilter();
+  }
+  document.getElementById("subtab-active-btn").addEventListener("click", () => switchLeadsSubTab("active"));
+  document.getElementById("subtab-closed-btn").addEventListener("click", () => switchLeadsSubTab("closed"));
+
+  // Single delegated listener for the "Show N more" button — it's
+  // recreated on every render, so binding once on the stable wrapper
+  // avoids re-adding (and duplicating) a listener each time.
+  document.getElementById("load-more-wrap").addEventListener("click", e => {
+    if (e.target && e.target.id === "load-more-btn") {
+      closedVisibleCount += CLOSED_PAGE_SIZE;
+      applyFilter();
+    }
+  });
 
   async function loadStatuses() {
     if (!STATUS_API_CONFIGURED) return;
@@ -715,8 +860,8 @@
   // chip later should mean filling in these two fields, nothing else.
   const FEE_CONFIG = {
     contractStartDate: null, // e.g. "2026-08-01"
-    perDealFee: 1000,        // established $1,000 success fee per closed deal
-    monthlyFee: null         // monthly retainer, once agreed with the client
+    perDealFee: 1000, // established $1,000 success fee per closed deal
+    monthlyFee: null // monthly retainer, once agreed with the client
   };
 
   function computeTotalFees(closedCount) {
@@ -895,8 +1040,9 @@
     return str;
   }
 
-  // Exports whatever rows are currently visible (i.e. respects the active
-  // owner-name filter) using the same columns shown in the table.
+  // Exports whatever rows are currently visible (respects both the active
+  // Leads sub-tab and the owner-name filter) using the same columns shown
+  // in the table.
   function exportCsv() {
     const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL", "Status"];
     const lines = [header.map(csvField).join(",")];
@@ -989,33 +1135,16 @@
     setTimeout(() => container.remove(), 3600);
   }
 
-  // Reflects a just-saved status change onto the row: dropdown color and the
-  // "Xm ago" label next to it, without a full table re-render.
-  function refreshStatusRowUI(select, status) {
-    select.className = "status-select status-" + status;
-    let label = select.nextElementSibling;
-    if (!label || !label.classList.contains("status-updated")) {
-      label = document.createElement("span");
-      label.className = "status-updated";
-      select.insertAdjacentElement("afterend", label);
-    }
-    const entry = statusMap[select.dataset.recording] || {};
-    label.textContent = status === "new" ? "" : relativeTimeLabel(entry.updated_at);
-    // Any status change just reset the clock, so a stale "needs follow-up"
-    // badge from before this change is no longer accurate — drop it rather
-    // than waiting for the next full table re-render to clear it.
-    const row = select.closest("tr");
-    const staleBadge = row && row.querySelector(".badge-followup");
-    if (staleBadge) staleBadge.remove();
-  }
-
   document.getElementById("close-confirm").addEventListener("click", async () => {
     if (!pendingClose) return;
     const profit = document.getElementById("close-profit").value;
-    const { recordingNumber, selectEl } = pendingClose;
+    const { recordingNumber } = pendingClose;
     await postStatus(recordingNumber, "closed", profit);
-    refreshStatusRowUI(selectEl, "closed");
     closeCloseModal();
+    // A close moves this lead from Active Pipeline into Closed Deals, so a
+    // full re-filter (not just a per-row patch) is needed to make it
+    // disappear from the Active tab immediately if that's what's showing.
+    applyFilter();
     renderRoiTab();
     fireConfetti();
   });
@@ -1033,7 +1162,10 @@
       return;
     }
     await postStatus(recordingNumber, newStatus, "");
-    refreshStatusRowUI(select, newStatus);
+    // Any status change can move a lead between Active and Closed (e.g.
+    // "Lost" is terminal too), so re-filter fully rather than patching the
+    // single row in place.
+    applyFilter();
     renderRoiTab();
   });
 
