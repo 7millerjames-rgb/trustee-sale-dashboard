@@ -291,8 +291,13 @@
   }
   .roi-stepper .step-note strong { color: var(--gold); }
 
+  .roi-section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+
   .kpi-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin-bottom: 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin-bottom: 12px;
   }
   .kpi-card {
     background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px;
@@ -365,6 +370,7 @@
 
     <div class="tab-panel" id="tab-roi">
       <div id="roi-hero"></div>
+      <div class="roi-section-label">Your Pipeline</div>
       <div class="kpi-grid" id="kpi-grid"></div>
       <div class="funnel" id="funnel"></div>
       <div id="roi-summary"></div>
@@ -733,7 +739,7 @@
       { label: "Surfaced", count: c.total, pct: 100 },
       { label: "Contacted", count: c.contactedPlus, pct: Math.round((c.contactedPlus / total) * 100) },
       { label: "Under Contract", count: c.underContractPlus, pct: Math.round((c.underContractPlus / total) * 100) },
-      { label: "Closed", count: c.closed, pct: Math.round((c.closed / total) * 100), isClosed: true }
+      { label: "Closed", count: c.closed, pct: Math.round((c.closed / total) * 100), isClosed: c.closed > 0 }
     ];
     document.getElementById("kpi-grid").innerHTML = kpis.map(k => `
       <div class="kpi-card${k.isClosed ? " is-closed" : ""}">
@@ -753,13 +759,13 @@
     document.getElementById("funnel").innerHTML = stages.map(([label, count, isClosed]) => `
       <div class="funnel-row${isClosed ? " is-closed" : ""}">
         <div class="funnel-label">${label}</div>
-        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (count / max) * 100)}%"></div></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (count / max) * 100)}%"></div></div>
         <div class="funnel-count">${count}</div>
       </div>
     `).join("") + (c.lost > 0 ? `
       <div class="funnel-row is-lost" style="opacity:0.7;">
         <div class="funnel-label">Lost</div>
-        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(2, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
+        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
         <div class="funnel-count">${c.lost}</div>
       </div>
     ` : "");
@@ -775,7 +781,7 @@
             <div class="step${c.underContractPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.underContractPlus > 0 ? "✓" : "3"}</div><div class="step-label">Under Contract</div></div>
             <div class="step"><div class="step-line"></div><div class="step-dot">4</div><div class="step-label">Closed</div></div>
           </div>
-          <div class="step-note"><strong>Your ROI story starts here.</strong> Mark a lead "Closed" from the Leads tab and this fills in with your real profit numbers.</div>
+          <div class="step-note"><strong>Your ROI story starts here.</strong> Once your first deal closes, this view fills in automatically with real profit numbers — no extra work on your end.</div>
         </div>
       `;
       return;
