@@ -6,1173 +6,1217 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Singer Signal — Live Trustee Sale Monitor</title>
 <style>
-  :root {
-    --bg: #121a30;
-    --panel: #1a2440;
-    --panel-2: #212c4d;
-    --border: #313f68;
-    --text: #eef0f6;
-    --muted: #98a0bd;
-    --gold: #d9b872;
-    --gold-strong: #c69a45;
-    --gold-bg: rgba(217,184,114,0.12);
-    --green: #4ade80;
-    --amber: #f5b942;
-    --danger: #ff6b6b;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-  }
-  #gate {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  #gate .box {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--gold);
-    border-radius: 10px;
-    padding: 32px;
-    max-width: 360px;
-    width: 100%;
-    text-align: center;
-  }
-  #gate .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  #gate h1 { font-size: 18px; margin: 0 0 16px; }
-  #gate input {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: #0c1122;
-    color: var(--text);
-    font-size: 14px;
-    margin-bottom: 12px;
-  }
-  #gate button {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: none;
-    background: var(--gold-strong);
-    color: #1a1300;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  #gate button:hover { opacity: 0.9; }
-  #gate .error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 16px; }
+:root {
+--bg: #121a30;
+--panel: #1a2440;
+--panel-2: #212c4d;
+--border: #313f68;
+--text: #eef0f6;
+--muted: #98a0bd;
+--gold: #d9b872;
+--gold-strong: #c69a45;
+--gold-bg: rgba(217,184,114,0.12);
+--green: #4ade80;
+--amber: #f5b942;
+--danger: #ff6b6b;
+}
+* { box-sizing: border-box; }
+body {
+margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+background: var(--bg);
+color: var(--text);
+}
+#gate {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 24px;
+}
+#gate .box {
+background: var(--panel);
+border: 1px solid var(--border);
+border-top: 2px solid var(--gold);
+border-radius: 10px;
+padding: 32px;
+max-width: 360px;
+width: 100%;
+text-align: center;
+}
+#gate .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+#gate h1 { font-size: 18px; margin: 0 0 16px; }
+#gate input {
+width: 100%;
+padding: 10px 12px;
+border-radius: 6px;
+border: 1px solid var(--border);
+background: #0c1122;
+color: var(--text);
+font-size: 14px;
+margin-bottom: 12px;
+}
+#gate button {
+width: 100%;
+padding: 10px 12px;
+border-radius: 6px;
+border: none;
+background: var(--gold-strong);
+color: #1a1300;
+font-weight: 600;
+font-size: 14px;
+cursor: pointer;
+}
+#gate button:hover { opacity: 0.9; }
+#gate .error { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 16px; }
 
-  #app { display: none; padding: 24px; max-width: 1140px; margin: 0 auto; }
-  #app.visible { display: block; }
-  .kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-  header h1 { font-size: 21px; margin: 0 0 4px; letter-spacing: -0.01em; }
-  header .tagline { color: var(--muted); font-size: 13px; margin: 0; }
-  .live-status { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12.5px; white-space: nowrap; }
-  .live-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
-    box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
-    animation: pulse 2s infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); }
-    70%  { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
-    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
-  }
+#app { display: none; padding: 24px; max-width: 1140px; margin: 0 auto; }
+#app.visible { display: block; }
+.kicker { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+header h1 { font-size: 21px; margin: 0 0 4px; letter-spacing: -0.01em; }
+header .tagline { color: var(--muted); font-size: 13px; margin: 0; }
+.live-status { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+.live-dot {
+width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
+animation: pulse 2s infinite;
+flex-shrink: 0;
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); }
+70% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
 
-  .summary-strip {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px;
-    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
-    padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px;
-  }
-  .summary-strip .headline { font-weight: 700; color: var(--text); }
-  .summary-strip .headline.has-new { color: var(--gold); }
-  .summary-strip .sep { color: var(--border); }
-  .summary-strip .sub { color: var(--muted); }
+.summary-strip {
+display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px;
+background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px;
+}
+.summary-strip .headline { font-weight: 700; color: var(--text); }
+.summary-strip .headline.has-new { color: var(--gold); }
+.summary-strip .sep { color: var(--border); }
+.summary-strip .sub { color: var(--muted); }
 
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
-  th.help { cursor: help; border-bottom: 1px dotted var(--muted); }
-  tr:hover td { background: var(--panel-2); }
-  tr.row-new td:first-child { box-shadow: inset 3px 0 0 var(--gold); }
-  tr.row-review td { opacity: 0.7; }
-  tr.row-review td:first-child { box-shadow: inset 3px 0 0 var(--amber); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
+th.help { cursor: help; border-bottom: 1px dotted var(--muted); }
+tr:hover td { background: var(--panel-2); }
+tr.row-new td:first-child { box-shadow: inset 3px 0 0 var(--gold); }
+tr.row-review td { opacity: 0.7; }
+tr.row-review td:first-child { box-shadow: inset 3px 0 0 var(--amber); }
 
-  .filed-date { color: var(--text); }
-  .filed-rel { color: var(--muted); font-size: 11.5px; margin-left: 5px; }
-  .status-updated { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
+.filed-date { color: var(--text); }
+.filed-rel { color: var(--muted); font-size: 11.5px; margin-left: 5px; }
+.status-updated { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
 
-  .conf-pill {
-    display: inline-block; font-weight: 700; font-size: 12px;
-    padding: 2px 9px; border-radius: 999px;
-  }
-  .conf-high { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-strong); }
-  .conf-mid { background: rgba(152,160,189,0.14); color: var(--text); border: 1px solid var(--border); }
-  .conf-low { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.conf-pill {
+display: inline-block; font-weight: 700; font-size: 12px;
+padding: 2px 9px; border-radius: 999px;
+}
+.conf-high { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-strong); }
+.conf-mid { background: rgba(152,160,189,0.14); color: var(--text); border: 1px solid var(--border); }
+.conf-low { background: transparent; color: var(--muted); border: 1px solid var(--border); }
 
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: rgba(245,185,66,0.16);
-    color: var(--amber);
-    margin-left: 6px;
-  }
-  .badge-new {
-    background: var(--gold-bg);
-    color: var(--gold);
-    font-weight: 700;
-  }
-  .badge-followup {
-    background: rgba(245,185,66,0.16);
-    color: var(--amber);
-    font-weight: 700;
-  }
-  .badge-stalling {
-    background: rgba(255,107,107,0.22);
-    color: var(--danger);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .empty { color: var(--muted); text-align: center; padding: 40px 0; }
-  footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
-  .filing-link {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--panel-2);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  .filing-link:hover { background: #283257; }
-  .filing-pending {
-    display: inline-block;
-    font-size: 12px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .filing-pending a { color: var(--muted); text-decoration: underline; }
-  .filing-pending a:hover { color: var(--gold); }
-  .controls { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .controls input {
-    width: 100%;
-    max-width: 320px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: #0c1122;
-    color: var(--text);
-    font-size: 13px;
-  }
-  .controls input:focus { outline: 1px solid var(--gold); }
-  .btn {
-    display: inline-block;
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--panel-2);
-    color: var(--text);
-    font-size: 13px;
-    cursor: pointer;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-  .btn:hover { background: #283257; }
-  .copy-btn {
-    display: inline-block;
-    border: none;
-    background: none;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 12px;
-    padding: 0 0 0 6px;
-    vertical-align: middle;
-  }
-  .copy-btn:hover { color: var(--gold); }
-  .copy-btn.copied { color: var(--green); }
+.badge {
+display: inline-block;
+font-size: 11px;
+padding: 2px 8px;
+border-radius: 999px;
+background: rgba(245,185,66,0.16);
+color: var(--amber);
+margin-left: 6px;
+}
+.badge-new {
+background: var(--gold-bg);
+color: var(--gold);
+font-weight: 700;
+}
+.badge-followup {
+background: rgba(245,185,66,0.16);
+color: var(--amber);
+font-weight: 700;
+}
+.badge-stalling {
+background: rgba(255,107,107,0.22);
+color: var(--danger);
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+}
+.badge-closed-outcome {
+background: rgba(74,222,128,0.16);
+color: var(--green);
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+}
+.badge-lost-outcome {
+background: rgba(255,107,107,0.16);
+color: var(--danger);
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+}
+.empty { color: var(--muted); text-align: center; padding: 40px 0; }
+footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
+.filing-link {
+display: inline-block;
+padding: 4px 10px;
+border-radius: 6px;
+border: 1px solid var(--border);
+background: var(--panel-2);
+color: var(--gold);
+text-decoration: none;
+font-size: 12px;
+white-space: nowrap;
+}
+.filing-link:hover { background: #283257; }
+.filing-pending {
+display: inline-block;
+font-size: 12px;
+color: var(--muted);
+white-space: nowrap;
+}
+.filing-pending a { color: var(--muted); text-decoration: underline; }
+.filing-pending a:hover { color: var(--gold); }
+.controls { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.controls input {
+width: 100%;
+max-width: 320px;
+padding: 8px 12px;
+border-radius: 6px;
+border: 1px solid var(--border);
+background: #0c1122;
+color: var(--text);
+font-size: 13px;
+}
+.controls input:focus { outline: 1px solid var(--gold); }
+.btn {
+display: inline-block;
+padding: 8px 14px;
+border-radius: 6px;
+border: 1px solid var(--border);
+background: var(--panel-2);
+color: var(--text);
+font-size: 13px;
+cursor: pointer;
+white-space: nowrap;
+text-decoration: none;
+}
+.btn:hover { background: #283257; }
+.copy-btn {
+display: inline-block;
+border: none;
+background: none;
+color: var(--muted);
+cursor: pointer;
+font-size: 12px;
+padding: 0 0 0 6px;
+vertical-align: middle;
+}
+.copy-btn:hover { color: var(--gold); }
+.copy-btn.copied { color: var(--green); }
 
-  .tabs { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
-  .tab-btn {
-    padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--panel); color: var(--muted); font-size: 13px; cursor: pointer;
-  }
-  .tab-btn.active { background: var(--gold-bg); color: var(--gold); border-color: var(--gold-strong); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-  .pipeline-count { margin-left: 4px; color: var(--muted); font-size: 12.5px; }
-  .load-more-wrap { display: none; text-align: center; margin-top: 12px; }
+.tabs { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab-btn {
+padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border);
+background: var(--panel); color: var(--muted); font-size: 13px; cursor: pointer;
+}
+.tab-btn.active { background: var(--gold-bg); color: var(--gold); border-color: var(--gold-strong); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.pipeline-count { margin-left: 4px; color: var(--muted); font-size: 12.5px; }
+.load-more-wrap { display: none; text-align: center; margin-top: 12px; }
 
-  .status-select {
-    padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
-    background: #0c1122; color: var(--text); font-size: 12px; cursor: pointer;
-  }
-  .status-select.status-closed { border-color: var(--green); color: var(--green); }
-  .status-select.status-under_contract { border-color: var(--amber); color: var(--amber); }
-  .status-select.status-contacted { border-color: var(--gold-strong); color: var(--gold); }
-  .status-select.status-lost { border-color: var(--danger); color: var(--danger); }
+.status-select {
+padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border);
+background: #0c1122; color: var(--text); font-size: 12px; cursor: pointer;
+}
+.status-select.status-closed { border-color: var(--green); color: var(--green); }
+.status-select.status-under_contract { border-color: var(--amber); color: var(--amber); }
+.status-select.status-contacted { border-color: var(--gold-strong); color: var(--gold); }
+.status-select.status-lost { border-color: var(--danger); color: var(--danger); }
 
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(6,9,20,0.72);
-    align-items: center; justify-content: center; z-index: 50; padding: 20px;
-  }
-  .modal-overlay.visible { display: flex; }
-  .modal-box {
-    background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--gold);
-    border-radius: 10px; padding: 24px; max-width: 360px; width: 100%;
-  }
-  .modal-box h2 { font-size: 15px; margin: 0 0 8px; }
-  .modal-box p { color: var(--muted); font-size: 12.5px; margin: 0 0 14px; line-height: 1.5; }
-  .modal-box label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-  .modal-box input {
-    width: 100%; padding: 9px 11px; border-radius: 6px; border: 1px solid var(--border);
-    background: #0c1122; color: var(--text); font-size: 13px; margin-bottom: 16px;
-  }
-  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.modal-overlay {
+display: none; position: fixed; inset: 0; background: rgba(6,9,20,0.72);
+align-items: center; justify-content: center; z-index: 50; padding: 20px;
+}
+.modal-overlay.visible { display: flex; }
+.modal-box {
+background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--gold);
+border-radius: 10px; padding: 24px; max-width: 360px; width: 100%;
+}
+.modal-box h2 { font-size: 15px; margin: 0 0 8px; }
+.modal-box p { color: var(--muted); font-size: 12.5px; margin: 0 0 14px; line-height: 1.5; }
+.modal-box label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.modal-box input {
+width: 100%; padding: 9px 11px; border-radius: 6px; border: 1px solid var(--border);
+background: #0c1122; color: var(--text); font-size: 13px; margin-bottom: 16px;
+}
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
 
-  /* Confetti/emoji burst — fired once per confirmed close, purely celebratory,
-     never blocks interaction (pointer-events: none on the container). */
-  .confetti-container {
-    position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none;
-  }
-  .confetti-piece {
-    position: absolute; top: -20px; opacity: 0; will-change: transform, opacity;
-    animation: confetti-fall linear forwards;
-  }
-  .confetti-piece.is-rect { width: 8px; height: 14px; border-radius: 2px; }
-  .confetti-piece.is-emoji { font-size: 22px; line-height: 1; }
-  @keyframes confetti-fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
-  }
+/* Confetti/emoji burst — fired once per confirmed close, purely celebratory,
+never blocks interaction (pointer-events: none on the container). */
+.confetti-container {
+position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none;
+}
+.confetti-piece {
+position: absolute; top: -20px; opacity: 0; will-change: transform, opacity;
+animation: confetti-fall linear forwards;
+}
+.confetti-piece.is-rect { width: 8px; height: 14px; border-radius: 2px; }
+.confetti-piece.is-emoji { font-size: 22px; line-height: 1; }
+@keyframes confetti-fall {
+0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
+}
 
-  .funnel { display: flex; flex-direction: column; gap: 10px; max-width: 480px; margin-bottom: 24px; }
-  .funnel-row { display: flex; align-items: center; gap: 12px; }
-  .funnel-label { width: 110px; font-size: 12.5px; color: var(--muted); flex-shrink: 0; }
-  .funnel-bar-track { flex: 1; background: var(--panel-2); border-radius: 5px; height: 20px; overflow: hidden; }
-  .funnel-bar-fill { background: var(--gold-strong); height: 100%; border-radius: 5px; min-width: 2px; }
-  .funnel-count { width: 30px; text-align: right; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+.funnel { display: flex; flex-direction: column; gap: 10px; max-width: 480px; margin-bottom: 24px; }
+.funnel-row { display: flex; align-items: center; gap: 12px; }
+.funnel-label { width: 110px; font-size: 12.5px; color: var(--muted); flex-shrink: 0; }
+.funnel-bar-track { flex: 1; background: var(--panel-2); border-radius: 5px; height: 20px; overflow: hidden; }
+.funnel-bar-fill { background: var(--gold-strong); height: 100%; border-radius: 5px; min-width: 2px; }
+.funnel-count { width: 30px; text-align: right; font-size: 13px; font-weight: 600; flex-shrink: 0; }
 
-  .roi-hero {
-    background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
-    border: 1px solid var(--border); border-radius: 14px;
-    padding: 28px; max-width: 560px; margin-bottom: 24px;
-  }
-  .roi-hero .roi-figure { font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1.1; }
-  .roi-hero .roi-sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
-  .roi-hero .roi-chip {
-    display: inline-block; margin-top: 14px; padding: 6px 12px; border-radius: 999px;
-    background: var(--gold-bg); color: var(--gold); font-size: 12.5px; font-weight: 600;
-  }
+.roi-hero {
+background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 100%);
+border: 1px solid var(--border); border-radius: 14px;
+padding: 28px; max-width: 560px; margin-bottom: 24px;
+}
+.roi-hero .roi-figure { font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1.1; }
+.roi-hero .roi-sub { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.roi-hero .roi-chip {
+display: inline-block; margin-top: 14px; padding: 6px 12px; border-radius: 999px;
+background: var(--gold-bg); color: var(--gold); font-size: 12.5px; font-weight: 600;
+}
 
-  .roi-stepper { max-width: 560px; margin-bottom: 24px; }
-  .roi-stepper .steps { display: flex; align-items: flex-start; gap: 0; }
-  .roi-stepper .step { flex: 1; text-align: center; position: relative; }
-  .roi-stepper .step-dot {
-    width: 22px; height: 22px; border-radius: 50%; background: var(--panel-2);
-    border: 2px solid var(--border); margin: 0 auto 8px; display: flex; align-items: center;
-    justify-content: center; font-size: 12px; color: var(--muted); font-weight: 700;
-  }
-  .roi-stepper .step.done .step-dot { background: var(--gold); border-color: var(--gold); color: var(--bg); }
-  .roi-stepper .step-line {
-    position: absolute; top: 10px; left: -50%; width: 100%; height: 2px; background: var(--border); z-index: -1;
-  }
-  .roi-stepper .step:first-child .step-line { display: none; }
-  .roi-stepper .step.done .step-line { background: var(--gold); }
-  .roi-stepper .step-label { font-size: 11.5px; color: var(--muted); }
-  .roi-stepper .step.done .step-label { color: var(--text); }
-  .roi-stepper .step-note {
-    margin-top: 18px; text-align: center; color: var(--muted); font-size: 13px;
-  }
-  .roi-stepper .step-note strong { color: var(--gold); }
+.roi-stepper { max-width: 560px; margin-bottom: 24px; }
+.roi-stepper .steps { display: flex; align-items: flex-start; gap: 0; }
+.roi-stepper .step { flex: 1; text-align: center; position: relative; }
+.roi-stepper .step-dot {
+width: 22px; height: 22px; border-radius: 50%; background: var(--panel-2);
+border: 2px solid var(--border); margin: 0 auto 8px; display: flex; align-items: center;
+justify-content: center; font-size: 12px; color: var(--muted); font-weight: 700;
+}
+.roi-stepper .step.done .step-dot { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.roi-stepper .step-line {
+position: absolute; top: 10px; left: -50%; width: 100%; height: 2px; background: var(--border); z-index: -1;
+}
+.roi-stepper .step:first-child .step-line { display: none; }
+.roi-stepper .step.done .step-line { background: var(--gold); }
+.roi-stepper .step-label { font-size: 11.5px; color: var(--muted); }
+.roi-stepper .step.done .step-label { color: var(--text); }
+.roi-stepper .step-note {
+margin-top: 18px; text-align: center; color: var(--muted); font-size: 13px;
+}
+.roi-stepper .step-note strong { color: var(--gold); }
 
-  .roi-section-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 10px;
-  }
+.roi-section-label {
+font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+color: var(--gold); margin-bottom: 10px;
+}
 
-  .kpi-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin-bottom: 12px;
-  }
-  .kpi-card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px;
-  }
-  .kpi-card.is-closed { border-color: var(--gold-strong); background: var(--gold-bg); }
-  .kpi-card .kpi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .kpi-card .kpi-pct { font-size: 11px; color: var(--muted); font-weight: 600; }
-  .kpi-card.is-closed .kpi-pct { color: var(--gold); }
-  .kpi-card .kpi-num { font-size: 24px; font-weight: 700; color: var(--text); line-height: 1; }
-  .kpi-card.is-closed .kpi-num { color: var(--gold); }
-  .kpi-card .kpi-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.kpi-grid {
+display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 560px; margin-bottom: 12px;
+}
+.kpi-card {
+background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px;
+}
+.kpi-card.is-closed { border-color: var(--gold-strong); background: var(--gold-bg); }
+.kpi-card .kpi-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.kpi-card .kpi-pct { font-size: 11px; color: var(--muted); font-weight: 600; }
+.kpi-card.is-closed .kpi-pct { color: var(--gold); }
+.kpi-card .kpi-num { font-size: 24px; font-weight: 700; color: var(--text); line-height: 1; }
+.kpi-card.is-closed .kpi-num { color: var(--gold); }
+.kpi-card .kpi-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
 
-  .funnel-row.is-closed .funnel-label { color: var(--gold); font-weight: 700; }
-  .funnel-row.is-closed .funnel-bar-fill { background: var(--gold); }
+.funnel-row.is-closed .funnel-label { color: var(--gold); font-weight: 700; }
+.funnel-row.is-closed .funnel-bar-fill { background: var(--gold); }
 </style>
 </head>
 <body>
 
-  <div id="gate">
-    <div class="box">
-      <div class="kicker">The Singer System</div>
-      <h1>Singer Signal — Private Access</h1>
-      <input type="password" id="pw" placeholder="Enter password" autofocus>
-      <button id="unlock">Unlock</button>
-      <div class="error" id="err"></div>
-    </div>
-  </div>
+<div id="gate">
+<div class="box">
+<div class="kicker">The Singer System</div>
+<h1>Singer Signal — Private Access</h1>
+<input type="password" id="pw" placeholder="Enter password" autofocus>
+<button id="unlock">Unlock</button>
+<div class="error" id="err"></div>
+</div>
+</div>
 
-  <div id="app">
-    <header>
-      <div>
-        <div class="kicker">The Singer System</div>
-        <h1>Singer Signal</h1>
-        <p class="tagline">Live trustee-sale monitor — Maricopa County</p>
-      </div>
-      <div class="live-status">
-        <span class="live-dot"></span>
-        <span id="generated"></span>
-      </div>
-    </header>
-    <div class="summary-strip" id="summary"></div>
+<div id="app">
+<header>
+<div>
+<div class="kicker">The Singer System</div>
+<h1>Singer Signal</h1>
+<p class="tagline">Live trustee-sale monitor — Maricopa County</p>
+</div>
+<div class="live-status">
+<span class="live-dot"></span>
+<span id="generated"></span>
+</div>
+</header>
+<div class="summary-strip" id="summary"></div>
 
-    <div class="tabs">
-      <button class="tab-btn active" id="tab-leads-btn">Leads</button>
-      <button class="tab-btn" id="tab-roi-btn">ROI</button>
-    </div>
+<div class="tabs">
+<button class="tab-btn active" id="tab-leads-btn">Leads</button>
+<button class="tab-btn" id="tab-roi-btn">ROI</button>
+</div>
 
-    <div class="tab-panel active" id="tab-leads">
-      <div class="tabs" id="leads-subtabs">
-        <button class="tab-btn active" id="subtab-active-btn">Active Pipeline</button>
-        <button class="tab-btn" id="subtab-closed-btn">Closed Deals</button>
-        <span class="pipeline-count" id="pipeline-count"></span>
-      </div>
-      <div class="controls">
-        <input type="text" id="search" placeholder="Filter by owner name…">
-        <button class="btn" id="export-csv">Export CSV</button>
-        <a class="btn" href="https://singersignal.canny.io" target="_blank" rel="noopener noreferrer">Feedback &amp; Roadmap</a>
-      </div>
-      <table id="table">
-        <thead>
-          <tr>
-            <th>Filed</th>
-            <th>Likely Owner(s)</th>
-            <th>Other Names on Filing</th>
-            <th>Recording #</th>
-            <th class="help" title="How confident the system is that it correctly identified the actual homeowner on this filing — not a deal-value or lead-quality score.">Match Confidence</th>
-            <th>Filing</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-      <div class="load-more-wrap" id="load-more-wrap"></div>
-      <div class="empty" id="empty" style="display:none;">No leads found.</div>
-    </div>
+<div class="tab-panel active" id="tab-leads">
+<div class="tabs" id="leads-subtabs">
+<button class="tab-btn active" id="subtab-active-btn">Active Pipeline</button>
+<button class="tab-btn" id="subtab-closed-btn">Closed Deals</button>
+<span class="pipeline-count" id="pipeline-count"></span>
+</div>
+<div class="controls">
+<input type="text" id="search" placeholder="Filter by owner name…">
+<button class="btn" id="export-csv">Export CSV</button>
+<a class="btn" href="https://singersignal.canny.io" target="_blank" rel="noopener noreferrer">Feedback &amp; Roadmap</a>
+</div>
+<table id="table">
+<thead>
+<tr>
+<th>Filed</th>
+<th>Likely Owner(s)</th>
+<th>Other Names on Filing</th>
+<th>Recording #</th>
+<th class="help" title="How confident the system is that it correctly identified the actual homeowner on this filing — not a deal-value or lead-quality score.">Match Confidence</th>
+<th>Filing</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="rows"></tbody>
+</table>
+<div class="load-more-wrap" id="load-more-wrap"></div>
+<div class="empty" id="empty" style="display:none;">No leads found.</div>
+</div>
 
-    <div class="tab-panel" id="tab-roi">
-      <div id="roi-hero"></div>
-      <div class="roi-section-label">Your Pipeline</div>
-      <div class="kpi-grid" id="kpi-grid"></div>
-      <div class="funnel" id="funnel"></div>
-      <div id="roi-summary"></div>
-    </div>
+<div class="tab-panel" id="tab-roi">
+<div id="roi-hero"></div>
+<div class="roi-section-label">Your Pipeline</div>
+<div class="kpi-grid" id="kpi-grid"></div>
+<div class="funnel" id="funnel"></div>
+<div id="roi-summary"></div>
+</div>
 
-    <footer>Singer Signal · private link — do not share outside your team.</footer>
-  </div>
+<footer>Singer Signal · private link — do not share outside your team.</footer>
+</div>
 
-  <div class="modal-overlay" id="close-modal">
-    <div class="modal-box">
-      <h2>Confirm this deal closed</h2>
-      <p>This also flags it for your $1,000 success fee. Profit is optional — enter it if you want the ROI tab to show your real numbers.</p>
-      <label for="close-profit">Est. profit on this deal (optional)</label>
-      <input type="number" id="close-profit" placeholder="e.g. 12000">
-      <div class="modal-actions">
-        <button class="btn" id="close-cancel">Cancel</button>
-        <button class="btn" id="close-confirm" style="background:var(--gold-strong); color:#1a1300; border-color:var(--gold-strong);">Confirm Close</button>
-      </div>
-    </div>
-  </div>
+<div class="modal-overlay" id="close-modal">
+<div class="modal-box">
+<h2>Confirm this deal closed</h2>
+<p>This also flags it for your $1,000 success fee. Profit is optional — enter it if you want the ROI tab to show your real numbers.</p>
+<label for="close-profit">Est. profit on this deal (optional)</label>
+<input type="number" id="close-profit" placeholder="e.g. 12000">
+<div class="modal-actions">
+<button class="btn" id="close-cancel">Cancel</button>
+<button class="btn" id="close-confirm" style="background:var(--gold-strong); color:#1a1300; border-color:var(--gold-strong);">Confirm Close</button>
+</div>
+</div>
+</div>
 
 <script>
-  // Replaced at publish time with the real SHA-256 hash of the shared password.
-  const PASSWORD_HASH = "cc64915a92872899156b6b622212811048451e8e4823d9ac658b00596d57546b";
-
-  // Deal-status backend (Google Apps Script Web App — see
-  // scripts/apps_script_status_backend.gs for the code + deploy steps).
-  // Until the placeholder below is replaced with a real deployed URL, the
-  // status column still renders but silently no-ops on read/write rather
-  // than breaking the rest of the dashboard.
-  const STATUS_API_URL = "https://script.google.com/macros/s/AKfycbwuB13f2v1VLcZtZg6NYtkL5XObj_f41aAUuvvQk_9uLsbtakJIgl_kg7OORgKUsk7DGA/exec";
-  const STATUS_API_CONFIGURED = STATUS_API_URL.indexOf("REPLACE_WITH") !== 0;
-
-  const STATUS_OPTIONS = [
-    ["new", "New"],
-    ["contacted", "Contacted"],
-    ["under_contract", "Under Contract"],
-    ["closed", "Closed"],
-    ["lost", "Lost / Not Interested"]
-  ];
-
-  // Which statuses count as "still being worked" vs. "done" — powers the
-  // Active Pipeline / Closed Deals split below. Keeping these as named
-  // constants (rather than inlining the checks) means the funnel/ROI logic
-  // and the tab-partitioning logic can never quietly drift out of sync.
-  const ACTIVE_STATUSES = ["new", "contacted", "under_contract"];
-  const CLOSED_STATUSES = ["closed", "lost"];
-
-  // recording_number -> { status, profit_reported, updated_at, updated_by },
-  // fetched once per page load from the Apps Script backend.
-  let statusMap = {};
-
-  // Recording numbers this browser has already seen, across visits — powers
-  // the "new since your last visit" framing, which is deliberately personal
-  // (per-browser) rather than the server-side is_new flag (which just means
-  // "new since the last workflow run" and would re-fire every ~30 minutes
-  // regardless of whether anyone actually looked at it in between).
-  const SEEN_KEY = "singerSignalSeenRecordings";
-  const MAX_SEEN = 2000; // guard against unbounded localStorage growth
-
-  async function sha256Hex(text) {
-    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-  }
-
-  // Backend stores/publishes times in UTC; leads are Maricopa County (Arizona)
-  // filings, so display in Arizona local time for the people reading this.
-  function formatArizonaTime(utcString) {
-    if (!utcString || utcString === "unknown") return "unknown";
-    const isoish = utcString.replace(" UTC", "Z").replace(" ", "T");
-    const date = new Date(isoish);
-    if (isNaN(date.getTime())) return utcString;
-    const formatted = date.toLocaleString("en-US", {
-      timeZone: "America/Phoenix",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "2-digit"
-    });
-    return formatted + " AZ";
-  }
-
-  // recording_date arrives as "M-D-YYYY" (day granularity only, no time-of-day),
-  // so the relative label below is expressed in whole days, not hours/minutes.
-  function parseRecordingDate(dateStr) {
-    if (!dateStr) return null;
-    const parts = dateStr.split("-");
-    if (parts.length !== 3) return null;
-    const [m, d, y] = parts.map(Number);
-    if (!m || !d || !y) return null;
-    const date = new Date(y, m - 1, d);
-    return isNaN(date.getTime()) ? null : date;
-  }
-
-  function relativeDayLabel(dateStr) {
-    const date = parseRecordingDate(dateStr);
-    if (!date) return "";
-    const today = new Date();
-    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const diffDays = Math.round((startOfToday - date) / 86400000);
-    if (diffDays <= 0) return "today";
-    if (diffDays === 1) return "yesterday";
-    if (diffDays > 0 && diffDays < 60) return diffDays + "d ago";
-    return "";
-  }
-
-  // statusMap entries carry updated_at as an ISO timestamp (see postStatus
-  // below), which is precise to the minute — unlike recording_date, so this
-  // gets its own relative-time helper rather than reusing relativeDayLabel.
-  function relativeTimeLabel(isoString) {
-    if (!isoString) return "";
-    const date = new Date(isoString);
-    if (isNaN(date.getTime())) return "";
-    const diffMs = Date.now() - date.getTime();
-    const diffMins = Math.round(diffMs / 60000);
-    if (diffMins < 1) return "just now";
-    if (diffMins < 60) return diffMins + "m ago";
-    const diffHours = Math.round(diffMins / 60);
-    if (diffHours < 24) return diffHours + "h ago";
-    const diffDays = Math.round(diffHours / 24);
-    if (diffDays < 30) return diffDays + "d ago";
-    const diffMonths = Math.round(diffDays / 30);
-    return diffMonths + "mo ago";
-  }
-
-  // Leads sitting in an active (non-terminal) status without a status update
-  // in a while are easy to lose track of. Two tiers, deliberately escalating
-  // in language and color (mild amber "needs follow-up" vs. bold red
-  // "stalling") rather than one flat badge — a pipeline that's genuinely at
-  // risk of going cold should read as more urgent than one that's just a
-  // few days quiet, per standard loss-aversion framing for pipeline risk.
-  const FOLLOWUP_STALE_DAYS = 5;
-  const STALLING_DAYS = 14;
-  const FOLLOWUP_STATUSES = ["contacted", "under_contract"];
-  function followUpTier(status, updatedAt) {
-    if (!FOLLOWUP_STATUSES.includes(status) || !updatedAt) return null;
-    const date = new Date(updatedAt);
-    if (isNaN(date.getTime())) return null;
-    const diffDays = (Date.now() - date.getTime()) / 86400000;
-    if (diffDays >= STALLING_DAYS) return "stalling";
-    if (diffDays >= FOLLOWUP_STALE_DAYS) return "followup";
-    return null;
-  }
-
-  function getSeenSet() {
-    try {
-      const raw = JSON.parse(localStorage.getItem(SEEN_KEY) || "[]");
-      return new Set(raw);
-    } catch (e) {
-      return new Set();
-    }
-  }
-
-  function saveSeenSet(set) {
-    let arr = Array.from(set);
-    if (arr.length > MAX_SEEN) arr = arr.slice(arr.length - MAX_SEEN);
-    localStorage.setItem(SEEN_KEY, JSON.stringify(arr));
-  }
-
-  async function tryUnlock() {
-    const pw = document.getElementById("pw").value;
-    const hash = await sha256Hex(pw);
-    if (hash === PASSWORD_HASH) {
-      sessionStorage.setItem("tsm_unlocked", "1");
-      showApp();
-    } else {
-      document.getElementById("err").textContent = "Incorrect password.";
-    }
-  }
-
-  document.getElementById("unlock").addEventListener("click", tryUnlock);
-  document.getElementById("pw").addEventListener("keydown", e => {
-    if (e.key === "Enter") tryUnlock();
-  });
-
-  function showApp() {
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("app").classList.add("visible");
-    loadData();
-  }
-
-  // Full lead list from the last successful fetch, sorted for display. The
-  // search box filters this in memory rather than re-fetching.
-  let allLeads = [];
-
-  // Rows currently displayed (after sub-tab + filtering) — CSV export
-  // mirrors this, not the full unfiltered list.
-  let currentRows = [];
-
-  // Recording numbers seen on THIS load, marked "new to you" if absent from
-  // the seen-set that was in localStorage before this page load started.
-  let newToUserCount = 0;
-
-  // Which Leads sub-tab is showing: "active" (working pipeline) or "closed"
-  // (done — closed or lost). Defaults to active so the operator always
-  // lands on the list they actually need to work, not a mix of live and
-  // historical records.
-  let leadsSubTab = "active";
-
-  // Closed Deals is a reference/history view, not a working view — render
-  // it newest-first and reveal older records a page at a time instead of
-  // dumping the full history, so it stays glanceable as it grows.
-  const CLOSED_PAGE_SIZE = 15;
-  let closedVisibleCount = CLOSED_PAGE_SIZE;
-
-  // Counts how many rows have the manual-review flag set.
-  function countNeedsReview(rows) {
-    return rows.filter(row => row.needs_manual_review && row.needs_manual_review.trim()).length;
-  }
-
-  function getStatus(lead) {
-    return (statusMap[lead.recording_number] || {}).status || "new";
-  }
-
-  // Splits the full lead list into the Active Pipeline vs. Closed Deals
-  // sets. Terminal statuses (closed, lost) are deliberately kept out of the
-  // active view — mixing them in is a common complaint with off-the-shelf
-  // CRM pipeline boards, since it dilutes the list the operator actually
-  // needs to act on.
-  function leadsInSubTab(subtab) {
-    const statuses = subtab === "closed" ? CLOSED_STATUSES : ACTIVE_STATUSES;
-    return allLeads.filter(lead => statuses.includes(getStatus(lead)));
-  }
-
-  // Closed Deals sorts by when the deal actually closed/was marked lost
-  // (status updated_at), not by original filing date — a deal filed months
-  // ago but closed yesterday belongs at the top of "recently closed".
-  function sortClosedNewestFirst(leads) {
-    return leads.slice().sort((a, b) => {
-      const ea = statusMap[a.recording_number] || {};
-      const eb = statusMap[b.recording_number] || {};
-      const ta = ea.updated_at ? new Date(ea.updated_at).getTime() : 0;
-      const tb = eb.updated_at ? new Date(eb.updated_at).getTime() : 0;
-      return tb - ta;
-    });
-  }
-
-  // Small persistent "X active · Y closed" readout next to the sub-tabs.
-  // Always reflects the full lead list (not the current search filter) —
-  // it's meant as a stable at-a-glance pipeline count, the kind of always-
-  // visible progress readout that nudges an operator back to clear the
-  // active list, not a filtered stat that moves around as they type.
-  function updatePipelineCount() {
-    const el = document.getElementById("pipeline-count");
-    if (!el) return;
-    const activeCount = allLeads.filter(l => ACTIVE_STATUSES.includes(getStatus(l))).length;
-    const closedCount = allLeads.filter(l => CLOSED_STATUSES.includes(getStatus(l))).length;
-    el.textContent = `${activeCount} active · ${closedCount} closed`;
-  }
-
-  function updateSummary(rows) {
-    const el = document.getElementById("summary");
-    const total = allLeads.length;
-    const totalReview = countNeedsReview(allLeads);
-    const showingAll = rows.length === total;
-
-    const newPart = newToUserCount > 0
-      ? `<span class="headline has-new">${newToUserCount} new since your last visit</span>`
-      : `<span class="headline">No new leads since your last visit</span>`;
-    const countPart = showingAll
-      ? `<span class="sub">${total} lead${total === 1 ? "" : ""} tracked</span>`
-      : `<span class="sub">Showing ${rows.length} of ${total} leads</span>`;
-    const reviewPart = `<span class="sub">${totalReview} flagged for review</span>`;
-
-    el.innerHTML = `${newPart}<span class="sep">·</span>${countPart}<span class="sep">·</span>${reviewPart}`;
-  }
-
-  function confidencePill(score) {
-    const n = Number(score) || 0;
-    let cls = "conf-low";
-    if (n >= 15) cls = "conf-high";
-    else if (n >= 10) cls = "conf-mid";
-    return `<span class="conf-pill ${cls}">${score || ""}</span>`;
-  }
-
-  // rows: the already sub-tab-filtered + search-filtered + (for Closed)
-  // paginated list to display. opts.hasMore / opts.remaining describe
-  // whether a "Show more" control is needed below the table.
-  function renderRows(rows, opts) {
-    opts = opts || {};
-    const tbody = document.getElementById("rows");
-    tbody.innerHTML = "";
-    const emptyEl = document.getElementById("empty");
-    const hasQuery = document.getElementById("search").value.trim().length > 0;
-    if (rows.length === 0) {
-      if (leadsSubTab === "closed") {
-        emptyEl.textContent = hasQuery
-          ? "No closed deals match that search."
-          : "No closed deals yet. Once you close your first one, it'll show up here.";
-      } else {
-        emptyEl.textContent = hasQuery
-          ? "No active leads match that search."
-          : "No active leads right now — nice and clear.";
-      }
-      emptyEl.style.display = "block";
-    } else {
-      emptyEl.style.display = "none";
-    }
-    updateSummary(rows);
-    currentRows = rows;
-    rows.forEach(row => {
-      const tr = document.createElement("tr");
-      const isReview = !!(row.needs_manual_review && row.needs_manual_review.trim());
-      const isNewToUser = !!row._newToUser;
-      tr.className = (isNewToUser ? "row-new " : "") + (isReview ? "row-review" : "");
-      const reviewBadge = isReview ? '<span class="badge">review</span>' : "";
-      const newBadge = isNewToUser ? '<span class="badge badge-new">NEW</span>' : "";
-      // The county sometimes hasn't finished imaging a document a few hours
-      // after it's recorded, so pdf_available (checked server-side at build
-      // time) gates whether the direct link is shown at all — a dead 404 is
-      // a worse experience than an honest "not scanned yet" state with a
-      // manual fallback to the Recorder's own search tool.
-      const filingLink = row.filing_url && row.pdf_available
-        ? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
-        : row.recorder_search_url
-          ? `<span class="filing-pending" title="The county hasn't finished scanning this filing yet — usually ready within a day. Search by recording number ${row.recording_number || ""} on the Recorder site instead.">Not scanned yet · <a href="${row.recorder_search_url}" target="_blank" rel="noopener noreferrer">search Recorder site</a></span>`
-          : "";
-      const recordingNumber = row.recording_number || "";
-      const copyBtn = recordingNumber
-        ? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
-        : "";
-      const relLabel = relativeDayLabel(row.recording_date);
-      const statusEntry = statusMap[recordingNumber] || {};
-      const currentStatus = statusEntry.status || "new";
-      const statusOptionsHtml = STATUS_OPTIONS.map(([value, label]) =>
-        `<option value="${value}"${value === currentStatus ? " selected" : ""}>${label}</option>`
-      ).join("");
-      const updatedLabel = currentStatus !== "new" ? relativeTimeLabel(statusEntry.updated_at) : "";
-      const statusCell = recordingNumber
-        ? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>${updatedLabel ? `<span class="status-updated">${updatedLabel}</span>` : ""}`
-        : "";
-      const tier = followUpTier(currentStatus, statusEntry.updated_at);
-      const followUpBadge = tier === "stalling"
-        ? `<span class="badge badge-stalling" title="No status update in ${STALLING_DAYS}+ days — at risk of going cold">stalling</span>`
-        : tier === "followup"
-          ? `<span class="badge badge-followup" title="No status update in ${FOLLOWUP_STALE_DAYS}+ days">needs follow-up</span>`
-          : "";
-      tr.innerHTML = `
-        <td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
-        <td>${row["likely_owner(s)"] || ""}${newBadge}${reviewBadge}${followUpBadge}</td>
-        <td>${row.other_names_on_filing || ""}</td>
-        <td>${recordingNumber}${copyBtn}</td>
-        <td>${confidencePill(row.score)}</td>
-        <td>${filingLink}</td>
-        <td>${statusCell}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-
-    const loadMoreWrap = document.getElementById("load-more-wrap");
-    if (loadMoreWrap) {
-      if (leadsSubTab === "closed" && opts.hasMore) {
-        const remaining = opts.remaining || 0;
-        loadMoreWrap.innerHTML = `<button class="btn" id="load-more-btn">Show ${Math.min(CLOSED_PAGE_SIZE, remaining)} more</button>`;
-        loadMoreWrap.style.display = "block";
-      } else {
-        loadMoreWrap.innerHTML = "";
-        loadMoreWrap.style.display = "none";
-      }
-    }
-  }
-
-  // Applies the active sub-tab (Active Pipeline / Closed Deals), then the
-  // owner-name search, then — for Closed Deals only — newest-first sorting
-  // and pagination, before handing off to renderRows.
-  function applyFilter() {
-    const q = document.getElementById("search").value.trim().toLowerCase();
-    let subset = leadsInSubTab(leadsSubTab);
-    if (q) subset = subset.filter(row => (row["likely_owner(s)"] || "").toLowerCase().includes(q));
-
-    let toRender = subset;
-    let hasMore = false;
-    let remaining = 0;
-    if (leadsSubTab === "closed") {
-      toRender = sortClosedNewestFirst(subset);
-      hasMore = toRender.length > closedVisibleCount;
-      remaining = toRender.length - closedVisibleCount;
-      toRender = toRender.slice(0, closedVisibleCount);
-    }
-
-    renderRows(toRender, { hasMore, remaining });
-    updatePipelineCount();
-  }
-
-  // Switches between Active Pipeline and Closed Deals. Resets the Closed
-  // pagination window each time it's opened, so it always starts on the
-  // most-recent page rather than wherever a previous visit left off.
-  function switchLeadsSubTab(which) {
-    leadsSubTab = which;
-    if (which === "closed") closedVisibleCount = CLOSED_PAGE_SIZE;
-    document.getElementById("subtab-active-btn").classList.toggle("active", which === "active");
-    document.getElementById("subtab-closed-btn").classList.toggle("active", which === "closed");
-    applyFilter();
-  }
-  document.getElementById("subtab-active-btn").addEventListener("click", () => switchLeadsSubTab("active"));
-  document.getElementById("subtab-closed-btn").addEventListener("click", () => switchLeadsSubTab("closed"));
-
-  // Single delegated listener for the "Show N more" button — it's
-  // recreated on every render, so binding once on the stable wrapper
-  // avoids re-adding (and duplicating) a listener each time.
-  document.getElementById("load-more-wrap").addEventListener("click", e => {
-    if (e.target && e.target.id === "load-more-btn") {
-      closedVisibleCount += CLOSED_PAGE_SIZE;
-      applyFilter();
-    }
-  });
-
-  async function loadStatuses() {
-    if (!STATUS_API_CONFIGURED) return;
-    try {
-      const res = await fetch(STATUS_API_URL, { cache: "no-store" });
-      const data = await res.json();
-      statusMap = data.statuses || {};
-    } catch (e) {
-      // Backend hiccup shouldn't take down the leads table — status column
-      // just falls back to "New" for everything this load.
-      statusMap = {};
-    }
-  }
-
-  // Sent as text/plain rather than application/json deliberately: a JSON
-  // content-type on a cross-origin POST triggers a CORS preflight (OPTIONS)
-  // request, which Apps Script Web Apps don't handle. text/plain keeps this
-  // a "simple request" that skips preflight; the Apps Script side still
-  // JSON.parses the body normally.
-  async function postStatus(recordingNumber, status, profitReported) {
-    if (!STATUS_API_CONFIGURED) return false;
-    try {
-      await fetch(STATUS_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          recording_number: recordingNumber,
-          status: status,
-          profit_reported: profitReported || "",
-          updated_by: "dashboard"
-        })
-      });
-      statusMap[recordingNumber] = {
-        status: status,
-        profit_reported: profitReported || "",
-        updated_at: new Date().toISOString()
-      };
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function statusFunnelCounts() {
-    const counts = { new: 0, contacted: 0, under_contract: 0, closed: 0, lost: 0 };
-    allLeads.forEach(lead => {
-      const s = (statusMap[lead.recording_number] || {}).status || "new";
-      if (counts[s] === undefined) counts[s] = 0;
-      counts[s]++;
-    });
-    const total = allLeads.length;
-    return {
-      total,
-      contactedPlus: counts.contacted + counts.under_contract + counts.closed,
-      underContractPlus: counts.under_contract + counts.closed,
-      closed: counts.closed,
-      lost: counts.lost
-    };
-  }
-
-  // Dormant fee-comparison scaffold. Real numbers aren't finalized with the
-  // client yet, so this stays null on purpose — computeTotalFees() returns
-  // null until both values below are filled in, and every place that reads
-  // it treats null as "don't render this stat". Activating the fee-multiple
-  // chip later should mean filling in these two fields, nothing else.
-  const FEE_CONFIG = {
-    contractStartDate: null, // e.g. "2026-08-01"
-    perDealFee: 1000, // established $1,000 success fee per closed deal
-    monthlyFee: null // monthly retainer, once agreed with the client
-  };
-
-  function computeTotalFees(closedCount) {
-    if (FEE_CONFIG.monthlyFee == null || FEE_CONFIG.contractStartDate == null) return null;
-    const start = new Date(FEE_CONFIG.contractStartDate);
-    if (isNaN(start.getTime())) return null;
-    const now = new Date();
-    const monthsElapsed = Math.max(
-      0,
-      (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth())
-    );
-    return (FEE_CONFIG.perDealFee * closedCount) + (FEE_CONFIG.monthlyFee * monthsElapsed);
-  }
-
-  function renderRoiTab() {
-    const c = statusFunnelCounts();
-    const total = c.total || 1;
-
-    const kpis = [
-      { label: "Surfaced", count: c.total, pct: 100 },
-      { label: "Contacted", count: c.contactedPlus, pct: Math.round((c.contactedPlus / total) * 100) },
-      { label: "Under Contract", count: c.underContractPlus, pct: Math.round((c.underContractPlus / total) * 100) },
-      { label: "Closed", count: c.closed, pct: Math.round((c.closed / total) * 100), isClosed: c.closed > 0 }
-    ];
-    document.getElementById("kpi-grid").innerHTML = kpis.map(k => `
-      <div class="kpi-card${k.isClosed ? " is-closed" : ""}">
-        <div class="kpi-top"><span class="kpi-pct">${k.pct}%</span></div>
-        <div class="kpi-num">${k.count}</div>
-        <div class="kpi-label">${k.label}</div>
-      </div>
-    `).join("");
-
-    const stages = [
-      ["Surfaced", c.total, false],
-      ["Contacted", c.contactedPlus, false],
-      ["Under Contract", c.underContractPlus, false],
-      ["Closed", c.closed, true]
-    ];
-    const max = c.total || 1;
-    document.getElementById("funnel").innerHTML = stages.map(([label, count, isClosed]) => `
-      <div class="funnel-row${isClosed ? " is-closed" : ""}">
-        <div class="funnel-label">${label}</div>
-        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (count / max) * 100)}%"></div></div>
-        <div class="funnel-count">${count}</div>
-      </div>
-    `).join("") + (c.lost > 0 ? `
-      <div class="funnel-row is-lost" style="opacity:0.7;">
-        <div class="funnel-label">Lost</div>
-        <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
-        <div class="funnel-count">${c.lost}</div>
-      </div>
-    ` : "");
-
-    document.getElementById("roi-summary").innerHTML = "";
-
-    if (c.closed === 0) {
-      document.getElementById("roi-hero").innerHTML = `
-        <div class="roi-stepper">
-          <div class="steps">
-            <div class="step done"><div class="step-dot">✓</div><div class="step-label">Surfaced</div></div>
-            <div class="step${c.contactedPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.contactedPlus > 0 ? "✓" : "2"}</div><div class="step-label">Contacted</div></div>
-            <div class="step${c.underContractPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.underContractPlus > 0 ? "✓" : "3"}</div><div class="step-label">Under Contract</div></div>
-            <div class="step"><div class="step-line"></div><div class="step-dot">4</div><div class="step-label">Closed</div></div>
-          </div>
-          <div class="step-note"><strong>Your ROI story starts here.</strong> Once your first deal closes, this view fills in automatically with real profit numbers — no extra work on your end.</div>
-        </div>
-      `;
-      return;
-    }
-
-    let totalProfit = 0;
-    let hasProfitData = false;
-    allLeads.forEach(lead => {
-      const entry = statusMap[lead.recording_number];
-      if (entry && entry.status === "closed" && entry.profit_reported) {
-        const n = Number(entry.profit_reported);
-        if (!isNaN(n) && n > 0) { totalProfit += n; hasProfitData = true; }
-      }
-    });
-
-    if (!hasProfitData) {
-      document.getElementById("roi-hero").innerHTML = `
-        <div class="roi-hero">
-          <div class="roi-figure">${c.closed}</div>
-          <div class="roi-sub">deal${c.closed === 1 ? "" : "s"} closed so far. Add estimated profit on your next close to see your $ return here.</div>
-        </div>
-      `;
-      return;
-    }
-
-    const totalFees = computeTotalFees(c.closed);
-    const feeChip = (totalFees != null && totalFees > 0)
-      ? `<div class="roi-chip">${(totalProfit / totalFees).toFixed(1)}× return on $${totalFees.toLocaleString()} in fees</div>`
-      : "";
-
-    document.getElementById("roi-hero").innerHTML = `
-      <div class="roi-hero">
-        <div class="roi-figure">$${totalProfit.toLocaleString()}</div>
-        <div class="roi-sub">reported profit across ${c.closed} closed deal${c.closed === 1 ? "" : "s"}</div>
-        ${feeChip}
-      </div>
-    `;
-  }
-
-  async function loadData() {
-    try {
-      const [res] = await Promise.all([
-        fetch("leads.json", { cache: "no-store" }),
-        loadStatuses()
-      ]);
-      const data = await res.json();
-      document.getElementById("generated").textContent =
-        "Last checked " + formatArizonaTime(data.generated_at_utc);
-
-      const seen = getSeenSet();
-      const leads = (data.leads || []).slice();
-      leads.forEach(lead => {
-        lead._newToUser = !!(lead.recording_number && !seen.has(lead.recording_number));
-      });
-      newToUserCount = leads.filter(l => l._newToUser).length;
-
-      // Sort: new-to-you first, then most recently filed, then match confidence.
-      allLeads = leads.sort((a, b) => {
-        if (a._newToUser !== b._newToUser) return a._newToUser ? -1 : 1;
-        const da = parseRecordingDate(a.recording_date);
-        const db = parseRecordingDate(b.recording_date);
-        const ta = da ? da.getTime() : 0;
-        const tb = db ? db.getTime() : 0;
-        if (ta !== tb) return tb - ta;
-        return Number(b.score || 0) - Number(a.score || 0);
-      });
-
-      applyFilter();
-      renderRoiTab();
-
-      // Mark everything currently loaded as seen for next visit — do this
-      // after render so this visit still shows the NEW badges.
-      const nextSeen = getSeenSet();
-      allLeads.forEach(l => { if (l.recording_number) nextSeen.add(l.recording_number); });
-      saveSeenSet(nextSeen);
-    } catch (e) {
-      document.getElementById("empty").textContent = "Couldn't load leads data.";
-      document.getElementById("empty").style.display = "block";
-    }
-  }
-
-  document.getElementById("search").addEventListener("input", applyFilter);
-
-  // Event delegation on the tbody: rows are re-rendered on every filter/load,
-  // so a listener attached to individual buttons would be lost (or, if
-  // re-added each render, duplicated). Binding once on the stable parent
-  // avoids both problems.
-  document.getElementById("rows").addEventListener("click", e => {
-    const btn = e.target.closest(".copy-btn");
-    if (!btn) return;
-    const recording = btn.dataset.recording;
-    navigator.clipboard.writeText(recording).then(() => {
-      const original = btn.textContent;
-      btn.textContent = "✓";
-      btn.classList.add("copied");
-      setTimeout(() => {
-        btn.textContent = original;
-        btn.classList.remove("copied");
-      }, 1200);
-    });
-  });
-
-  // Wraps a CSV field in quotes and escapes embedded quotes whenever the
-  // value contains a comma, quote, or newline that would otherwise break
-  // column alignment.
-  function csvField(value) {
-    const str = String(value == null ? "" : value);
-    if (/[",\n]/.test(str)) {
-      return '"' + str.replace(/"/g, '""') + '"';
-    }
-    return str;
-  }
-
-  // Exports whatever rows are currently visible (respects both the active
-  // Leads sub-tab and the owner-name filter) using the same columns shown
-  // in the table.
-  function exportCsv() {
-    const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL", "Status"];
-    const lines = [header.map(csvField).join(",")];
-    currentRows.forEach(row => {
-      lines.push([
-        csvField(row.recording_date || ""),
-        csvField(row["likely_owner(s)"] || ""),
-        csvField(row.other_names_on_filing || ""),
-        csvField(row.recording_number || ""),
-        csvField(row.score || ""),
-        csvField(row.pdf_available ? (row.filing_url || "") : "not scanned yet"),
-        csvField((statusMap[row.recording_number] || {}).status || "new")
-      ].join(","));
-    });
-    const blob = new Blob([lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    const stamp = new Date().toISOString().slice(0, 10);
-    a.href = url;
-    a.download = `trustee-sale-leads-${stamp}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
-
-  document.getElementById("export-csv").addEventListener("click", exportCsv);
-
-  // Tab switching between the Leads table and the ROI view — plain
-  // show/hide, no routing needed for a two-tab dashboard.
-  function switchTab(which) {
-    document.getElementById("tab-leads").classList.toggle("active", which === "leads");
-    document.getElementById("tab-roi").classList.toggle("active", which === "roi");
-    document.getElementById("tab-leads-btn").classList.toggle("active", which === "leads");
-    document.getElementById("tab-roi-btn").classList.toggle("active", which === "roi");
-    if (which === "roi") renderRoiTab();
-  }
-  document.getElementById("tab-leads-btn").addEventListener("click", () => switchTab("leads"));
-  document.getElementById("tab-roi-btn").addEventListener("click", () => switchTab("roi"));
-
-  // Tracks which recording_number/select element is mid-confirmation while
-  // the close modal is open, so Confirm/Cancel know what to act on.
-  let pendingClose = null;
-
-  function openCloseModal(recordingNumber, selectEl) {
-    pendingClose = { recordingNumber, selectEl };
-    document.getElementById("close-profit").value = "";
-    document.getElementById("close-modal").classList.add("visible");
-  }
-
-  function closeCloseModal() {
-    document.getElementById("close-modal").classList.remove("visible");
-    pendingClose = null;
-  }
-
-  document.getElementById("close-cancel").addEventListener("click", () => {
-    if (pendingClose && pendingClose.selectEl) {
-      // Revert the dropdown to whatever it was actually saved as.
-      const saved = (statusMap[pendingClose.recordingNumber] || {}).status || "new";
-      pendingClose.selectEl.value = saved;
-    }
-    closeCloseModal();
-  });
-
-  // Small celebratory payoff for confirming a closed deal — a mix of
-  // colored confetti rectangles and emoji, falling from the top of the
-  // viewport. Self-cleans via setTimeout so repeated closes don't leak
-  // detached containers into the DOM.
-  function fireConfetti() {
-    const colors = ["var(--gold)", "var(--gold-strong)", "var(--green)", "var(--amber)"];
-    const emoji = ["🎉", "💰", "🥳", "✨"];
-    const container = document.createElement("div");
-    container.className = "confetti-container";
-    document.body.appendChild(container);
-    const pieceCount = 36;
-    for (let i = 0; i < pieceCount; i++) {
-      const piece = document.createElement("div");
-      const useEmoji = Math.random() < 0.3;
-      piece.className = "confetti-piece " + (useEmoji ? "is-emoji" : "is-rect");
-      if (useEmoji) {
-        piece.textContent = emoji[Math.floor(Math.random() * emoji.length)];
-      } else {
-        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-      }
-      piece.style.left = Math.random() * 100 + "vw";
-      piece.style.animationDuration = (1.8 + Math.random() * 1.4) + "s";
-      piece.style.animationDelay = (Math.random() * 0.35) + "s";
-      container.appendChild(piece);
-    }
-    setTimeout(() => container.remove(), 3600);
-  }
-
-  document.getElementById("close-confirm").addEventListener("click", async () => {
-    if (!pendingClose) return;
-    const profit = document.getElementById("close-profit").value;
-    const { recordingNumber } = pendingClose;
-    await postStatus(recordingNumber, "closed", profit);
-    closeCloseModal();
-    // A close moves this lead from Active Pipeline into Closed Deals, so a
-    // full re-filter (not just a per-row patch) is needed to make it
-    // disappear from the Active tab immediately if that's what's showing.
-    applyFilter();
-    renderRoiTab();
-    fireConfetti();
-  });
-
-  // Event delegation on the tbody for status-dropdown changes — same
-  // reasoning as the copy-btn listener above (rows are re-rendered on
-  // every filter/load).
-  document.getElementById("rows").addEventListener("change", async e => {
-    const select = e.target.closest(".status-select");
-    if (!select) return;
-    const recordingNumber = select.dataset.recording;
-    const newStatus = select.value;
-    if (newStatus === "closed") {
-      openCloseModal(recordingNumber, select);
-      return;
-    }
-    await postStatus(recordingNumber, newStatus, "");
-    // Any status change can move a lead between Active and Closed (e.g.
-    // "Lost" is terminal too), so re-filter fully rather than patching the
-    // single row in place.
-    applyFilter();
-    renderRoiTab();
-  });
-
-  // Skip the password prompt if already unlocked earlier this tab session.
-  if (sessionStorage.getItem("tsm_unlocked") === "1") {
-    showApp();
-  }
+// Replaced at publish time with the real SHA-256 hash of the shared password.
+const PASSWORD_HASH = "cc64915a92872899156b6b622212811048451e8e4823d9ac658b00596d57546b";
+
+// Deal-status backend (Google Apps Script Web App — see
+// scripts/apps_script_status_backend.gs for the code + deploy steps).
+// Until the placeholder below is replaced with a real deployed URL, the
+// status column still renders but silently no-ops on read/write rather
+// than breaking the rest of the dashboard.
+const STATUS_API_URL = "https://script.google.com/macros/s/AKfycbwuB13f2v1VLcZtZg6NYtkL5XObj_f41aAUuvvQk_9uLsbtakJIgl_kg7OORgKUsk7DGA/exec";
+const STATUS_API_CONFIGURED = STATUS_API_URL.indexOf("REPLACE_WITH") !== 0;
+
+const STATUS_OPTIONS = [
+["new", "New"],
+["contacted", "Contacted"],
+["under_contract", "Under Contract"],
+["closed", "Closed"],
+["lost", "Lost / Not Interested"]
+];
+
+// Which statuses count as "still being worked" vs. "done" — powers the
+// Active Pipeline / Closed Deals split below. Keeping these as named
+// constants (rather than inlining the checks) means the funnel/ROI logic
+// and the tab-partitioning logic can never quietly drift out of sync.
+const ACTIVE_STATUSES = ["new", "contacted", "under_contract"];
+const CLOSED_STATUSES = ["closed", "lost"];
+
+// recording_number -> { status, profit_reported, updated_at, updated_by },
+// fetched once per page load from the Apps Script backend.
+let statusMap = {};
+
+// Recording numbers this browser has already seen, across visits — powers
+// the "new since your last visit" framing, which is deliberately personal
+// (per-browser) rather than the server-side is_new flag (which just means
+// "new since the last workflow run" and would re-fire every ~30 minutes
+// regardless of whether anyone actually looked at it in between).
+const SEEN_KEY = "singerSignalSeenRecordings";
+const MAX_SEEN = 2000; // guard against unbounded localStorage growth
+
+async function sha256Hex(text) {
+const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// Backend stores/publishes times in UTC; leads are Maricopa County (Arizona)
+// filings, so display in Arizona local time for the people reading this.
+function formatArizonaTime(utcString) {
+if (!utcString || utcString === "unknown") return "unknown";
+const isoish = utcString.replace(" UTC", "Z").replace(" ", "T");
+const date = new Date(isoish);
+if (isNaN(date.getTime())) return utcString;
+const formatted = date.toLocaleString("en-US", {
+timeZone: "America/Phoenix",
+year: "numeric",
+month: "short",
+day: "numeric",
+hour: "numeric",
+minute: "2-digit"
+});
+return formatted + " AZ";
+}
+
+// recording_date arrives as "M-D-YYYY" (day granularity only, no time-of-day),
+// so the relative label below is expressed in whole days, not hours/minutes.
+function parseRecordingDate(dateStr) {
+if (!dateStr) return null;
+const parts = dateStr.split("-");
+if (parts.length !== 3) return null;
+const [m, d, y] = parts.map(Number);
+if (!m || !d || !y) return null;
+const date = new Date(y, m - 1, d);
+return isNaN(date.getTime()) ? null : date;
+}
+
+function relativeDayLabel(dateStr) {
+const date = parseRecordingDate(dateStr);
+if (!date) return "";
+const today = new Date();
+const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+const diffDays = Math.round((startOfToday - date) / 86400000);
+if (diffDays <= 0) return "today";
+if (diffDays === 1) return "yesterday";
+if (diffDays > 0 && diffDays < 60) return diffDays + "d ago";
+return "";
+}
+
+// statusMap entries carry updated_at as an ISO timestamp (see postStatus
+// below), which is precise to the minute — unlike recording_date, so this
+// gets its own relative-time helper rather than reusing relativeDayLabel.
+function relativeTimeLabel(isoString) {
+if (!isoString) return "";
+const date = new Date(isoString);
+if (isNaN(date.getTime())) return "";
+const diffMs = Date.now() - date.getTime();
+const diffMins = Math.round(diffMs / 60000);
+if (diffMins < 1) return "just now";
+if (diffMins < 60) return diffMins + "m ago";
+const diffHours = Math.round(diffMins / 60);
+if (diffHours < 24) return diffHours + "h ago";
+const diffDays = Math.round(diffHours / 24);
+if (diffDays < 30) return diffDays + "d ago";
+const diffMonths = Math.round(diffDays / 30);
+return diffMonths + "mo ago";
+}
+
+// Leads sitting in an active (non-terminal) status without a status update
+// in a while are easy to lose track of. Two tiers, deliberately escalating
+// in language and color (mild amber "needs follow-up" vs. bold red
+// "stalling") rather than one flat badge — a pipeline that's genuinely at
+// risk of going cold should read as more urgent than one that's just a
+// few days quiet, per standard loss-aversion framing for pipeline risk.
+const FOLLOWUP_STALE_DAYS = 5;
+const STALLING_DAYS = 14;
+// "new" is included on purpose: a lead nobody has ever contacted is the
+// worst case for going cold silently, so it needs the same staleness
+// tracking as "contacted"/"under_contract" — just measured from when the
+// filing surfaced (recording_date) instead of a status-change timestamp,
+// since a never-touched lead has no updated_at yet.
+const FOLLOWUP_STATUSES = ["new", "contacted", "under_contract"];
+function followUpTier(status, updatedAt, recordingDateStr) {
+if (!FOLLOWUP_STATUSES.includes(status)) return null;
+const referenceDate = status === "new" ? parseRecordingDate(recordingDateStr) : (updatedAt ? new Date(updatedAt) : null);
+if (!referenceDate || isNaN(referenceDate.getTime())) return null;
+const diffDays = (Date.now() - referenceDate.getTime()) / 86400000;
+if (diffDays >= STALLING_DAYS) return "stalling";
+if (diffDays >= FOLLOWUP_STALE_DAYS) return "followup";
+return null;
+}
+
+function getSeenSet() {
+try {
+const raw = JSON.parse(localStorage.getItem(SEEN_KEY) || "[]");
+return new Set(raw);
+} catch (e) {
+return new Set();
+}
+}
+
+function saveSeenSet(set) {
+let arr = Array.from(set);
+if (arr.length > MAX_SEEN) arr = arr.slice(arr.length - MAX_SEEN);
+localStorage.setItem(SEEN_KEY, JSON.stringify(arr));
+}
+
+async function tryUnlock() {
+const pw = document.getElementById("pw").value;
+const hash = await sha256Hex(pw);
+if (hash === PASSWORD_HASH) {
+sessionStorage.setItem("tsm_unlocked", "1");
+showApp();
+} else {
+document.getElementById("err").textContent = "Incorrect password.";
+}
+}
+
+document.getElementById("unlock").addEventListener("click", tryUnlock);
+document.getElementById("pw").addEventListener("keydown", e => {
+if (e.key === "Enter") tryUnlock();
+});
+
+function showApp() {
+document.getElementById("gate").style.display = "none";
+document.getElementById("app").classList.add("visible");
+loadData();
+}
+
+// Full lead list from the last successful fetch, sorted for display. The
+// search box filters this in memory rather than re-fetching.
+let allLeads = [];
+
+// Rows currently displayed (after sub-tab + filtering) — CSV export
+// mirrors this, not the full unfiltered list.
+let currentRows = [];
+
+// Recording numbers seen on THIS load, marked "new to you" if absent from
+// the seen-set that was in localStorage before this page load started.
+let newToUserCount = 0;
+
+// Which Leads sub-tab is showing: "active" (working pipeline) or "closed"
+// (done — closed or lost). Defaults to active so the operator always
+// lands on the list they actually need to work, not a mix of live and
+// historical records.
+let leadsSubTab = "active";
+
+// Closed Deals is a reference/history view, not a working view — render
+// it newest-first and reveal older records a page at a time instead of
+// dumping the full history, so it stays glanceable as it grows.
+const CLOSED_PAGE_SIZE = 15;
+let closedVisibleCount = CLOSED_PAGE_SIZE;
+
+// Counts how many rows have the manual-review flag set.
+function countNeedsReview(rows) {
+return rows.filter(row => row.needs_manual_review && row.needs_manual_review.trim()).length;
+}
+
+function getStatus(lead) {
+return (statusMap[lead.recording_number] || {}).status || "new";
+}
+
+// Splits the full lead list into the Active Pipeline vs. Closed Deals
+// sets. Terminal statuses (closed, lost) are deliberately kept out of the
+// active view — mixing them in is a common complaint with off-the-shelf
+// CRM pipeline boards, since it dilutes the list the operator actually
+// needs to act on.
+function leadsInSubTab(subtab) {
+const statuses = subtab === "closed" ? CLOSED_STATUSES : ACTIVE_STATUSES;
+return allLeads.filter(lead => statuses.includes(getStatus(lead)));
+}
+
+// Closed Deals sorts by when the deal actually closed/was marked lost
+// (status updated_at), not by original filing date — a deal filed months
+// ago but closed yesterday belongs at the top of "recently closed".
+function sortClosedNewestFirst(leads) {
+return leads.slice().sort((a, b) => {
+const ea = statusMap[a.recording_number] || {};
+const eb = statusMap[b.recording_number] || {};
+const ta = ea.updated_at ? new Date(ea.updated_at).getTime() : 0;
+const tb = eb.updated_at ? new Date(eb.updated_at).getTime() : 0;
+return tb - ta;
+});
+}
+
+// Small persistent "X active · Y closed" readout next to the sub-tabs.
+// Always reflects the full lead list (not the current search filter) —
+// it's meant as a stable at-a-glance pipeline count, the kind of always-
+// visible progress readout that nudges an operator back to clear the
+// active list, not a filtered stat that moves around as they type.
+function updatePipelineCount() {
+const el = document.getElementById("pipeline-count");
+if (!el) return;
+const activeCount = allLeads.filter(l => ACTIVE_STATUSES.includes(getStatus(l))).length;
+const closedCount = allLeads.filter(l => CLOSED_STATUSES.includes(getStatus(l))).length;
+el.textContent = `${activeCount} active · ${closedCount} closed`;
+}
+
+function updateSummary(rows) {
+const el = document.getElementById("summary");
+// Denominator is the current Leads sub-tab's own pool (Active or Closed),
+// not the whole lead list — comparing a 6-row Active view against a
+// 26-lead grand total produced a permanently-misleading "Showing 6 of 26"
+// readout that looked like a search filter was active even when it wasn't.
+const subtabPool = leadsInSubTab(leadsSubTab);
+const subtabTotal = subtabPool.length;
+const totalReview = countNeedsReview(subtabPool);
+const showingAll = rows.length === subtabTotal;
+const noun = leadsSubTab === "closed" ? "closed deal" : "active lead";
+
+const newPart = newToUserCount > 0
+? `<span class="headline has-new">${newToUserCount} new since your last visit</span>`
+: `<span class="headline">No new leads since your last visit</span>`;
+const countPart = showingAll
+? `<span class="sub">${subtabTotal} ${noun}${subtabTotal === 1 ? "" : "s"} tracked</span>`
+: `<span class="sub">Showing ${rows.length} of ${subtabTotal} ${noun}${subtabTotal === 1 ? "" : "s"}</span>`;
+const reviewPart = `<span class="sub">${totalReview} flagged for review</span>`;
+
+el.innerHTML = `${newPart}<span class="sep">·</span>${countPart}<span class="sep">·</span>${reviewPart}`;
+}
+
+function confidencePill(score) {
+const n = Number(score) || 0;
+let cls = "conf-low";
+if (n >= 15) cls = "conf-high";
+else if (n >= 10) cls = "conf-mid";
+return `<span class="conf-pill ${cls}">${score || ""}</span>`;
+}
+
+// rows: the already sub-tab-filtered + search-filtered + (for Closed)
+// paginated list to display. opts.hasMore / opts.remaining describe
+// whether a "Show more" control is needed below the table.
+function renderRows(rows, opts) {
+opts = opts || {};
+const tbody = document.getElementById("rows");
+tbody.innerHTML = "";
+const emptyEl = document.getElementById("empty");
+const hasQuery = document.getElementById("search").value.trim().length > 0;
+if (rows.length === 0) {
+if (leadsSubTab === "closed") {
+emptyEl.textContent = hasQuery
+? "No closed deals match that search."
+: "No closed deals yet. Once you close your first one, it'll show up here.";
+} else {
+emptyEl.textContent = hasQuery
+? "No active leads match that search."
+: "No active leads right now — nice and clear.";
+}
+emptyEl.style.display = "block";
+} else {
+emptyEl.style.display = "none";
+}
+updateSummary(rows);
+currentRows = rows;
+rows.forEach(row => {
+const tr = document.createElement("tr");
+const isReview = !!(row.needs_manual_review && row.needs_manual_review.trim());
+const isNewToUser = !!row._newToUser;
+const recordingNumber = row.recording_number || "";
+// Status/tier are computed up front (moved ahead of badge assembly) so
+// the badges below can all see the current status and staleness tier —
+// needed so NEW and stalling/follow-up never render on the same row,
+// and so NEW never renders on a deal that's already closed or lost.
+const statusEntry = statusMap[recordingNumber] || {};
+const currentStatus = statusEntry.status || "new";
+const tier = followUpTier(currentStatus, statusEntry.updated_at, row.recording_date);
+tr.className = (isNewToUser ? "row-new " : "") + (isReview ? "row-review" : "");
+const reviewBadge = isReview ? '<span class="badge">review</span>' : "";
+// NEW is suppressed once a lead is closed/lost (it's history, not new
+// work) and suppressed whenever a follow-up/stalling badge is already
+// showing — "just arrived" and "gone stale" are contradictory framings,
+// and staleness is the more actionable of the two, so it wins.
+const newBadge = (isNewToUser && !CLOSED_STATUSES.includes(currentStatus) && !tier)
+? '<span class="badge badge-new">NEW</span>'
+: "";
+// Closed Deals mixes closed and lost outcomes in one sorted list with
+// only the status-dropdown border color telling them apart — add an
+// explicit, always-visible outcome badge so "closed" vs. "lost" reads
+// at a glance instead of requiring a second look at a 1px border color.
+const outcomeBadge = currentStatus === "closed"
+? '<span class="badge badge-closed-outcome">CLOSED</span>'
+: currentStatus === "lost"
+? '<span class="badge badge-lost-outcome">LOST</span>'
+: "";
+// The county sometimes hasn't finished imaging a document a few hours
+// after it's recorded, so pdf_available (checked server-side at build
+// time) gates whether the direct link is shown at all — a dead 404 is
+// a worse experience than an honest "not scanned yet" state with a
+// manual fallback to the Recorder's own search tool.
+const filingLink = row.filing_url && row.pdf_available
+? `<a class="filing-link" href="${row.filing_url}" target="_blank" rel="noopener noreferrer">View PDF</a>`
+: row.recorder_search_url
+? `<span class="filing-pending" title="The county hasn't finished scanning this filing yet — usually ready within a day. Search by recording number ${row.recording_number || ""} on the Recorder site instead.">Not scanned yet · <a href="${row.recorder_search_url}" target="_blank" rel="noopener noreferrer">search Recorder site</a></span>`
+: "";
+const copyBtn = recordingNumber
+? `<button class="copy-btn" data-recording="${recordingNumber}" title="Copy recording number">⧉</button>`
+: "";
+const relLabel = relativeDayLabel(row.recording_date);
+const statusOptionsHtml = STATUS_OPTIONS.map(([value, label]) =>
+`<option value="${value}"${value === currentStatus ? " selected" : ""}>${label}</option>`
+).join("");
+const updatedLabel = currentStatus !== "new" ? relativeTimeLabel(statusEntry.updated_at) : "";
+const statusCell = recordingNumber
+? `<select class="status-select status-${currentStatus}" data-recording="${recordingNumber}">${statusOptionsHtml}</select>${updatedLabel ? `<span class="status-updated">${updatedLabel}</span>` : ""}`
+: "";
+const followUpBadge = tier === "stalling"
+? `<span class="badge badge-stalling" title="${currentStatus === "new" ? `Filed ${STALLING_DAYS}+ days ago, still not contacted` : `No status update in ${STALLING_DAYS}+ days — at risk of going cold`}">stalling</span>`
+: tier === "followup"
+? `<span class="badge badge-followup" title="${currentStatus === "new" ? `Filed ${FOLLOWUP_STALE_DAYS}+ days ago, not yet contacted` : `No status update in ${FOLLOWUP_STALE_DAYS}+ days`}">needs follow-up</span>`
+: "";
+tr.innerHTML = `
+<td><span class="filed-date">${row.recording_date || ""}</span>${relLabel ? `<span class="filed-rel">${relLabel}</span>` : ""}</td>
+<td>${row["likely_owner(s)"] || ""}${newBadge}${outcomeBadge}${reviewBadge}${followUpBadge}</td>
+<td>${row.other_names_on_filing || ""}</td>
+<td>${recordingNumber}${copyBtn}</td>
+<td>${confidencePill(row.score)}</td>
+<td>${filingLink}</td>
+<td>${statusCell}</td>
+`;
+tbody.appendChild(tr);
+});
+
+const loadMoreWrap = document.getElementById("load-more-wrap");
+if (loadMoreWrap) {
+if (leadsSubTab === "closed" && opts.hasMore) {
+const remaining = opts.remaining || 0;
+loadMoreWrap.innerHTML = `<button class="btn" id="load-more-btn">Show ${Math.min(CLOSED_PAGE_SIZE, remaining)} more</button>`;
+loadMoreWrap.style.display = "block";
+} else {
+loadMoreWrap.innerHTML = "";
+loadMoreWrap.style.display = "none";
+}
+}
+}
+
+// Applies the active sub-tab (Active Pipeline / Closed Deals), then the
+// owner-name search, then — for Closed Deals only — newest-first sorting
+// and pagination, before handing off to renderRows.
+function applyFilter() {
+const q = document.getElementById("search").value.trim().toLowerCase();
+let subset = leadsInSubTab(leadsSubTab);
+if (q) subset = subset.filter(row => (row["likely_owner(s)"] || "").toLowerCase().includes(q));
+
+let toRender = subset;
+let hasMore = false;
+let remaining = 0;
+if (leadsSubTab === "closed") {
+toRender = sortClosedNewestFirst(subset);
+hasMore = toRender.length > closedVisibleCount;
+remaining = toRender.length - closedVisibleCount;
+toRender = toRender.slice(0, closedVisibleCount);
+}
+
+renderRows(toRender, { hasMore, remaining });
+updatePipelineCount();
+}
+
+// Switches between Active Pipeline and Closed Deals. Resets the Closed
+// pagination window each time it's opened, so it always starts on the
+// most-recent page rather than wherever a previous visit left off.
+function switchLeadsSubTab(which) {
+leadsSubTab = which;
+if (which === "closed") closedVisibleCount = CLOSED_PAGE_SIZE;
+document.getElementById("subtab-active-btn").classList.toggle("active", which === "active");
+document.getElementById("subtab-closed-btn").classList.toggle("active", which === "closed");
+applyFilter();
+}
+document.getElementById("subtab-active-btn").addEventListener("click", () => switchLeadsSubTab("active"));
+document.getElementById("subtab-closed-btn").addEventListener("click", () => switchLeadsSubTab("closed"));
+
+// Single delegated listener for the "Show N more" button — it's
+// recreated on every render, so binding once on the stable wrapper
+// avoids re-adding (and duplicating) a listener each time.
+document.getElementById("load-more-wrap").addEventListener("click", e => {
+if (e.target && e.target.id === "load-more-btn") {
+closedVisibleCount += CLOSED_PAGE_SIZE;
+applyFilter();
+}
+});
+
+async function loadStatuses() {
+if (!STATUS_API_CONFIGURED) return;
+try {
+const res = await fetch(STATUS_API_URL, { cache: "no-store" });
+const data = await res.json();
+statusMap = data.statuses || {};
+} catch (e) {
+// Backend hiccup shouldn't take down the leads table — status column
+// just falls back to "New" for everything this load.
+statusMap = {};
+}
+}
+
+// Sent as text/plain rather than application/json deliberately: a JSON
+// content-type on a cross-origin POST triggers a CORS preflight (OPTIONS)
+// request, which Apps Script Web Apps don't handle. text/plain keeps this
+// a "simple request" that skips preflight; the Apps Script side still
+// JSON.parses the body normally.
+async function postStatus(recordingNumber, status, profitReported) {
+if (!STATUS_API_CONFIGURED) return false;
+try {
+await fetch(STATUS_API_URL, {
+method: "POST",
+headers: { "Content-Type": "text/plain;charset=utf-8" },
+body: JSON.stringify({
+recording_number: recordingNumber,
+status: status,
+profit_reported: profitReported || "",
+updated_by: "dashboard"
+})
+});
+statusMap[recordingNumber] = {
+status: status,
+profit_reported: profitReported || "",
+updated_at: new Date().toISOString()
+};
+return true;
+} catch (e) {
+return false;
+}
+}
+
+function statusFunnelCounts() {
+const counts = { new: 0, contacted: 0, under_contract: 0, closed: 0, lost: 0 };
+allLeads.forEach(lead => {
+const s = (statusMap[lead.recording_number] || {}).status || "new";
+if (counts[s] === undefined) counts[s] = 0;
+counts[s]++;
+});
+const total = allLeads.length;
+return {
+total,
+contactedPlus: counts.contacted + counts.under_contract + counts.closed,
+underContractPlus: counts.under_contract + counts.closed,
+closed: counts.closed,
+lost: counts.lost
+};
+}
+
+// Dormant fee-comparison scaffold. Real numbers aren't finalized with the
+// client yet, so this stays null on purpose — computeTotalFees() returns
+// null until both values below are filled in, and every place that reads
+// it treats null as "don't render this stat". Activating the fee-multiple
+// chip later should mean filling in these two fields, nothing else.
+const FEE_CONFIG = {
+contractStartDate: null, // e.g. "2026-08-01"
+perDealFee: 1000, // established $1,000 success fee per closed deal
+monthlyFee: null // monthly retainer, once agreed with the client
+};
+
+function computeTotalFees(closedCount) {
+if (FEE_CONFIG.monthlyFee == null || FEE_CONFIG.contractStartDate == null) return null;
+const start = new Date(FEE_CONFIG.contractStartDate);
+if (isNaN(start.getTime())) return null;
+const now = new Date();
+const monthsElapsed = Math.max(
+0,
+(now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth())
+);
+return (FEE_CONFIG.perDealFee * closedCount) + (FEE_CONFIG.monthlyFee * monthsElapsed);
+}
+
+function renderRoiTab() {
+const c = statusFunnelCounts();
+const total = c.total || 1;
+
+const kpis = [
+{ label: "Surfaced", count: c.total, pct: 100 },
+{ label: "Contacted", count: c.contactedPlus, pct: Math.round((c.contactedPlus / total) * 100) },
+{ label: "Under Contract", count: c.underContractPlus, pct: Math.round((c.underContractPlus / total) * 100) },
+{ label: "Closed", count: c.closed, pct: Math.round((c.closed / total) * 100), isClosed: c.closed > 0 }
+];
+document.getElementById("kpi-grid").innerHTML = kpis.map(k => `
+<div class="kpi-card${k.isClosed ? " is-closed" : ""}">
+<div class="kpi-top"><span class="kpi-pct">${k.pct}%</span></div>
+<div class="kpi-num">${k.count}</div>
+<div class="kpi-label">${k.label}</div>
+</div>
+`).join("");
+
+const stages = [
+["Surfaced", c.total, false],
+["Contacted", c.contactedPlus, false],
+["Under Contract", c.underContractPlus, false],
+["Closed", c.closed, true]
+];
+const max = c.total || 1;
+document.getElementById("funnel").innerHTML = stages.map(([label, count, isClosed]) => `
+<div class="funnel-row${isClosed ? " is-closed" : ""}">
+<div class="funnel-label">${label}</div>
+<div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (count / max) * 100)}%"></div></div>
+<div class="funnel-count">${count}</div>
+</div>
+`).join("") + (c.lost > 0 ? `
+<div class="funnel-row is-lost" style="opacity:0.7;">
+<div class="funnel-label">Lost</div>
+<div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${Math.max(6, (c.lost / max) * 100)}%; background:var(--danger);"></div></div>
+<div class="funnel-count">${c.lost}</div>
+</div>
+` : "");
+
+document.getElementById("roi-summary").innerHTML = "";
+
+if (c.closed === 0) {
+document.getElementById("roi-hero").innerHTML = `
+<div class="roi-stepper">
+<div class="steps">
+<div class="step done"><div class="step-dot">✓</div><div class="step-label">Surfaced</div></div>
+<div class="step${c.contactedPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.contactedPlus > 0 ? "✓" : "2"}</div><div class="step-label">Contacted</div></div>
+<div class="step${c.underContractPlus > 0 ? " done" : ""}"><div class="step-line"></div><div class="step-dot">${c.underContractPlus > 0 ? "✓" : "3"}</div><div class="step-label">Under Contract</div></div>
+<div class="step"><div class="step-line"></div><div class="step-dot">4</div><div class="step-label">Closed</div></div>
+</div>
+<div class="step-note"><strong>Your ROI story starts here.</strong> Once your first deal closes, this view fills in automatically with real profit numbers — no extra work on your end.</div>
+</div>
+`;
+return;
+}
+
+let totalProfit = 0;
+let hasProfitData = false;
+allLeads.forEach(lead => {
+const entry = statusMap[lead.recording_number];
+if (entry && entry.status === "closed" && entry.profit_reported) {
+const n = Number(entry.profit_reported);
+if (!isNaN(n) && n > 0) { totalProfit += n; hasProfitData = true; }
+}
+});
+
+if (!hasProfitData) {
+document.getElementById("roi-hero").innerHTML = `
+<div class="roi-hero">
+<div class="roi-figure">${c.closed}</div>
+<div class="roi-sub">deal${c.closed === 1 ? "" : "s"} closed so far. Add estimated profit on your next close to see your $ return here.</div>
+</div>
+`;
+return;
+}
+
+const totalFees = computeTotalFees(c.closed);
+const feeChip = (totalFees != null && totalFees > 0)
+? `<div class="roi-chip">${(totalProfit / totalFees).toFixed(1)}× return on $${totalFees.toLocaleString()} in fees</div>`
+: "";
+
+document.getElementById("roi-hero").innerHTML = `
+<div class="roi-hero">
+<div class="roi-figure">$${totalProfit.toLocaleString()}</div>
+<div class="roi-sub">reported profit across ${c.closed} closed deal${c.closed === 1 ? "" : "s"}</div>
+${feeChip}
+</div>
+`;
+}
+
+async function loadData() {
+try {
+const [res] = await Promise.all([
+fetch("leads.json", { cache: "no-store" }),
+loadStatuses()
+]);
+const data = await res.json();
+document.getElementById("generated").textContent =
+"Last checked " + formatArizonaTime(data.generated_at_utc);
+
+const seen = getSeenSet();
+const leads = (data.leads || []).slice();
+leads.forEach(lead => {
+lead._newToUser = !!(lead.recording_number && !seen.has(lead.recording_number));
+});
+newToUserCount = leads.filter(l => l._newToUser).length;
+
+// Sort: new-to-you first, then most recently filed, then match confidence.
+allLeads = leads.sort((a, b) => {
+if (a._newToUser !== b._newToUser) return a._newToUser ? -1 : 1;
+const da = parseRecordingDate(a.recording_date);
+const db = parseRecordingDate(b.recording_date);
+const ta = da ? da.getTime() : 0;
+const tb = db ? db.getTime() : 0;
+if (ta !== tb) return tb - ta;
+return Number(b.score || 0) - Number(a.score || 0);
+});
+
+applyFilter();
+renderRoiTab();
+
+// Mark everything currently loaded as seen for next visit — do this
+// after render so this visit still shows the NEW badges.
+const nextSeen = getSeenSet();
+allLeads.forEach(l => { if (l.recording_number) nextSeen.add(l.recording_number); });
+saveSeenSet(nextSeen);
+} catch (e) {
+document.getElementById("empty").textContent = "Couldn't load leads data.";
+document.getElementById("empty").style.display = "block";
+}
+}
+
+document.getElementById("search").addEventListener("input", applyFilter);
+
+// Event delegation on the tbody: rows are re-rendered on every filter/load,
+// so a listener attached to individual buttons would be lost (or, if
+// re-added each render, duplicated). Binding once on the stable parent
+// avoids both problems.
+document.getElementById("rows").addEventListener("click", e => {
+const btn = e.target.closest(".copy-btn");
+if (!btn) return;
+const recording = btn.dataset.recording;
+navigator.clipboard.writeText(recording).then(() => {
+const original = btn.textContent;
+btn.textContent = "✓";
+btn.classList.add("copied");
+setTimeout(() => {
+btn.textContent = original;
+btn.classList.remove("copied");
+}, 1200);
+});
+});
+
+// Wraps a CSV field in quotes and escapes embedded quotes whenever the
+// value contains a comma, quote, or newline that would otherwise break
+// column alignment.
+function csvField(value) {
+const str = String(value == null ? "" : value);
+if (/[",\n]/.test(str)) {
+return '"' + str.replace(/"/g, '""') + '"';
+}
+return str;
+}
+
+// Exports whatever rows are currently visible (respects both the active
+// Leads sub-tab and the owner-name filter) using the same columns shown
+// in the table.
+function exportCsv() {
+const header = ["Filed", "Likely Owner(s)", "Other Names on Filing", "Recording #", "Match Confidence", "Filing URL", "Status"];
+const lines = [header.map(csvField).join(",")];
+currentRows.forEach(row => {
+lines.push([
+csvField(row.recording_date || ""),
+csvField(row["likely_owner(s)"] || ""),
+csvField(row.other_names_on_filing || ""),
+csvField(row.recording_number || ""),
+csvField(row.score || ""),
+csvField(row.pdf_available ? (row.filing_url || "") : "not scanned yet"),
+csvField((statusMap[row.recording_number] || {}).status || "new")
+].join(","));
+});
+const blob = new Blob([lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+const url = URL.createObjectURL(blob);
+const a = document.createElement("a");
+const stamp = new Date().toISOString().slice(0, 10);
+a.href = url;
+a.download = `trustee-sale-leads-${stamp}.csv`;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}
+
+document.getElementById("export-csv").addEventListener("click", exportCsv);
+
+// Tab switching between the Leads table and the ROI view — plain
+// show/hide, no routing needed for a two-tab dashboard.
+function switchTab(which) {
+document.getElementById("tab-leads").classList.toggle("active", which === "leads");
+document.getElementById("tab-roi").classList.toggle("active", which === "roi");
+document.getElementById("tab-leads-btn").classList.toggle("active", which === "leads");
+document.getElementById("tab-roi-btn").classList.toggle("active", which === "roi");
+if (which === "roi") renderRoiTab();
+}
+document.getElementById("tab-leads-btn").addEventListener("click", () => switchTab("leads"));
+document.getElementById("tab-roi-btn").addEventListener("click", () => switchTab("roi"));
+
+// Tracks which recording_number/select element is mid-confirmation while
+// the close modal is open, so Confirm/Cancel know what to act on.
+let pendingClose = null;
+
+function openCloseModal(recordingNumber, selectEl) {
+pendingClose = { recordingNumber, selectEl };
+document.getElementById("close-profit").value = "";
+document.getElementById("close-modal").classList.add("visible");
+}
+
+function closeCloseModal() {
+document.getElementById("close-modal").classList.remove("visible");
+pendingClose = null;
+}
+
+document.getElementById("close-cancel").addEventListener("click", () => {
+if (pendingClose && pendingClose.selectEl) {
+// Revert the dropdown to whatever it was actually saved as.
+const saved = (statusMap[pendingClose.recordingNumber] || {}).status || "new";
+pendingClose.selectEl.value = saved;
+}
+closeCloseModal();
+});
+
+// Small celebratory payoff for confirming a closed deal — a mix of
+// colored confetti rectangles and emoji, falling from the top of the
+// viewport. Self-cleans via setTimeout so repeated closes don't leak
+// detached containers into the DOM.
+function fireConfetti() {
+const colors = ["var(--gold)", "var(--gold-strong)", "var(--green)", "var(--amber)"];
+const emoji = ["🎉", "💰", "🥳", "✨"];
+const container = document.createElement("div");
+container.className = "confetti-container";
+document.body.appendChild(container);
+const pieceCount = 36;
+for (let i = 0; i < pieceCount; i++) {
+const piece = document.createElement("div");
+const useEmoji = Math.random() < 0.3;
+piece.className = "confetti-piece " + (useEmoji ? "is-emoji" : "is-rect");
+if (useEmoji) {
+piece.textContent = emoji[Math.floor(Math.random() * emoji.length)];
+} else {
+piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+}
+piece.style.left = Math.random() * 100 + "vw";
+piece.style.animationDuration = (1.8 + Math.random() * 1.4) + "s";
+piece.style.animationDelay = (Math.random() * 0.35) + "s";
+container.appendChild(piece);
+}
+setTimeout(() => container.remove(), 3600);
+}
+
+document.getElementById("close-confirm").addEventListener("click", async () => {
+if (!pendingClose) return;
+const profit = document.getElementById("close-profit").value;
+const { recordingNumber } = pendingClose;
+await postStatus(recordingNumber, "closed", profit);
+closeCloseModal();
+// A close moves this lead from Active Pipeline into Closed Deals, so a
+// full re-filter (not just a per-row patch) is needed to make it
+// disappear from the Active tab immediately if that's what's showing.
+applyFilter();
+renderRoiTab();
+fireConfetti();
+});
+
+// Event delegation on the tbody for status-dropdown changes — same
+// reasoning as the copy-btn listener above (rows are re-rendered on
+// every filter/load).
+document.getElementById("rows").addEventListener("change", async e => {
+const select = e.target.closest(".status-select");
+if (!select) return;
+const recordingNumber = select.dataset.recording;
+const newStatus = select.value;
+if (newStatus === "closed") {
+openCloseModal(recordingNumber, select);
+return;
+}
+await postStatus(recordingNumber, newStatus, "");
+// Any status change can move a lead between Active and Closed (e.g.
+// "Lost" is terminal too), so re-filter fully rather than patching the
+// single row in place.
+applyFilter();
+renderRoiTab();
+});
+
+// Skip the password prompt if already unlocked earlier this tab session.
+if (sessionStorage.getItem("tsm_unlocked") === "1") {
+showApp();
+}
 </script>
 
 </body>
