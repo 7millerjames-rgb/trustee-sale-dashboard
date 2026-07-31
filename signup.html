@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMS Alert Sign-Up — James Miller</title>
+<title>SMS Alert Sign-Up — Cadence Operating Co.</title>
 <style>
   :root {
     --bg: #0f1115;
@@ -143,7 +143,7 @@
 <body>
 <div class="wrap">
   <h1>SMS Alert Sign-Up</h1>
-  <p class="subtitle">Get notified by text when James Miller identifies a new trustee sale filing.</p>
+  <p class="subtitle">Get notified by text when Cadence Operating Co. identifies a new trustee sale filing.</p>
 
   <form id="signup-form" class="panel">
     <label for="name">Name</label>
@@ -156,8 +156,13 @@
     <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(555) 555-5555">
 
     <div class="checkbox-row">
-      <input type="checkbox" id="consent" name="consent" required>
-      <label for="consent">I agree to receive SMS alerts about new trustee sale filings from James Miller. I have read and agree to the <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+      <input type="checkbox" id="sms-consent" name="sms-consent" required>
+      <label for="sms-consent">I agree to receive recurring SMS alerts about new trustee sale filings from Cadence Operating Co. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help.</label>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="legal-consent" name="legal-consent" required>
+      <label for="legal-consent">I have read and agree to the <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</label>
     </div>
 
     <button type="submit" id="submit-btn">Sign Up</button>
@@ -171,7 +176,7 @@
 
   <div class="confirmation" id="confirmation">
     <h2>Thanks, you're on the list.</h2>
-    <p>This is a preview form used for carrier compliance review. If you'd like to actually receive alerts, please contact us directly at <a href="mailto:7millerjames@gmail.com" style="color: var(--accent);">7millerjames@gmail.com</a> or (480) 296-1404 and we'll add you.</p>
+    <p>This is a preview form used for carrier compliance review. If you'd like to actually receive alerts, please contact us directly at <a href="mailto:miller@cadenceoperating.co" style="color: var(--accent);">miller@cadenceoperating.co</a> or (480) 296-1404 and we'll add you.</p>
   </div>
 
   <div class="footer-links">
@@ -184,9 +189,9 @@
   // Placeholder submit handler: this page is a static preview built for
   // Twilio A2P 10DLC compliance review. There is no backend wired up yet —
   // submissions are not stored or transmitted anywhere. Real alert
-  // recipients are still added manually by James Miller for now. Once a real
-  // intake backend exists, replace this handler with an actual fetch()
-  // call to that service.
+  // recipients are still added manually by Cadence Operating Co. for now.
+  // Once a real intake backend exists, replace this handler with an
+  // actual fetch() call to that service.
   document.getElementById("signup-form").addEventListener("submit", function (e) {
     e.preventDefault();
     document.getElementById("signup-form").style.display = "none";
