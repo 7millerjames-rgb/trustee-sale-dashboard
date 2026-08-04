@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-04 16:24 UTC",
+  "generated_at_utc": "2026-08-04 20:54 UTC",
   "leads": [
     {
       "recording_number": "20260437258",
@@ -272,7 +272,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260454238.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260432346",
@@ -1000,7 +1000,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260454181.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456005",
@@ -1013,7 +1013,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456005.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456104",
@@ -1026,7 +1026,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456104.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260431332",
@@ -2161,7 +2161,7 @@
     },
     {
       "recording_number": "20260450512",
-      "recording_date": "7-24-2026",
+      "recording_date": "7-29-2026",
       "likely_owner(s)": "COLTEN MICHAEL (individual)",
       "other_names_on_filing": "LEGACY MORTGAGE ASSET TRUST 2017 RPL2; U S BANK TRUST",
       "page_count": "3",
@@ -2326,7 +2326,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260455322.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260455685",
@@ -2339,7 +2339,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260455685.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456044",
@@ -2352,7 +2352,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456044.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456059",
@@ -2365,7 +2365,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456059.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456074",
@@ -2378,7 +2378,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456074.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260456079",
@@ -2599,7 +2599,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260455684.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     }
   ]
 }
