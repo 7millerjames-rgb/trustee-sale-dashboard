@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-04 20:54 UTC",
+  "generated_at_utc": "2026-08-05 06:15 UTC",
   "leads": [
     {
       "recording_number": "20260437258",
@@ -62,45 +62,6 @@
       "score": "12",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452832.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": false
-    },
-    {
-      "recording_number": "20260432369",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "ALDRIDGE PITE LLP (individual); WASHINGTON FAMILY LIVING TRUST (trust_or_estate); WASHINGTON NANCY J (individual)",
-      "other_names_on_filing": "FINANCIAL FREEDOM SENIOR FUNDING CORPORATION; INDYMAC BANK F S B",
-      "page_count": "3",
-      "score": "10",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432369.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432494",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "JPFLYNN (individual); LOPEZ RICARDO E (individual); VAZQUEZ JELSY C FABELA (individual)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "9",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432494.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260433079",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "DAMIAN GWENDOLYN (individual); DAMIAN VIBIEN (individual); KATAKANYA MOSES (individual)",
-      "other_names_on_filing": "ATHENE ANNUITY LIFE COMPANY",
-      "page_count": "2",
-      "score": "9",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433079.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -233,7 +194,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453652.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453730",
@@ -246,7 +207,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453730.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453735",
@@ -259,7 +220,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453735.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260454238",
@@ -275,68 +236,16 @@
       "pdf_available": true
     },
     {
-      "recording_number": "20260432346",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "PEGUE LUCKIE (individual); PEGUE SONYA (individual)",
-      "other_names_on_filing": "U S BANK TRUST NATIONAL ASSOCIATION",
+      "recording_number": "20260456671",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "BENDY BRAD (individual); EXCESS FUNDS OF ARIZONA L L C (individual); MERAZ JESUS S (individual)",
+      "other_names_on_filing": "PIONEER TITLE AGENCY INC",
       "page_count": "2",
-      "score": "6",
+      "score": "9",
       "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432346.pdf",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456671.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432358",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "ACOSTA LUIS (individual); GUTIERREZ JUANA GONZALEZ (individual)",
-      "other_names_on_filing": "NEWREZ",
-      "page_count": "2",
-      "score": "6",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432358.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432932",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "ACEVEDO ALLAN LOPEZ (individual); OTOYA CASTAING MARIA GABRIELA (individual)",
-      "other_names_on_filing": "ROCKET MORTGAGE",
-      "page_count": "2",
-      "score": "6",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432932.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432974",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "MICHELLE R GHIDOTTI ATTORNEY AT LAW (individual); SUCHOMSKI CHRISTOPHER (individual)",
-      "other_names_on_filing": "GS MORTGAGE BACKED SECURITIES TRUST 2025 CES1; US BANK TRUST NATIONAL ASSOCIATION",
-      "page_count": "2",
-      "score": "6",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432974.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260433064",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "PENA ANGELA MARIE (individual); PENA RICHARD JAIME (individual)",
-      "other_names_on_filing": "GHIDOTTI MICHELLE R; MCLP ASSET COMPANY INC; NEW PENN FINANCIAL; NEWREZ LLC; PRESTIGE DEFAULT SERVICES LLC; SHELLPOINT MORTGAGE SERVICING",
-      "page_count": "2",
-      "score": "6",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433064.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
+      "is_new": true,
       "pdf_available": true
     },
     {
@@ -896,7 +805,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452116.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452220",
@@ -909,7 +818,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452220.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452518",
@@ -922,7 +831,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452518.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452843",
@@ -935,7 +844,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452843.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453121",
@@ -948,7 +857,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453121.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453718",
@@ -961,7 +870,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453718.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453719",
@@ -974,7 +883,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453719.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453731",
@@ -987,7 +896,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453731.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260454181",
@@ -1029,107 +938,42 @@
       "pdf_available": true
     },
     {
-      "recording_number": "20260431332",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "MCCONNAUGHEY DIANA F (individual)",
-      "other_names_on_filing": "NEWREZ",
+      "recording_number": "20260456710",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "DAVIS ERIC (individual); DAVIS KORTNEY (individual)",
+      "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC",
       "page_count": "2",
-      "score": "3",
+      "score": "6",
       "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260431332.pdf",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456710.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
+      "is_new": true,
       "pdf_available": true
     },
     {
-      "recording_number": "20260431968",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "SMITH EMMA (individual)",
-      "other_names_on_filing": "AROO INVESTMENTS LLC; PHOENIX 82 LLC",
-      "page_count": "4",
-      "score": "3",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260431968.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432313",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "CHAMBERS TAWANAMIE (individual)",
-      "other_names_on_filing": "PRIME RECON LLC; U S BANK NATIONAL ASSOCIATION",
-      "page_count": "4",
-      "score": "3",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432313.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260432729",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "MAY POTENZA BARAN GILLESPIE P C (individual)",
-      "other_names_on_filing": "JJ SAK LLC; LAND LORD INC",
-      "page_count": "4",
-      "score": "3",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260432729.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260433051",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "LOPEZ BARBARA (individual)",
-      "other_names_on_filing": "PRIME RECON LLC; ROCKET MORTGAGE LLC",
-      "page_count": "4",
-      "score": "3",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433051.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260433076",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "BROWN DEONTE (individual)",
-      "other_names_on_filing": "ACADEMY BANK",
-      "page_count": "2",
-      "score": "3",
-      "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433076.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260433525",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "GAVROS JUSTIN HARLEY (individual)",
-      "other_names_on_filing": "PHH ASSET SERVICES LLC; QUALITY LOAN SERVICE CORPORATION",
+      "recording_number": "20260456982",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "JOHNSON LORRINDA M (individual); JOHNSON TERRY D (individual)",
+      "other_names_on_filing": "WESTERN PROGRESSIVE ARIZONA INC",
       "page_count": "3",
-      "score": "3",
+      "score": "6",
       "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433525.pdf",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456982.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
+      "is_new": true,
       "pdf_available": true
     },
     {
-      "recording_number": "20260433526",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "BROWN MICHELLE (individual)",
-      "other_names_on_filing": "PHH ASSET SERVICES LLC; QUALITY LOAN SERVICE CORPORATION",
+      "recording_number": "20260457581",
+      "recording_date": "8-03-2026",
+      "likely_owner(s)": "ZIMMERMAN J R (individual); ZIMMERMAN ROBERT (individual)",
+      "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
       "page_count": "3",
-      "score": "3",
+      "score": "6",
       "needs_manual_review": "",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433526.pdf",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260457581.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
+      "is_new": true,
       "pdf_available": true
     },
     {
@@ -2209,7 +2053,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452490.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452687",
@@ -2222,7 +2066,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452687.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452692",
@@ -2235,7 +2079,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452692.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260452788",
@@ -2248,7 +2092,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260452788.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453506",
@@ -2261,7 +2105,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453506.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453734",
@@ -2274,7 +2118,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453734.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260453755",
@@ -2287,7 +2131,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260453755.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260454007",
@@ -2394,16 +2238,146 @@
       "pdf_available": true
     },
     {
-      "recording_number": "20260433070",
-      "recording_date": "7-21-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "HELIOS C LLC; MCDONALD LEONARD J; QUICK SOURCE CAPITAL LLC",
+      "recording_number": "20260456373",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "GARCIA BRITTANY LYNN (individual)",
+      "other_names_on_filing": "DESERT FINANCIAL CREDIT UNION",
       "page_count": "2",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260433070.pdf",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456373.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456390",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "GARCIA HECTOR DAVID (individual)",
+      "other_names_on_filing": "DESERT FINANCIAL CREDIT UNION; DESERT FINANCIAL FEDERAL CREDIT UNION; LEONARD J MCDONALD",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456390.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456400",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "DOUGLAS LAURA M (individual)",
+      "other_names_on_filing": "MCDONALD LEONARD J",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456400.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456534",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "JHA MADHULIKA (individual)",
+      "other_names_on_filing": "LAKEVIEW LOAN SERVICING; PRIME RECON LLC",
+      "page_count": "3",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456534.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456655",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "PATINO MARISSA ELENA (individual)",
+      "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456655.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456684",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "FRANKLIN DEITRA M (individual)",
+      "other_names_on_filing": "NESTOR SOLUTIONS LLC",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456684.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456723",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "MCWILLIAMS LINDA D (individual)",
+      "other_names_on_filing": "FINANCE OF AMERICA REVERSE LLC; MTC FINANCIAL INC; TRUSTEE CORPS",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456723.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456735",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "CLARK VASQUEZ HOPE (individual)",
+      "other_names_on_filing": "PLANET HOME LENDING LLC",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456735.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456858",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "BRIGGS JOSHUA (individual)",
+      "other_names_on_filing": "PLANET HOME LENDING LLC; SWEENEY ERIN K",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456858.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260457643",
+      "recording_date": "8-03-2026",
+      "likely_owner(s)": "MARTINEZ SUSANO ORONA (individual)",
+      "other_names_on_filing": "NATIONSTAR MORTGAGE LLC; ROCKET MORTGAGE LLC",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260457643.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260457670",
+      "recording_date": "8-03-2026",
+      "likely_owner(s)": "CEBREROS KICELA M GARIBALDI (individual)",
+      "other_names_on_filing": "MCDONALD LEONARD J",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260457670.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     },
     {
@@ -2599,6 +2573,32 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260455684.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260456673",
+      "recording_date": "7-31-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "GRAND FUNDING LLC; PIONEER TITLE AGENCY INC; WONTON LLC",
+      "page_count": "3",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260456673.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260457551",
+      "recording_date": "8-03-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "BOF HOLDINGS 1 LLC; IRONWOOD 92 PARTNERS LLC",
+      "page_count": "8",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260457551.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     }
   ]
