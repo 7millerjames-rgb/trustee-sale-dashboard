@@ -1,6 +1,19 @@
 {
-  "generated_at_utc": "2026-08-07 15:36 UTC",
+  "generated_at_utc": "2026-08-07 18:33 UTC",
   "leads": [
+    {
+      "recording_number": "20260465109",
+      "recording_date": "8-06-2026",
+      "likely_owner(s)": "BROWN MARTHAA (individual); BROWN RONALD E (individual); CELINK (individual); REVOCABLE LIVING TRUST OF RONALD E BROWN AND MARTHAA (trust_or_estate)",
+      "other_names_on_filing": "CARRINGTON MORTGAGE SERVICES",
+      "page_count": "2",
+      "score": "13",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260465109.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
     {
       "recording_number": "20260446602",
       "recording_date": "7-28-2026",
@@ -985,6 +998,19 @@
       "score": "6",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260463904.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260465119",
+      "recording_date": "8-06-2026",
+      "likely_owner(s)": "LEE JUYUN (individual); LEE YOUNGSOON (individual)",
+      "other_names_on_filing": "BANK OF NEW YORK; BANK OF NEW YORK MELLON; CWALT INC ALTERNATIVE LOAN TRUST 2007 9T1; QUALITY LOAN SERVICE CORPORATION",
+      "page_count": "3",
+      "score": "6",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260465119.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -2005,7 +2031,7 @@
     },
     {
       "recording_number": "20260458177",
-      "recording_date": "8-03-2026",
+      "recording_date": "8-28-2026",
       "likely_owner(s)": "DORAME RICARDO ARVIZU (individual)",
       "other_names_on_filing": "SELENE FINANCE LP",
       "page_count": "2",
@@ -2342,6 +2368,19 @@
       "pdf_available": true
     },
     {
+      "recording_number": "20260464948",
+      "recording_date": "8-06-2026",
+      "likely_owner(s)": "NODINE LEE ELLEN (individual)",
+      "other_names_on_filing": "BANK OF AMERICA; LEONARD J MCDONALD",
+      "page_count": "2",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260464948.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
       "recording_number": "20260438945",
       "recording_date": "7-24-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
@@ -2558,45 +2597,6 @@
       "score": "0",
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260464281.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260464948",
-      "recording_date": "8-06-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "2",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260464948.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260465109",
-      "recording_date": "8-06-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "2",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260465109.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260465119",
-      "recording_date": "8-06-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260465119.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
