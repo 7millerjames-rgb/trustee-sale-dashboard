@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-10 17:59 UTC",
+  "generated_at_utc": "2026-08-10 20:10 UTC",
   "leads": [
     {
       "recording_number": "20260465109",
@@ -270,6 +270,32 @@
       "score": "9",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260466522.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260467241",
+      "recording_date": "8-07-2026",
+      "likely_owner(s)": "DANGERFIELD NICHOLAS (individual); MILLER DANGERFIELD NICHOLAS (individual); MILLER NICHOLAS (individual)",
+      "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION",
+      "page_count": "4",
+      "score": "9",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467241.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260467247",
+      "recording_date": "8-07-2026",
+      "likely_owner(s)": "CARRERAS BRENDA LETICIA (individual); CARRERAS FELIPE LUIS (individual); CARRERAS TRUST (individual)",
+      "other_names_on_filing": "MSR ASSET VEHICLE LLC",
+      "page_count": "3",
+      "score": "9",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467247.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -959,6 +985,32 @@
       "score": "6",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260466953.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260467246",
+      "recording_date": "8-07-2026",
+      "likely_owner(s)": "CHAVEZ SONIA (individual); ESQUIVEL CHRISTOPHER (individual)",
+      "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION",
+      "page_count": "3",
+      "score": "6",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467246.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260467402",
+      "recording_date": "8-07-2026",
+      "likely_owner(s)": "LEE CHINEQUA (individual); MATTHEW ROBERT (individual)",
+      "other_names_on_filing": "MTC FINANCIAL INC; PENNYMAC LOAN SERVICES; TRUSTEE CORPS",
+      "page_count": "2",
+      "score": "6",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467402.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -2317,7 +2369,7 @@
     },
     {
       "recording_number": "20260467026",
-      "recording_date": "12-22-1993",
+      "recording_date": "8-06-2026",
       "likely_owner(s)": "SAUER C MCKENNA (individual)",
       "other_names_on_filing": "BLACK ROCK FINANCIAL LLC; ENTERPRISE BANK AND TRUST; SCOTTSDALE OASIS LLC",
       "page_count": "7",
@@ -2545,58 +2597,6 @@
       "score": "0",
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260466666.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260467241",
-      "recording_date": "8-07-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "4",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467241.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260467246",
-      "recording_date": "8-07-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467246.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260467247",
-      "recording_date": "8-07-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467247.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260467402",
-      "recording_date": "8-07-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "2",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260467402.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
