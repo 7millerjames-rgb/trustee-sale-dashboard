@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-13 21:35 UTC",
+  "generated_at_utc": "2026-08-13 22:32 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1186,7 +1186,7 @@
     },
     {
       "recording_number": "20260456044",
-      "recording_date": "7-31-2026",
+      "recording_date": "7-29-1993",
       "likely_owner(s)": "IRELAND MISTY M (individual)",
       "other_names_on_filing": "ROCKET MORTGAGE LLC",
       "page_count": "2",
@@ -2473,7 +2473,7 @@
     },
     {
       "recording_number": "20260478314",
-      "recording_date": "8-13-2026",
+      "recording_date": "8-30-1993",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "",
       "page_count": "3",
@@ -2572,7 +2572,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260480203.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2585,7 +2585,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260480216.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2598,7 +2598,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260480299.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
