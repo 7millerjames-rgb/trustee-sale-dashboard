@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-13 01:08 UTC",
+  "generated_at_utc": "2026-08-13 03:37 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -2187,7 +2187,7 @@
     },
     {
       "recording_number": "20260472352",
-      "recording_date": "12-15-2021",
+      "recording_date": "8-10-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "C AND M HARQUAHALA RANCHES LLC; NEEDHAM CHARLOTTE O",
       "page_count": "3",
@@ -2377,7 +2377,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260476980.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2390,7 +2390,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260477526.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2403,7 +2403,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260477693.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2416,7 +2416,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260477740.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2429,7 +2429,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260477976.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2442,7 +2442,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260478018.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2455,7 +2455,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260478020.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2468,7 +2468,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260478022.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
