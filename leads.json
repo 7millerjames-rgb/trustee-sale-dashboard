@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-14 21:16 UTC",
+  "generated_at_utc": "2026-08-14 21:47 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -42,7 +42,7 @@
     },
     {
       "recording_number": "20260454238",
-      "recording_date": "7-31-2026",
+      "recording_date": "7-31-1976",
       "likely_owner(s)": "LAZOS ISAAC (individual); NESTOR SOLUTIONS (individual); VILLON MONICA (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION; QUAM KIM",
       "page_count": "2",
@@ -666,7 +666,7 @@
     },
     {
       "recording_number": "20260472171",
-      "recording_date": "8-23-1993",
+      "recording_date": "8-10-2026",
       "likely_owner(s)": "BURTON JAMES (individual); BURTON JODI L (individual)",
       "other_names_on_filing": "BANK OF AMERICA",
       "page_count": "2",
@@ -2382,7 +2382,7 @@
     },
     {
       "recording_number": "20260481123",
-      "recording_date": "8-14-2026",
+      "recording_date": "12-21-1993",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "",
       "page_count": "4",
@@ -2546,7 +2546,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260482991.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
