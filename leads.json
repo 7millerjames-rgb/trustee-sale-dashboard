@@ -1,9 +1,9 @@
 {
-  "generated_at_utc": "2026-08-18 21:45 UTC",
+  "generated_at_utc": "2026-08-18 22:13 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
-      "recording_date": "8-11-2026",
+      "recording_date": "9-05-2025",
       "likely_owner(s)": "ALI ASHLEY A (individual); ALI FRANCIS R (individual); ALI OSMAN ASHLEY A (individual); ALI OSMAN FRANCIS R (individual); ALLIANT CREDIT UNION (individual); OSMAN ASHLEY A (individual); OSMAN FRANCIS R (individual)",
       "other_names_on_filing": "",
       "page_count": "2",
@@ -42,7 +42,7 @@
     },
     {
       "recording_number": "20260459831",
-      "recording_date": "8-04-2026",
+      "recording_date": "8-04-1993",
       "likely_owner(s)": "CANTARERO REINALDO A (individual); CLICK N CLOSE (individual); MOJICA PATRICIA CONCEPCION (individual)",
       "other_names_on_filing": "MID AMERICA MORTGAGE; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
@@ -1888,7 +1888,7 @@
     },
     {
       "recording_number": "20260482774",
-      "recording_date": "8-14-2026",
+      "recording_date": "8-14-1990",
       "likely_owner(s)": "STEVENSON MARK S (individual)",
       "other_names_on_filing": "WEST COAST REALTY SERVICES INC",
       "page_count": "2",
@@ -2403,7 +2403,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260488888.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2416,7 +2416,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489015.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
