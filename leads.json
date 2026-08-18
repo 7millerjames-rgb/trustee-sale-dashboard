@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-18 20:13 UTC",
+  "generated_at_utc": "2026-08-18 20:46 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -2083,7 +2083,7 @@
     },
     {
       "recording_number": "20260485692",
-      "recording_date": "5-14-2026",
+      "recording_date": "8-17-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "",
       "page_count": "3",
@@ -2363,6 +2363,19 @@
       "score": "0",
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260488294.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260488528",
+      "recording_date": "8-18-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260488528.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": true,
       "pdf_available": true
