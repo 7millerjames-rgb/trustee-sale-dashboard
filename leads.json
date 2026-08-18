@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-18 23:13 UTC",
+  "generated_at_utc": "2026-08-18 23:43 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1082,7 +1082,7 @@
     },
     {
       "recording_number": "20260463512",
-      "recording_date": "8-05-2026",
+      "recording_date": "11-25-2009",
       "likely_owner(s)": "GALVAN JAMES (individual)",
       "other_names_on_filing": "JPMORGAN CHASE BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
@@ -2456,6 +2456,19 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489219.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260489299",
+      "recording_date": "8-18-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489299.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     }
   ]
