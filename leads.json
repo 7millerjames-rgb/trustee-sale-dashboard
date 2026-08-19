@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19 22:15 UTC",
+  "generated_at_utc": "2026-08-19 22:48 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1472,7 +1472,7 @@
     },
     {
       "recording_number": "20260476865",
-      "recording_date": "8-12-2026",
+      "recording_date": "4-24-2023",
       "likely_owner(s)": "AMEND VALERIE A (individual)",
       "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
@@ -2533,7 +2533,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260491558.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2546,7 +2546,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260491596.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
