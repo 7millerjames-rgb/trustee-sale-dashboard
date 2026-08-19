@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19 20:51 UTC",
+  "generated_at_utc": "2026-08-19 21:17 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1303,7 +1303,7 @@
     },
     {
       "recording_number": "20260471325",
-      "recording_date": "4-28-2026",
+      "recording_date": "8-10-2026",
       "likely_owner(s)": "DIAZ VERONICA DANIELA (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; LEONARD J MCDONALD; M T BANK",
       "page_count": "2",
@@ -2494,8 +2494,8 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260490923.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
-      "pdf_available": false
+      "is_new": false,
+      "pdf_available": true
     }
   ]
 }
