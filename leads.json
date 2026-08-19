@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19 16:20 UTC",
+  "generated_at_utc": "2026-08-19 16:54 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -159,7 +159,7 @@
     },
     {
       "recording_number": "20260463904",
-      "recording_date": "8-11-2026",
+      "recording_date": "8-05-2026",
       "likely_owner(s)": "KPOGO ANGELA MARIE (individual); KPOGO YAWOVI AGBENUKU (individual)",
       "other_names_on_filing": "JASON P SHERMAN; LAKEVIEW LOAN SERVICING LLC",
       "page_count": "2",
@@ -2338,7 +2338,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489810.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2350,6 +2350,19 @@
       "score": "0",
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489821.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260489995",
+      "recording_date": "8-19-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489995.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": true,
       "pdf_available": true
