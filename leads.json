@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19 00:40 UTC",
+  "generated_at_utc": "2026-08-19 02:13 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1199,7 +1199,7 @@
     },
     {
       "recording_number": "20260470321",
-      "recording_date": "5-20-2011",
+      "recording_date": "8-10-2026",
       "likely_owner(s)": "BENNETT JAMES G (individual)",
       "other_names_on_filing": "ADVANCIAL FEDERAL CREDIT UNION",
       "page_count": "2",
@@ -2234,7 +2234,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489336.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2247,7 +2247,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489337.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2260,7 +2260,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489343.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2273,7 +2273,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260489344.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
