@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-20 15:03 UTC",
+  "generated_at_utc": "2026-08-20 15:56 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1303,7 +1303,7 @@
     },
     {
       "recording_number": "20260476875",
-      "recording_date": "8-12-2026",
+      "recording_date": "12-22-1958",
       "likely_owner(s)": "MORENO RALPH V (individual)",
       "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
@@ -2352,6 +2352,32 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260491953.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260492153",
+      "recording_date": "8-20-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260492153.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260492385",
+      "recording_date": "8-20-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260492385.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     }
   ]
