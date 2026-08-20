@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-20 15:56 UTC",
+  "generated_at_utc": "2026-08-20 16:25 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -263,7 +263,7 @@
     },
     {
       "recording_number": "20260470349",
-      "recording_date": "8-10-2026",
+      "recording_date": "5-02-2022",
       "likely_owner(s)": "DOMINGUEZ RONALD P (individual); DOMINGUEZ SHARRON R (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC",
       "page_count": "3",
@@ -1303,7 +1303,7 @@
     },
     {
       "recording_number": "20260476875",
-      "recording_date": "12-22-1958",
+      "recording_date": "8-12-2026",
       "likely_owner(s)": "MORENO RALPH V (individual)",
       "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
@@ -2364,7 +2364,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260492153.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2377,7 +2377,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260492385.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
