@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-20 19:53 UTC",
+  "generated_at_utc": "2026-08-20 20:18 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -796,7 +796,7 @@
     },
     {
       "recording_number": "20260486348",
-      "recording_date": "3-29-2022",
+      "recording_date": "8-17-2026",
       "likely_owner(s)": "IRVING MARIANNE (individual); IRVING SCOTT (individual)",
       "other_names_on_filing": "414 W RIDGECREST ROAD LLC",
       "page_count": "2",
@@ -1810,7 +1810,7 @@
     },
     {
       "recording_number": "20260486160",
-      "recording_date": "8-17-2026",
+      "recording_date": "3-15-2022",
       "likely_owner(s)": "MCVEY GEORGE J (individual)",
       "other_names_on_filing": "JPMORGAN CHASE BANK",
       "page_count": "2",
@@ -2369,7 +2369,7 @@
     },
     {
       "recording_number": "20260492385",
-      "recording_date": "3-29-2022",
+      "recording_date": "8-20-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "",
       "page_count": "2",
@@ -2521,6 +2521,19 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260493388.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260493598",
+      "recording_date": "8-20-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260493598.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     }
   ]
