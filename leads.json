@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21 17:57 UTC",
+  "generated_at_utc": "2026-08-21 18:28 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -744,7 +744,7 @@
     },
     {
       "recording_number": "20260486572",
-      "recording_date": "8-17-2026",
+      "recording_date": "6-30-2021",
       "likely_owner(s)": "LOREDO CARMEN MARIA (individual); RODRIGUEZ MAYRA LYNETTE (individual)",
       "other_names_on_filing": "CARRINGTON MORTGAGE SERVICES",
       "page_count": "3",
@@ -757,7 +757,7 @@
     },
     {
       "recording_number": "20260487090",
-      "recording_date": "6-24-2021",
+      "recording_date": "8-18-2026",
       "likely_owner(s)": "BALINGER ELIZABETH CARMEN BABAUTA PEREZ (individual); BALLINGER LAMAR A (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
@@ -2547,6 +2547,19 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495439.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260495699",
+      "recording_date": "8-21-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495699.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
       "pdf_available": true
     }
   ]
