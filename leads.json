@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21 00:44 UTC",
+  "generated_at_utc": "2026-08-21 02:18 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -770,7 +770,7 @@
     },
     {
       "recording_number": "20260487224",
-      "recording_date": "1-19-2022",
+      "recording_date": "8-18-2026",
       "likely_owner(s)": "DAVID PER GLENN (individual); PER DAVID (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
       "page_count": "2",
@@ -1004,7 +1004,7 @@
     },
     {
       "recording_number": "20260470301",
-      "recording_date": "1-19-2022",
+      "recording_date": "8-10-2026",
       "likely_owner(s)": "KANTOCH NICHOLAS (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION; NESTOR SOLUTIONS LLC; QUAM KIM",
       "page_count": "2",
@@ -2364,7 +2364,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260494087.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2377,7 +2377,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260494310.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2390,7 +2390,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260494348.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
