@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21 16:59 UTC",
+  "generated_at_utc": "2026-08-21 17:29 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -1849,7 +1849,7 @@
     },
     {
       "recording_number": "20260490569",
-      "recording_date": "8-19-2026",
+      "recording_date": "8-01-2021",
       "likely_owner(s)": "SPENCER FANE LLP (individual)",
       "other_names_on_filing": "DANIEL ENRIQUEZ PLLC; KS STATE BANK",
       "page_count": "3",
@@ -2507,7 +2507,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495114.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2520,8 +2520,34 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495221.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260495424",
+      "recording_date": "8-21-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "3",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495424.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": true,
       "pdf_available": true
+    },
+    {
+      "recording_number": "20260495439",
+      "recording_date": "8-21-2026",
+      "likely_owner(s)": "(none isolated \u2014 manual review)",
+      "other_names_on_filing": "",
+      "page_count": "2",
+      "score": "0",
+      "needs_manual_review": "YES",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495439.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": true,
+      "pdf_available": false
     }
   ]
 }
