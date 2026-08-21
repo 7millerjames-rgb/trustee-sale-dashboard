@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21 17:29 UTC",
+  "generated_at_utc": "2026-08-21 17:57 UTC",
   "leads": [
     {
       "recording_number": "20260474807",
@@ -757,7 +757,7 @@
     },
     {
       "recording_number": "20260487090",
-      "recording_date": "8-18-2026",
+      "recording_date": "6-24-2021",
       "likely_owner(s)": "BALINGER ELIZABETH CARMEN BABAUTA PEREZ (individual); BALLINGER LAMAR A (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
@@ -1849,7 +1849,7 @@
     },
     {
       "recording_number": "20260490569",
-      "recording_date": "8-01-2021",
+      "recording_date": "8-19-2026",
       "likely_owner(s)": "SPENCER FANE LLP (individual)",
       "other_names_on_filing": "DANIEL ENRIQUEZ PLLC; KS STATE BANK",
       "page_count": "3",
@@ -2533,7 +2533,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495424.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2546,8 +2546,8 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260495439.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
-      "pdf_available": false
+      "is_new": false,
+      "pdf_available": true
     }
   ]
 }
