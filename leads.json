@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-10 18:49 UTC",
+  "generated_at_utc": "2026-09-10 21:19 UTC",
   "leads": [
     {
       "recording_number": "20260508037",
@@ -913,7 +913,7 @@
     },
     {
       "recording_number": "20260527575",
-      "recording_date": "5-23-2013",
+      "recording_date": "9-08-2026",
       "likely_owner(s)": "CROWLEY MICHAEL M (individual); MONTEZ DANIEL RAFAEL (individual)",
       "other_names_on_filing": "DEEPHAVEN RESIDENTIAL MORTGAGE TRUST 2022 1; WILMINGTON SAVINGS FUND SOCIETY",
       "page_count": "2",
@@ -1485,7 +1485,7 @@
     },
     {
       "recording_number": "20260513208",
-      "recording_date": "8-11-2014",
+      "recording_date": "8-31-2026",
       "likely_owner(s)": "GRIFFITHS JANICE (individual)",
       "other_names_on_filing": "CLEAR RECON CORP",
       "page_count": "2",
@@ -1602,7 +1602,7 @@
     },
     {
       "recording_number": "20260515236",
-      "recording_date": "5-23-2013",
+      "recording_date": "8-31-2026",
       "likely_owner(s)": "PRIETO CYNTHIA (individual)",
       "other_names_on_filing": "CARRINGTON MORTGAGE SERVICES",
       "page_count": "3",
@@ -2598,7 +2598,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260531326.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
