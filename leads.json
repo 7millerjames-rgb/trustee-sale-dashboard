@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-11 21:26 UTC",
+  "generated_at_utc": "2026-09-11 23:25 UTC",
   "leads": [
     {
       "recording_number": "20260530366",
@@ -380,7 +380,7 @@
     },
     {
       "recording_number": "20260513953",
-      "recording_date": "8-11-2009",
+      "recording_date": "8-31-2026",
       "likely_owner(s)": "GUILLEN JORGE (individual); ZBS LAW (individual)",
       "other_names_on_filing": "SWEENEY ERIN K",
       "page_count": "2",
@@ -1485,7 +1485,7 @@
     },
     {
       "recording_number": "20260517369",
-      "recording_date": "9-01-2026",
+      "recording_date": "8-15-2000",
       "likely_owner(s)": "CASTRO MANUEL (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J; U S BANK; U S BANK HOME MORTGAGE",
       "page_count": "2",
@@ -1511,7 +1511,7 @@
     },
     {
       "recording_number": "20260517449",
-      "recording_date": "9-01-2000",
+      "recording_date": "9-01-2026",
       "likely_owner(s)": "SHAKE STEPHANIE (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION; QUAM KIM",
       "page_count": "2",
@@ -2356,7 +2356,7 @@
     },
     {
       "recording_number": "20260514453",
-      "recording_date": "8-31-2026",
+      "recording_date": "8-15-2000",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "PHILIP L EIKER PLLC; RMLJ HOLDINGS 1 LLC",
       "page_count": "3",
@@ -2585,7 +2585,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260535478.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2598,7 +2598,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260535483.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
