@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-15 01:04 UTC",
+  "generated_at_utc": "2026-09-15 06:18 UTC",
   "leads": [
     {
       "recording_number": "20260530366",
@@ -198,7 +198,7 @@
     },
     {
       "recording_number": "20260517501",
-      "recording_date": "2-06-1995",
+      "recording_date": "9-01-2026",
       "likely_owner(s)": "FINLEY RODNEY (individual); FINLEY TANISHA (individual)",
       "other_names_on_filing": "QUAM KIM",
       "page_count": "2",
@@ -1394,7 +1394,7 @@
     },
     {
       "recording_number": "20260527329",
-      "recording_date": "12-04-1998",
+      "recording_date": "9-08-2026",
       "likely_owner(s)": "RESENDEZ KELLEY J (individual)",
       "other_names_on_filing": "REGIONS BANK; REGIONS MORTGAGE; SWEENEY ERIN K",
       "page_count": "2",
@@ -2247,7 +2247,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539071.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2260,7 +2260,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539101.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2273,7 +2273,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539106.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2286,7 +2286,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539158.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2299,7 +2299,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539159.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2312,7 +2312,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260539398.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
