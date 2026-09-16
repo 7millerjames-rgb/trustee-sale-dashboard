@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-16 00:54 UTC",
+  "generated_at_utc": "2026-09-16 05:29 UTC",
   "leads": [
     {
       "recording_number": "20260530366",
@@ -263,7 +263,7 @@
     },
     {
       "recording_number": "20260519485",
-      "recording_date": "11-17-1994",
+      "recording_date": "9-02-2026",
       "likely_owner(s)": "PANZARELLA ARTHUR J (individual); WHITTINGTON REILLY M (individual)",
       "other_names_on_filing": "FLIPFAST LOANS LLC; TOLESOAZ CORP; TOTAL LENDER SOLUTIONS",
       "page_count": "3",
@@ -718,7 +718,7 @@
     },
     {
       "recording_number": "20260535112",
-      "recording_date": "3-17-1992",
+      "recording_date": "9-11-2026",
       "likely_owner(s)": "BROWN MACAULEY S (individual); BROWN MARIAH A (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; PRIME RECON LLC",
       "page_count": "3",
@@ -965,7 +965,7 @@
     },
     {
       "recording_number": "20260521162",
-      "recording_date": "9-03-2026",
+      "recording_date": "5-21-1992",
       "likely_owner(s)": "MOORE HEATHER M (individual)",
       "other_names_on_filing": "MTC FINANCIAL INC; ORANGE COUNTY LOANS INC; TRUSTEE CORPS",
       "page_count": "2",
@@ -2213,7 +2213,7 @@
     },
     {
       "recording_number": "20260540865",
-      "recording_date": "9-15-2026",
+      "recording_date": "8-30-1991",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
       "other_names_on_filing": "",
       "page_count": "2",
@@ -2325,7 +2325,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542650.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2338,7 +2338,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542651.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2351,7 +2351,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542760.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2364,7 +2364,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542781.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2377,7 +2377,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542831.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     },
     {
@@ -2390,7 +2390,7 @@
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260542832.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": true,
+      "is_new": false,
       "pdf_available": true
     }
   ]
