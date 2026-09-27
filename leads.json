@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-27 20:37 UTC",
+  "generated_at_utc": "2026-09-27 23:30 UTC",
   "leads": [
     {
       "recording_number": "20260552108",
@@ -2287,7 +2287,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260555957.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260556124",
