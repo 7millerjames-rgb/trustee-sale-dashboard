@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-06 12:19 UTC",
+  "generated_at_utc": "2026-11-06 19:36 UTC",
   "leads": [
     {
       "recording_number": "20260636937",
@@ -1078,7 +1078,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260635086.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260635551",
@@ -1180,6 +1180,19 @@
       "score": "6",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638012.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260638481",
+      "recording_date": "11-05-2026",
+      "likely_owner(s)": "BARCA DAVID M (individual); DANNER JEFFREY M (individual)",
+      "other_names_on_filing": "SECURED INVESTMENTS CORP",
+      "page_count": "3",
+      "score": "6",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638481.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -2183,7 +2196,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260635091.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260635740",
@@ -2363,6 +2376,32 @@
       "score": "3",
       "needs_manual_review": "",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638022.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260638318",
+      "recording_date": "11-05-2026",
+      "likely_owner(s)": "MCBRIDE ROBERT C (individual)",
+      "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION",
+      "page_count": "3",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638318.pdf",
+      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
+      "is_new": false,
+      "pdf_available": true
+    },
+    {
+      "recording_number": "20260638319",
+      "recording_date": "11-05-2026",
+      "likely_owner(s)": "LAMEAURX JACQUES D (individual)",
+      "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION; U S BANK TRUST COMPANY NATIONAL ASSOCIATION",
+      "page_count": "3",
+      "score": "3",
+      "needs_manual_review": "",
+      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638319.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
@@ -2550,53 +2589,14 @@
       "pdf_available": true
     },
     {
-      "recording_number": "20260638318",
-      "recording_date": "11-05-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638318.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260638319",
-      "recording_date": "11-05-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638319.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
       "recording_number": "20260638385",
       "recording_date": "11-05-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
+      "other_names_on_filing": "CITI GSM PORTFOLIO LLC; FAY SERVICING LLC; KNOCKIT LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "0",
       "needs_manual_review": "YES",
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638385.pdf",
-      "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
-      "is_new": false,
-      "pdf_available": true
-    },
-    {
-      "recording_number": "20260638481",
-      "recording_date": "11-05-2026",
-      "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "",
-      "page_count": "3",
-      "score": "0",
-      "needs_manual_review": "YES",
-      "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260638481.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
       "pdf_available": true
