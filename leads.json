@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-19 08:10 UTC",
+  "generated_at_utc": "2026-11-19 17:29 UTC",
   "leads": [
     {
       "recording_number": "20260650563",
@@ -1117,7 +1117,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260653532.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260653627",
@@ -1156,7 +1156,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260653787.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260653794",
@@ -1182,7 +1182,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260654207.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260654264",
@@ -2365,7 +2365,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260653437.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260653469",
@@ -2378,7 +2378,7 @@
       "filing_url": "https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/20260653469.pdf",
       "recorder_search_url": "https://legacy.recorder.maricopa.gov/recdocdata/",
       "is_new": false,
-      "pdf_available": false
+      "pdf_available": true
     },
     {
       "recording_number": "20260653523",
