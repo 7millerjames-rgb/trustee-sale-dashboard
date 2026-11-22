@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-11-22 10:30 UTC",
+  "generated_at_utc": "2026-11-22 18:09 UTC",
   "leads": [
     {
       "recording_number": "20260650563",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "TROTMAN SUSAN DIANNE (individual); BRILL MARK (individual); TROTMAN JIMMY L (individual); ROBINSON KERRY (individual); RINDER VITALY (individual); PAULSON STEPHEN ROSS (individual); OWLARN PRASONG (individual); OWLARN AMMON (individual); KNIGHT PAMELA JEAN (individual); JACKSON LAWRENCE V (individual); JACKSON KIMBERLY B (individual); HOLZ KENNETH A (individual); GOW PHILLIP (individual); GOW LAURA G (individual); BRILL SARA (individual); BRILL RYAN (individual); BRILL KEVIN (individual); SENTURIA NEIL R (individual); ROBINSON WARREN G (individual); HOLZ LESLIE S (individual); LEVITON ALLISON (individual)",
+      "likely_owner(s)": "BRILL KEVIN (individual); BRILL MARK (individual); BRILL RYAN (individual); BRILL SARA (individual); GOW LAURA G (individual); GOW PHILLIP (individual); HOLZ KENNETH A (individual); HOLZ LESLIE S (individual); JACKSON KIMBERLY B (individual); JACKSON LAWRENCE V (individual); KNIGHT PAMELA JEAN (individual); LEVITON ALLISON (individual); OWLARN AMMON (individual); OWLARN PRASONG (individual); PAULSON STEPHEN ROSS (individual); RINDER VITALY (individual); ROBINSON KERRY (individual); ROBINSON WARREN G (individual); SENTURIA NEIL R (individual); TROTMAN JIMMY L (individual); TROTMAN SUSAN DIANNE (individual)",
       "other_names_on_filing": "MEDWED PROPERTIES",
       "page_count": "5",
       "score": "63",
@@ -17,7 +17,7 @@
     {
       "recording_number": "20260655340",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "ROGER P HAMEL AND MARY L HAMEL REVOCABLE TRUST (trust_or_estate); HAMEL ROGER P (individual); HAMEL MARY L (individual); BURGARD DONNA (individual); MARONEY KENNETH (individual)",
+      "likely_owner(s)": "BURGARD DONNA (individual); HAMEL MARY L (individual); HAMEL ROGER P (individual); MARONEY KENNETH (individual); ROGER P HAMEL AND MARY L HAMEL REVOCABLE TRUST (trust_or_estate)",
       "other_names_on_filing": "",
       "page_count": "3",
       "score": "16",
@@ -30,7 +30,7 @@
     {
       "recording_number": "20260653404",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "ANDERSON KATHERINE E (individual); CARICATO JASON MICHAEL (individual); CARICATO LIVING TRUST (trust_or_estate); CARICATO JULIE ALISSA (individual)",
+      "likely_owner(s)": "ANDERSON KATHERINE E (individual); CARICATO JASON MICHAEL (individual); CARICATO JULIE ALISSA (individual); CARICATO LIVING TRUST (trust_or_estate)",
       "other_names_on_filing": "NEWTEK SMALL BUSINESS FINANCE LLC",
       "page_count": "4",
       "score": "13",
@@ -43,7 +43,7 @@
     {
       "recording_number": "20260646332",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "MALLETTE JACKSON ANNA LEA (individual); MALLETTE ANNA LEA (individual); JACKSON OTIS J (individual); JACKSON ANNA LEA (individual)",
+      "likely_owner(s)": "JACKSON ANNA LEA (individual); JACKSON OTIS J (individual); MALLETTE ANNA LEA (individual); MALLETTE JACKSON ANNA LEA (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J; PENNYMAC LOAN SERVICES",
       "page_count": "2",
       "score": "12",
@@ -82,7 +82,7 @@
     {
       "recording_number": "20260650229",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "SCOTT AND JANECE LARSON FAMILY TRUST (trust_or_estate); LARSON SCOTT ANDERSON (individual); LARSON JANECE IONE (individual)",
+      "likely_owner(s)": "LARSON JANECE IONE (individual); LARSON SCOTT ANDERSON (individual); SCOTT AND JANECE LARSON FAMILY TRUST (trust_or_estate)",
       "other_names_on_filing": "GHIDOTTI MICHELLE R; J P MORGAN MORTGAGE TRUST 2025 CES5",
       "page_count": "2",
       "score": "10",
@@ -95,7 +95,7 @@
     {
       "recording_number": "20260643893",
       "recording_date": "11-09-2026",
-      "likely_owner(s)": "RUHANDA SERUGO (individual); MEREWENEZA GIKUNDIRO (individual); MUTABYIZIGWA ESPOIR (individual)",
+      "likely_owner(s)": "MEREWENEZA GIKUNDIRO (individual); MUTABYIZIGWA ESPOIR (individual); RUHANDA SERUGO (individual)",
       "other_names_on_filing": "AMERICA WEST LENDER SERVICES LLC",
       "page_count": "3",
       "score": "9",
@@ -108,7 +108,7 @@
     {
       "recording_number": "20260644466",
       "recording_date": "11-09-2026",
-      "likely_owner(s)": "GUERRERO ARRIETA NANCY (individual); BELTRAN JUAN PABLO JR (individual); BELTRAN CARDENAS JULIAN (individual)",
+      "likely_owner(s)": "BELTRAN CARDENAS JULIAN (individual); BELTRAN JUAN PABLO JR (individual); GUERRERO ARRIETA NANCY (individual)",
       "other_names_on_filing": "AMERICA WEST LENDER SERVICES LLC; LOANDEPOT COM",
       "page_count": "3",
       "score": "9",
@@ -121,7 +121,7 @@
     {
       "recording_number": "20260645281",
       "recording_date": "11-09-2026",
-      "likely_owner(s)": "MUNOZ MATTHEW (individual); MASCH ALEXYIA (individual); ROBINSON CARMEN (individual)",
+      "likely_owner(s)": "MASCH ALEXYIA (individual); MUNOZ MATTHEW (individual); ROBINSON CARMEN (individual)",
       "other_names_on_filing": "",
       "page_count": "3",
       "score": "9",
@@ -147,7 +147,7 @@
     {
       "recording_number": "20260648234",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "GUTIERREZ MARIA (individual); GUTIERREZ RAFAEL (individual); GUTIERREZ KATHERINE (individual)",
+      "likely_owner(s)": "GUTIERREZ KATHERINE (individual); GUTIERREZ MARIA (individual); GUTIERREZ RAFAEL (individual)",
       "other_names_on_filing": "FEDERAL HOME LOAN MORTGAGE CORPORATION",
       "page_count": "2",
       "score": "9",
@@ -160,7 +160,7 @@
     {
       "recording_number": "20260648982",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "SPEARS JANET (individual); CSMC 2022 NQM2 TRUST (individual); BRIEN ROBIN L (individual)",
+      "likely_owner(s)": "BRIEN ROBIN L (individual); CSMC 2022 NQM2 TRUST (individual); SPEARS JANET (individual)",
       "other_names_on_filing": "",
       "page_count": "3",
       "score": "9",
@@ -173,8 +173,8 @@
     {
       "recording_number": "20260649136",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "PAREDES STEVE S (individual); PAREDES JOSE M (individual); PAREDES BIANCA (individual)",
-      "other_names_on_filing": "TOLESOAZ CORP; TOTAL LENDER SOLUTIONS; SECURED INVESTMENTS CORP",
+      "likely_owner(s)": "PAREDES BIANCA (individual); PAREDES JOSE M (individual); PAREDES STEVE S (individual)",
+      "other_names_on_filing": "SECURED INVESTMENTS CORP; TOLESOAZ CORP; TOTAL LENDER SOLUTIONS",
       "page_count": "3",
       "score": "9",
       "needs_manual_review": "",
@@ -186,7 +186,7 @@
     {
       "recording_number": "20260650258",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "VALENZUELA SIXTO B (individual); VALENZUELA BAUDELIA T (individual); GSAMP TRUST (individual)",
+      "likely_owner(s)": "GSAMP TRUST (individual); VALENZUELA BAUDELIA T (individual); VALENZUELA SIXTO B (individual)",
       "other_names_on_filing": "DEUTSCHE BANK NATIONAL TRUST COMPANY; GHIDOTTI MICHELLE R; NEW PENN FINANCIAL; NEWREZ LLC; SHELLPOINT MORTGAGE SERVICING",
       "page_count": "2",
       "score": "9",
@@ -199,7 +199,7 @@
     {
       "recording_number": "20260650280",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "MELENDEZ LUIS A (individual); VALDEZ RICARDO (individual); BARBOZA OLIVIA GARCIA (individual)",
+      "likely_owner(s)": "BARBOZA OLIVIA GARCIA (individual); MELENDEZ LUIS A (individual); VALDEZ RICARDO (individual)",
       "other_names_on_filing": "",
       "page_count": "3",
       "score": "9",
@@ -212,7 +212,7 @@
     {
       "recording_number": "20260650609",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "REYES ANTONIO JUAN (individual); DURON NANCY (individual); MICHELLE R GHIDOTTI ATTORNEY AT LAW (individual)",
+      "likely_owner(s)": "DURON NANCY (individual); MICHELLE R GHIDOTTI ATTORNEY AT LAW (individual); REYES ANTONIO JUAN (individual)",
       "other_names_on_filing": "AMERIHOME MORTGAGE COMPANY",
       "page_count": "2",
       "score": "9",
@@ -225,7 +225,7 @@
     {
       "recording_number": "20260650825",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "NJOKU THANKGOD EMEKA (individual); NJOKU ELIZABETH (individual); NJOKU CELESTINE (individual)",
+      "likely_owner(s)": "NJOKU CELESTINE (individual); NJOKU ELIZABETH (individual); NJOKU THANKGOD EMEKA (individual)",
       "other_names_on_filing": "MIDFIRST BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "9",
@@ -238,7 +238,7 @@
     {
       "recording_number": "20260651871",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "TAYLOR DIANA L (individual); TAYLOR STEVENS DIANA (individual); CITIBANK (individual)",
+      "likely_owner(s)": "CITIBANK (individual); TAYLOR DIANA L (individual); TAYLOR STEVENS DIANA (individual)",
       "other_names_on_filing": "",
       "page_count": "3",
       "score": "9",
@@ -251,8 +251,8 @@
     {
       "recording_number": "20260653521",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "ROGERS JOY A (individual); J FIVE TRUST (individual); ROGERS JAMES B (individual)",
-      "other_names_on_filing": "ROCKET MORTGAGE LLC; JASON P SHERMAN",
+      "likely_owner(s)": "J FIVE TRUST (individual); ROGERS JAMES B (individual); ROGERS JOY A (individual)",
+      "other_names_on_filing": "JASON P SHERMAN; ROCKET MORTGAGE LLC",
       "page_count": "2",
       "score": "9",
       "needs_manual_review": "",
@@ -264,7 +264,7 @@
     {
       "recording_number": "20260654347",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "NAVARRO DIANA (individual); AGUERO DANIEL (individual); AGUERO STEPHEN (individual)",
+      "likely_owner(s)": "AGUERO DANIEL (individual); AGUERO STEPHEN (individual); NAVARRO DIANA (individual)",
       "other_names_on_filing": "CROSSCOUNTRY MORTGAGE",
       "page_count": "2",
       "score": "9",
@@ -277,7 +277,7 @@
     {
       "recording_number": "20260655480",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "HUGHES MALEISA M (individual); HUGHES JESSE D JR (individual); BERMUDEZ JOSH (individual)",
+      "likely_owner(s)": "BERMUDEZ JOSH (individual); HUGHES JESSE D JR (individual); HUGHES MALEISA M (individual)",
       "other_names_on_filing": "FEDERAL HOME LOAN MORTGAGE CORPORATION; FREDDIE MAC SEASONED LOANS STRUCTURED TRANSACTION TRUST; PRIME RECON LLC",
       "page_count": "3",
       "score": "9",
@@ -290,7 +290,7 @@
     {
       "recording_number": "20260656213",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "CALDERON CHANTHALL (individual); CABRERA CHANTHALL (individual); CABRERA CALDERON CHANTHALL (individual)",
+      "likely_owner(s)": "CABRERA CALDERON CHANTHALL (individual); CABRERA CHANTHALL (individual); CALDERON CHANTHALL (individual)",
       "other_names_on_filing": "U S BANK",
       "page_count": "3",
       "score": "9",
@@ -329,7 +329,7 @@
     {
       "recording_number": "20260644286",
       "recording_date": "11-09-2026",
-      "likely_owner(s)": "REY GABRIEL (individual); DOMINGUEZ FRANQUE (individual)",
+      "likely_owner(s)": "DOMINGUEZ FRANQUE (individual); REY GABRIEL (individual)",
       "other_names_on_filing": "CLEAR RECON CORP; PENNYMAC LOAN SERVICES",
       "page_count": "2",
       "score": "6",
@@ -381,7 +381,7 @@
     {
       "recording_number": "20260645217",
       "recording_date": "11-09-2026",
-      "likely_owner(s)": "YOSEF KHITAM (individual); YOSEF EDDIE (individual)",
+      "likely_owner(s)": "YOSEF EDDIE (individual); YOSEF KHITAM (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J",
       "page_count": "2",
       "score": "6",
@@ -395,7 +395,7 @@
       "recording_number": "20260645288",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "MATAS ALVAREZ MONIQUE (individual); SEELEY EMERSON JOHN (individual)",
-      "other_names_on_filing": "LEONARD J MCDONALD; US BANK HOME MORTGAGE; U S BANK",
+      "other_names_on_filing": "LEONARD J MCDONALD; U S BANK; US BANK HOME MORTGAGE",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -407,7 +407,7 @@
     {
       "recording_number": "20260645829",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "FLICK JANNA ALGARD (individual); ALGARD SUSAN C (individual)",
+      "likely_owner(s)": "ALGARD SUSAN C (individual); FLICK JANNA ALGARD (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; M T BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -420,7 +420,7 @@
     {
       "recording_number": "20260646654",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "ROBINSON TIMOTHY G (individual); ROBINSON IRENE G (individual)",
+      "likely_owner(s)": "ROBINSON IRENE G (individual); ROBINSON TIMOTHY G (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J; U S BANK HOME MORTGAGE; U S BANK NATIONAL ASSOCIATION",
       "page_count": "2",
       "score": "6",
@@ -433,7 +433,7 @@
     {
       "recording_number": "20260646796",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "MITSUGUI TATIANE HARUMI (individual); COSCIA DANIEL (individual)",
+      "likely_owner(s)": "COSCIA DANIEL (individual); MITSUGUI TATIANE HARUMI (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J; PENNYMAC LOAN SERVICES",
       "page_count": "2",
       "score": "6",
@@ -447,7 +447,7 @@
       "recording_number": "20260647099",
       "recording_date": "11-10-2026",
       "likely_owner(s)": "NGO TRUNG Q (individual); NGUYEN MY T (individual)",
-      "other_names_on_filing": "NEWREZ LLC; QUALITY LOAN SERVICE CORPORATION; SHELLPOINT MORTGAGE SERVICING; U S BANK TRUST COMPANY; NEW RESIDENTIAL MORTGAGE LOAN TRUST 2025 NQM4",
+      "other_names_on_filing": "NEW RESIDENTIAL MORTGAGE LOAN TRUST 2025 NQM4; NEWREZ LLC; QUALITY LOAN SERVICE CORPORATION; SHELLPOINT MORTGAGE SERVICING; U S BANK TRUST COMPANY",
       "page_count": "3",
       "score": "6",
       "needs_manual_review": "",
@@ -459,7 +459,7 @@
     {
       "recording_number": "20260647105",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "PEDROZA KIRA (individual); GRIM JENNIFER (individual)",
+      "likely_owner(s)": "GRIM JENNIFER (individual); PEDROZA KIRA (individual)",
       "other_names_on_filing": "PLANET HOME LENDING LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -472,8 +472,8 @@
     {
       "recording_number": "20260647593",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "NAVARRETE RENE O (individual); NAVARRETE MARTIZA CECILIA (individual)",
-      "other_names_on_filing": "GHIDOTTI MICHELLE R; PRESTIGE DEFAULT SERVICES LLC; SERVICEMAC LLC; FAIRWAY INDEPENDENT MORTGAGE CORPORATION",
+      "likely_owner(s)": "NAVARRETE MARTIZA CECILIA (individual); NAVARRETE RENE O (individual)",
+      "other_names_on_filing": "FAIRWAY INDEPENDENT MORTGAGE CORPORATION; GHIDOTTI MICHELLE R; PRESTIGE DEFAULT SERVICES LLC; SERVICEMAC LLC",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -499,7 +499,7 @@
       "recording_number": "20260647879",
       "recording_date": "11-10-2026",
       "likely_owner(s)": "PAREDES ERNESTO RODRIGUEZ (individual); RODRIGUEZ ERNESTO (individual)",
-      "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION; LOANCARE LLC",
+      "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; LOANCARE LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
       "needs_manual_review": "",
@@ -550,7 +550,7 @@
     {
       "recording_number": "20260648248",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "VISSER MATHEW (individual); VISSER KERRISHA (individual)",
+      "likely_owner(s)": "VISSER KERRISHA (individual); VISSER MATHEW (individual)",
       "other_names_on_filing": "PENNYMAC LOAN SERVICES",
       "page_count": "2",
       "score": "6",
@@ -563,8 +563,8 @@
     {
       "recording_number": "20260648272",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "SAXON ASSET SECURITIES TRUST 2007 2 (individual); DEMARR VANESSA L (individual)",
-      "other_names_on_filing": "MCDONALD LEONARD J; SHELLPOINT MORTGAGE SERVICING; DEUTSCHE BANK NATIONAL TRUST COMPANY",
+      "likely_owner(s)": "DEMARR VANESSA L (individual); SAXON ASSET SECURITIES TRUST 2007 2 (individual)",
+      "other_names_on_filing": "DEUTSCHE BANK NATIONAL TRUST COMPANY; MCDONALD LEONARD J; SHELLPOINT MORTGAGE SERVICING",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -576,7 +576,7 @@
     {
       "recording_number": "20260648292",
       "recording_date": "11-10-2026",
-      "likely_owner(s)": "ROGERS MELODY (individual); ROGERS GREGORY (individual)",
+      "likely_owner(s)": "ROGERS GREGORY (individual); ROGERS MELODY (individual)",
       "other_names_on_filing": "ONSLOW BAY FINANCIAL LLC",
       "page_count": "2",
       "score": "6",
@@ -602,7 +602,7 @@
     {
       "recording_number": "20260648957",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "SEWA FRANK I (individual); SEWA FATEMA M (individual)",
+      "likely_owner(s)": "SEWA FATEMA M (individual); SEWA FRANK I (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
       "page_count": "2",
       "score": "6",
@@ -615,8 +615,8 @@
     {
       "recording_number": "20260648972",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "BENITEZ RESENDIZ EDGAR J (individual); BENITEZ RESENDIZ BALDOMERO (individual)",
-      "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION; PEOPLES MORTGAGE; MORIA DEVELOPMENT INC",
+      "likely_owner(s)": "BENITEZ RESENDIZ BALDOMERO (individual); BENITEZ RESENDIZ EDGAR J (individual)",
+      "other_names_on_filing": "MORIA DEVELOPMENT INC; PEOPLES MORTGAGE; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
       "needs_manual_review": "",
@@ -641,7 +641,7 @@
     {
       "recording_number": "20260649043",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "HENLEY PHILIP JR (individual); HENLEY HILLARY (individual)",
+      "likely_owner(s)": "HENLEY HILLARY (individual); HENLEY PHILIP JR (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION; QUAM KIM",
       "page_count": "2",
       "score": "6",
@@ -654,7 +654,7 @@
     {
       "recording_number": "20260649120",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "HONN SHAELYN (individual); HONN JUSTIN (individual)",
+      "likely_owner(s)": "HONN JUSTIN (individual); HONN SHAELYN (individual)",
       "other_names_on_filing": "MIDFIRST BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -667,7 +667,7 @@
     {
       "recording_number": "20260649559",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "FRIERSON JOAN A (individual); FRIERSON GLEN A (individual)",
+      "likely_owner(s)": "FRIERSON GLEN A (individual); FRIERSON JOAN A (individual)",
       "other_names_on_filing": "LEONARD J MCDONALD; NATIONSTAR MORTGAGE LLC; ROCKET MORTGAGE LLC",
       "page_count": "2",
       "score": "6",
@@ -680,7 +680,7 @@
     {
       "recording_number": "20260649687",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "KENT MADISON (individual); KENT BETH (individual)",
+      "likely_owner(s)": "KENT BETH (individual); KENT MADISON (individual)",
       "other_names_on_filing": "PLANET HOME LENDING LLC; SWEENEY ERIN K",
       "page_count": "2",
       "score": "6",
@@ -693,7 +693,7 @@
     {
       "recording_number": "20260650192",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "KELLAMS RONALD E (individual); KELLAMS REBECCA J (individual)",
+      "likely_owner(s)": "KELLAMS REBECCA J (individual); KELLAMS RONALD E (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION; QUAM KIM",
       "page_count": "2",
       "score": "6",
@@ -706,7 +706,7 @@
     {
       "recording_number": "20260650823",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "HENDERSON MICHELE (individual); ADAMS DONNELL (individual)",
+      "likely_owner(s)": "ADAMS DONNELL (individual); HENDERSON MICHELE (individual)",
       "other_names_on_filing": "MIDFIRST BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -719,7 +719,7 @@
     {
       "recording_number": "20260650827",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "DORSEY EMILY E (individual); COOK PETER T (individual)",
+      "likely_owner(s)": "COOK PETER T (individual); DORSEY EMILY E (individual)",
       "other_names_on_filing": "MIDFIRST BANK; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
       "score": "6",
@@ -732,8 +732,8 @@
     {
       "recording_number": "20260650829",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "KOCINSKI RANDALL (individual); KOCINSK RANDALL (individual)",
-      "other_names_on_filing": "SWEENEY ERIN K; PENTAGON FEDERAL CREDIT UNION",
+      "likely_owner(s)": "KOCINSK RANDALL (individual); KOCINSKI RANDALL (individual)",
+      "other_names_on_filing": "PENTAGON FEDERAL CREDIT UNION; SWEENEY ERIN K",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -759,7 +759,7 @@
       "recording_number": "20260651245",
       "recording_date": "11-12-2026",
       "likely_owner(s)": "NORTON ASHLEY (individual); NORTON WILLIAM (individual)",
-      "other_names_on_filing": "MTC FINANCIAL INC; TRUSTEE CORPS; TH MSR HOLDINGS LLC",
+      "other_names_on_filing": "MTC FINANCIAL INC; TH MSR HOLDINGS LLC; TRUSTEE CORPS",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -771,7 +771,7 @@
     {
       "recording_number": "20260651552",
       "recording_date": "11-12-2026",
-      "likely_owner(s)": "HARPER CLARENCE (individual); COLEMAN DANIELLE A (individual)",
+      "likely_owner(s)": "COLEMAN DANIELLE A (individual); HARPER CLARENCE (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -784,8 +784,8 @@
     {
       "recording_number": "20260651926",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "DEQUINQUE MICHAEL (individual); DEQUINQUE JENNIFER A (individual)",
-      "other_names_on_filing": "CLEAR RECON CORP; AMERISAVE MORTGAGE CORPORATION",
+      "likely_owner(s)": "DEQUINQUE JENNIFER A (individual); DEQUINQUE MICHAEL (individual)",
+      "other_names_on_filing": "AMERISAVE MORTGAGE CORPORATION; CLEAR RECON CORP",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -810,7 +810,7 @@
     {
       "recording_number": "20260652052",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "POST DAVID LESTER (individual); MIEL CHYRELL ILEEN (individual)",
+      "likely_owner(s)": "MIEL CHYRELL ILEEN (individual); POST DAVID LESTER (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
       "page_count": "2",
       "score": "6",
@@ -836,7 +836,7 @@
     {
       "recording_number": "20260652831",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "DAVIS MICHELLE (individual); DAVIS KYLE R (individual)",
+      "likely_owner(s)": "DAVIS KYLE R (individual); DAVIS MICHELLE (individual)",
       "other_names_on_filing": "AMERIHOME MORTGAGE COMPANY",
       "page_count": "2",
       "score": "6",
@@ -849,7 +849,7 @@
     {
       "recording_number": "20260653124",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "TOKIHIRO KATHY M (individual); TOKIHIRO GUY K (individual)",
+      "likely_owner(s)": "TOKIHIRO GUY K (individual); TOKIHIRO KATHY M (individual)",
       "other_names_on_filing": "DEUTSCHE BANK NATIONAL TRUST COMPANY",
       "page_count": "2",
       "score": "6",
@@ -862,7 +862,7 @@
     {
       "recording_number": "20260653235",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "GAXIOLA JENNIFER BELTRAN (individual); BELTRAN IGNACIO (individual)",
+      "likely_owner(s)": "BELTRAN IGNACIO (individual); GAXIOLA JENNIFER BELTRAN (individual)",
       "other_names_on_filing": "FREEDOM MORTGAGE CORPORATION",
       "page_count": "2",
       "score": "6",
@@ -875,7 +875,7 @@
     {
       "recording_number": "20260653430",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "SAUCEDA ADELINA J (individual); AGUILAR JOEL (individual)",
+      "likely_owner(s)": "AGUILAR JOEL (individual); SAUCEDA ADELINA J (individual)",
       "other_names_on_filing": "WELLS FARGO BANK",
       "page_count": "2",
       "score": "6",
@@ -888,7 +888,7 @@
     {
       "recording_number": "20260653434",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "RODRIGUEZ LISA M (individual); RODRIGUEZ ELMER (individual)",
+      "likely_owner(s)": "RODRIGUEZ ELMER (individual); RODRIGUEZ LISA M (individual)",
       "other_names_on_filing": "LOANDEPOT COM",
       "page_count": "3",
       "score": "6",
@@ -901,7 +901,7 @@
     {
       "recording_number": "20260653465",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "SUNIO PATRICIA (individual); SUNIO ACE LOPAKA (individual)",
+      "likely_owner(s)": "SUNIO ACE LOPAKA (individual); SUNIO PATRICIA (individual)",
       "other_names_on_filing": "JP MORGAN CHASE BANK",
       "page_count": "3",
       "score": "6",
@@ -914,7 +914,7 @@
     {
       "recording_number": "20260653493",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "SMITH ROBERT X (individual); SMITH CORRINE (individual)",
+      "likely_owner(s)": "SMITH CORRINE (individual); SMITH ROBERT X (individual)",
       "other_names_on_filing": "U S BANK TRUST",
       "page_count": "2",
       "score": "6",
@@ -927,7 +927,7 @@
     {
       "recording_number": "20260653532",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "LOYA CESAR A RUIZ (individual); ALANIS KARINA P (individual)",
+      "likely_owner(s)": "ALANIS KARINA P (individual); LOYA CESAR A RUIZ (individual)",
       "other_names_on_filing": "NATIONSTAR MORTGAGE LLC",
       "page_count": "2",
       "score": "6",
@@ -953,7 +953,7 @@
     {
       "recording_number": "20260653645",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "ROA MICHAEL (individual); LAKE SUZANNE (individual)",
+      "likely_owner(s)": "LAKE SUZANNE (individual); ROA MICHAEL (individual)",
       "other_names_on_filing": "JASON P SHERMAN; ROCKET MORTGAGE LLC",
       "page_count": "2",
       "score": "6",
@@ -966,7 +966,7 @@
     {
       "recording_number": "20260653787",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "DALEY THOMAS EDWARD (individual); DALEY KATHLEEN RENEE (individual)",
+      "likely_owner(s)": "DALEY KATHLEEN RENEE (individual); DALEY THOMAS EDWARD (individual)",
       "other_names_on_filing": "LEONARD J MCDONALD; ROCKET MORTGAGE LLC",
       "page_count": "2",
       "score": "6",
@@ -979,8 +979,8 @@
     {
       "recording_number": "20260653794",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "MOT MOE SALUM (individual); MA SO HI (individual)",
-      "other_names_on_filing": "TRUIST BANK; BRANCH BANKING AND TRUST",
+      "likely_owner(s)": "MA SO HI (individual); MOT MOE SALUM (individual)",
+      "other_names_on_filing": "BRANCH BANKING AND TRUST; TRUIST BANK",
       "page_count": "2",
       "score": "6",
       "needs_manual_review": "",
@@ -992,7 +992,7 @@
     {
       "recording_number": "20260654207",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "AGUIRRE NICOLE M (individual); AGUIRRE JIMI (individual)",
+      "likely_owner(s)": "AGUIRRE JIMI (individual); AGUIRRE NICOLE M (individual)",
       "other_names_on_filing": "LEONARD J MCDONALD; NEWREZ LLC",
       "page_count": "2",
       "score": "6",
@@ -1005,7 +1005,7 @@
     {
       "recording_number": "20260654264",
       "recording_date": "11-13-2026",
-      "likely_owner(s)": "MROZ DAVID JR (individual); MROZ ANDRE G (individual)",
+      "likely_owner(s)": "MROZ ANDRE G (individual); MROZ DAVID JR (individual)",
       "other_names_on_filing": "U S BANK",
       "page_count": "2",
       "score": "6",
@@ -1018,7 +1018,7 @@
     {
       "recording_number": "20260655317",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "CRUZ EDWIN AULIS (individual); BIBIANO CIRILA CRUZ (individual)",
+      "likely_owner(s)": "BIBIANO CIRILA CRUZ (individual); CRUZ EDWIN AULIS (individual)",
       "other_names_on_filing": "UNITED WHOLESALE MORTGAGE",
       "page_count": "2",
       "score": "6",
@@ -1031,7 +1031,7 @@
     {
       "recording_number": "20260655326",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "ORTEGA PATRICIA (individual); LINARES PEDRO A (individual)",
+      "likely_owner(s)": "LINARES PEDRO A (individual); ORTEGA PATRICIA (individual)",
       "other_names_on_filing": "MCDONALD LEONARD J; PENNYMAC LOAN SERVICES",
       "page_count": "2",
       "score": "6",
@@ -1044,7 +1044,7 @@
     {
       "recording_number": "20260656390",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "NUNEZ MARICELLA (individual); NUNEZ ARMANDO (individual)",
+      "likely_owner(s)": "NUNEZ ARMANDO (individual); NUNEZ MARICELLA (individual)",
       "other_names_on_filing": "FEDERAL HOME LOAN MORTGAGE CORPORATION; NATIONSTAR MORTGAGE LLC",
       "page_count": "2",
       "score": "6",
@@ -1057,7 +1057,7 @@
     {
       "recording_number": "20260657199",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "ROSENQUIST DONALD L (individual); ROSENQUIST CAROLEE (individual)",
+      "likely_owner(s)": "ROSENQUIST CAROLEE (individual); ROSENQUIST DONALD L (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC",
       "page_count": "2",
       "score": "6",
@@ -1070,7 +1070,7 @@
     {
       "recording_number": "20260657247",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "COOLEY KARINA Y (individual); COOLEY DONALD R III (individual)",
+      "likely_owner(s)": "COOLEY DONALD R III (individual); COOLEY KARINA Y (individual)",
       "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -1083,7 +1083,7 @@
     {
       "recording_number": "20260657254",
       "recording_date": "11-16-2026",
-      "likely_owner(s)": "GONZALEZ FELIZ KASSANDRA (individual); BANEGAS MELISSA ASHLEY (individual)",
+      "likely_owner(s)": "BANEGAS MELISSA ASHLEY (individual); GONZALEZ FELIZ KASSANDRA (individual)",
       "other_names_on_filing": "LAKEVIEW LOAN SERVICING LLC; LOANCARE LLC; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "3",
       "score": "6",
@@ -1292,7 +1292,7 @@
       "recording_number": "20260644122",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "BROWN SCOTT (individual)",
-      "other_names_on_filing": "POSITIVE IMPACT HOLDINGS LLC; BELL BANK",
+      "other_names_on_filing": "BELL BANK; POSITIVE IMPACT HOLDINGS LLC",
       "page_count": "3",
       "score": "3",
       "needs_manual_review": "",
@@ -1305,7 +1305,7 @@
       "recording_number": "20260644270",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "KELLY MICHAEL P (individual)",
-      "other_names_on_filing": "LEONARD J MCDONALD; NATIONSTAR MORTGAGE LLC; JPMORGAN CHASE BANK; J P MORGAN MORTGAGE ACQUISITION CORP",
+      "other_names_on_filing": "J P MORGAN MORTGAGE ACQUISITION CORP; JPMORGAN CHASE BANK; LEONARD J MCDONALD; NATIONSTAR MORTGAGE LLC",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -1474,7 +1474,7 @@
       "recording_number": "20260645291",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "WAVOMBA EUNICE (individual)",
-      "other_names_on_filing": "MCDONALD LEONARD J; BMO BANK",
+      "other_names_on_filing": "BMO BANK; MCDONALD LEONARD J",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -1500,7 +1500,7 @@
       "recording_number": "20260645635",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "LOVE SHAREKA (individual)",
-      "other_names_on_filing": "MTC FINANCIAL INC; TRUSTEE CORPS; PLANET HOME LENDING LLC",
+      "other_names_on_filing": "MTC FINANCIAL INC; PLANET HOME LENDING LLC; TRUSTEE CORPS",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -1513,7 +1513,7 @@
       "recording_number": "20260646609",
       "recording_date": "11-10-2026",
       "likely_owner(s)": "ANDERSON DIANA CLAIRE (individual)",
-      "other_names_on_filing": "MCDONALD LEONARD J; SHELLPOINT MORTGAGE SERVICING; NEWREZ LLC",
+      "other_names_on_filing": "MCDONALD LEONARD J; NEWREZ LLC; SHELLPOINT MORTGAGE SERVICING",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -1695,7 +1695,7 @@
       "recording_number": "20260648316",
       "recording_date": "11-10-2026",
       "likely_owner(s)": "GEHRKE TED (individual)",
-      "other_names_on_filing": "MTC FINANCIAL INC; TRUSTEE CORPS; HSBC BANK USA N A; DOVENMUEHLE MORTGAGE INC",
+      "other_names_on_filing": "DOVENMUEHLE MORTGAGE INC; HSBC BANK USA N A; MTC FINANCIAL INC; TRUSTEE CORPS",
       "page_count": "3",
       "score": "3",
       "needs_manual_review": "",
@@ -2046,7 +2046,7 @@
       "recording_number": "20260653436",
       "recording_date": "11-13-2026",
       "likely_owner(s)": "CZECH WILLIAM R (individual)",
-      "other_names_on_filing": "QUALITY LOAN SERVICE CORPORATION; PNC BANK NATIONAL ASSOCIATION",
+      "other_names_on_filing": "PNC BANK NATIONAL ASSOCIATION; QUALITY LOAN SERVICE CORPORATION",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -2124,7 +2124,7 @@
       "recording_number": "20260655335",
       "recording_date": "11-16-2026",
       "likely_owner(s)": "SOLAREZ FRANK V (individual)",
-      "other_names_on_filing": "FIDELITY NATIONAL TITLE AGENCY INC; REVEST INC; ARIZONA DEPARTMENT OF FINANCIAL INSTITUTIONS",
+      "other_names_on_filing": "ARIZONA DEPARTMENT OF FINANCIAL INSTITUTIONS; FIDELITY NATIONAL TITLE AGENCY INC; REVEST INC",
       "page_count": "2",
       "score": "3",
       "needs_manual_review": "",
@@ -2540,7 +2540,7 @@
       "recording_number": "20260645285",
       "recording_date": "11-09-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "LEONARD J MCDONALD; QUICK SOURCE CAPITAL LLC; DG HOME RENTALS AZ LLC",
+      "other_names_on_filing": "DG HOME RENTALS AZ LLC; LEONARD J MCDONALD; QUICK SOURCE CAPITAL LLC",
       "page_count": "2",
       "score": "0",
       "needs_manual_review": "YES",
@@ -2566,7 +2566,7 @@
       "recording_number": "20260652024",
       "recording_date": "11-13-2026",
       "likely_owner(s)": "(none isolated \u2014 manual review)",
-      "other_names_on_filing": "PIONEER TITLE AGENCY INC; YOUR INVESTMENT SOLUTIONS LLC; JIMENEZ DAVID",
+      "other_names_on_filing": "JIMENEZ DAVID; PIONEER TITLE AGENCY INC; YOUR INVESTMENT SOLUTIONS LLC",
       "page_count": "3",
       "score": "0",
       "needs_manual_review": "YES",
